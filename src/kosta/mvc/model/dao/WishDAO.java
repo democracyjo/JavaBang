@@ -5,7 +5,7 @@ import java.util.List;
 
 import kosta.mvc.model.dto.Wish;
 
-public interface wishDAO {
+public interface WishDAO {
 	
 	/**
 	   * 관심리스트에 추가하기
