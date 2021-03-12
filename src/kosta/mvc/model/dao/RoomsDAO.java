@@ -2,28 +2,28 @@ package kosta.mvc.model.dao;
 
 import java.util.List;
 
-import kosta.mvc.model.dto.RoomDTO;
+import kosta.mvc.model.dto.Room;
 
 
 
 public interface RoomsDAO {
 
-	public List<RoomDTO> selectAll();
+	public List<Room> selectAll();
 
-	public RoomDTO searchByRoomNo(int roomNo);
+	public Room searchByRoomNo(int roomNo);
 
-	public List<RoomDTO> searchByRoomType(List<String> roomType);
+	public List<Room> searchByRoomType(List<String> roomType);
 
-	public List<RoomDTO> searchByRoomSize(int minSize, int maxSize);
+	public List<Room> searchByRoomSize(int minSize, int maxSize);
 
-	public List<RoomDTO> searchByRoomPrice(int minPrice, int maxPrice);
+	public List<Room> searchByRoomPrice(int minPrice, int maxPrice);
 
-	public List<RoomDTO> searchByFloor(int floor);
+	public List<Room> searchByFloor(int floor);
 
-	public List<RoomDTO> searchByNumberPeople(int numberPeople);
+	public List<Room> searchByNumberPeople(int numberPeople);
 
-	public List<RoomDTO> searchByNumberBeds(int minNum, int maxNum);
+	public List<Room> searchByNumberBeds(int minNum, int maxNum);
 
-	public List<RoomDTO> searchByBedSize(List<String> BedSize);
+	public List<Room> searchByBedSize(List<String> BedSize);
 
 }
