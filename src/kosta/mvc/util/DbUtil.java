@@ -3,6 +3,7 @@ package kosta.mvc.util;
 import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -18,7 +19,7 @@ public class DbUtil {
 		try {
 			//외부 properties파일 로딩하기
 			proFile.load(new FileInputStream("resources/dbInfo.properties"));
-			//proFile.load(new FileInputStream("board.properties"));
+			proFile.load(new FileInputStream("resources/JavaBang.properties"));
 			
 			Class.forName(proFile.getProperty("driverName"));
 
@@ -50,5 +51,4 @@ public class DbUtil {
 			e.printStackTrace();
 		}
 	}
-
 }
