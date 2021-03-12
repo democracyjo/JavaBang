@@ -1,12 +1,21 @@
 package kosta.mvc.model.dao;
 
+<<<<<<< HEAD
 import java.sql.Connection; 
 import java.sql.PreparedStatement;
+=======
+
+>>>>>>> branch 'master' of https://github.com/democracyjo/JavaBang.git
 import java.sql.SQLException;
+<<<<<<< HEAD
 import java.util.Properties;
 import kosta.mvc.model.dto.User;
 import kosta.mvc.util.DbUtil;
 
+=======
+
+import kosta.mvc.model.dto.User;
+>>>>>>> branch 'master' of https://github.com/democracyjo/JavaBang.git
 public class UserDAOImpl implements UserDAO {
 private Properties JavaBang = DbUtil.getProFile();
 	

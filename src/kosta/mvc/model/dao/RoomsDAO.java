@@ -1,5 +1,6 @@
 package kosta.mvc.model.dao;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import kosta.mvc.model.dto.Room;
@@ -14,7 +15,7 @@ public interface RoomsDAO {
 
 	public List<Room> searchByRoomType(List<String> roomType)throws Exception;
 
-	public List<Room> searchByRoomSize(int minSize, int maxSize)throws Exception;
+	public List<Room> searchByRoomSize(double minSize, double maxSize)throws Exception;
 
 	public List<Room> searchByRoomPrice(int minPrice, int maxPrice)throws Exception;
 
@@ -24,6 +25,6 @@ public interface RoomsDAO {
 
 	public List<Room> searchByNumberBeds(int minNum, int maxNum)throws Exception;
 
-	public List<Room> searchByBedSize(List<String> BedSize)throws Exception;
+	List<Room> searchByBreakfastStat(boolean bfStat) throws SQLException;
 
 }
