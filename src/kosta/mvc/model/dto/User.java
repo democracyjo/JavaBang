@@ -8,12 +8,9 @@ public class User {
 	private String pw;
 	private String ssn;
 	private String tel;
-	
-	
-	
-	public User() {}
 
 	// 생성자
+	public User() {}
 	public User(int userNo, String userName, String id, String pw, String ssn, String tel) {
 		super();
 		this.userNo = userNo;
@@ -23,7 +20,7 @@ public class User {
 		this.ssn = ssn;
 		this.tel = tel;
 	}
-	
+
 	// get, set
 	public int getUserNo() {
 		return userNo;
@@ -72,7 +69,7 @@ public class User {
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
-	
+
 	// toString 오버라이딩
 	@Override
 	public String toString() {
