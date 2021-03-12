@@ -19,7 +19,7 @@ public class DbUtil {
 		try {
 			//외부 properties파일 로딩하기
 			proFile.load(new FileInputStream("resources/dbInfo.properties"));
-//			proFile.load(new FileInputStream("resources/JavaBang.properties"));
+			proFile.load(new FileInputStream("resources/JavaBang.properties"));
 			
 			Class.forName(proFile.getProperty("driverName"));
 

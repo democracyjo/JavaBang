@@ -6,7 +6,7 @@ package kosta.mvc.model.dto;
  * userNo			: int		회원번호(FK)--user_data의 PK
  * roomNo			: int		방번호(FK)--room_data의 PK
  * score				: int		별점
- * content			: String	내용
+ * reviewContent			: String	내용
  * reviewDate		: String	등록일
  * */
 public class Review {
@@ -15,7 +15,7 @@ public class Review {
 	private int userNo;
 	private int roomNo;
 	private int score;
-	private String content;
+	private String reviewContent;
 	private String reviewDate;
 	public Review() {}
 	public Review(int reviewNo, int userNo, int roomNo, int score, String content, String reviewDate) {
@@ -23,7 +23,7 @@ public class Review {
 		this.userNo = userNo;
 		this.roomNo = roomNo;
 		this.score = score;
-		this.content = content;
+		this.reviewContent = reviewContent;
 		this.reviewDate = reviewDate;
 	}
 	public int getReviewNo() {
@@ -50,11 +50,11 @@ public class Review {
 	public void setScore(int score) {
 		this.score = score;
 	}
-	public String getContent() {
-		return content;
+	public String getReviewContent() {
+		return reviewContent;
 	}
-	public void setContent(String content) {
-		this.content = content;
+	public void setReviewContent(String reviewContent) {
+		this.reviewContent = reviewContent;
 	}
 	public String getReviewDate() {
 		return reviewDate;
@@ -69,7 +69,7 @@ public class Review {
 		builder.append(userNo+" | ");
 		builder.append(roomNo+" | ");
 		builder.append(score+" | ");
-		builder.append(content+" | ");
+		builder.append(reviewContent+" | ");
 		builder.append(reviewDate);
 		return builder.toString();
 	}

@@ -13,6 +13,7 @@ public class Room{
 	private double size; // 방크기
 	private int price; // 방가격
 	private String floor; // 층수
+	private int aprprNmbP;
 	private int numberBeds;
 	private boolean breakfastStatus;
 	private int prcadPrsn; //추가인원당 가격
@@ -22,19 +23,31 @@ public class Room{
 	private List<Review> reviewList = new ArrayList<>();
 	
 	
-	public Room(int roomNo, int roomType, double size, int price, String floor, int numberBeds, boolean breakfastStatus,
-			int prcadPrsn) {
+
+
+	public Room(int roomNo, int roomType, double size, int price, String floor, int aprprNmbP, int numberBeds,
+			boolean breakfastStatus, int prcadPrsn) {
 		super();
 		this.roomNo = roomNo;
 		this.roomType = roomType;
 		this.size = size;
 		this.price = price;
 		this.floor = floor;
+		this.aprprNmbP = aprprNmbP;
 		this.numberBeds = numberBeds;
 		this.breakfastStatus = breakfastStatus;
 		this.prcadPrsn = prcadPrsn;
 	}
 	
+	
+	public int getAprprNmbP() {
+		return aprprNmbP;
+	}
+
+	public void setAprprNmbP(int aprprNmbP) {
+		this.aprprNmbP = aprprNmbP;
+	}
+
 	public int getRoomNo() {
 		return roomNo;
 	}
@@ -107,6 +120,6 @@ public class Room{
 		builder.append("]");
 		return builder.toString();
 	}
-	
+
 	
 }
