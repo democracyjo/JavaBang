@@ -14,7 +14,7 @@ public interface RoomsDAO {
 
 	public List<Room> searchByRoomType(List<String> roomType)throws Exception;
 
-	public List<Room> searchByRoomSize(int minSize, int maxSize)throws Exception;
+	public List<Room> searchByRoomSize(double minSize, double maxSize)throws Exception;
 
 	public List<Room> searchByRoomPrice(int minPrice, int maxPrice)throws Exception;
 
