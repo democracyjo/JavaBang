@@ -22,6 +22,18 @@ public class Room{
 	private List<Review> reviewList = new ArrayList<>();
 	
 	
+	public Room(int roomNo, int roomType, double size, int price, String floor, int numberBeds, boolean breakfastStatus,
+			int prcadPrsn) {
+		super();
+		this.roomNo = roomNo;
+		this.roomType = roomType;
+		this.size = size;
+		this.price = price;
+		this.floor = floor;
+		this.numberBeds = numberBeds;
+		this.breakfastStatus = breakfastStatus;
+		this.prcadPrsn = prcadPrsn;
+	}
 	
 	public int getRoomNo() {
 		return roomNo;

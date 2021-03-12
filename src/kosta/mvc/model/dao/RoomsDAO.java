@@ -8,22 +8,22 @@ import kosta.mvc.model.dto.Room;
 
 public interface RoomsDAO {
 
-	public List<Room> selectAll();
+	public List<Room> selectAll() throws Exception;
 
-	public Room searchByRoomNo(int roomNo);
+	public Room searchByRoomNo(int roomNo)throws Exception;
 
-	public List<Room> searchByRoomType(List<String> roomType);
+	public List<Room> searchByRoomType(List<String> roomType)throws Exception;
 
-	public List<Room> searchByRoomSize(int minSize, int maxSize);
+	public List<Room> searchByRoomSize(int minSize, int maxSize)throws Exception;
 
-	public List<Room> searchByRoomPrice(int minPrice, int maxPrice);
+	public List<Room> searchByRoomPrice(int minPrice, int maxPrice)throws Exception;
 
-	public List<Room> searchByFloor(int floor);
+	public List<Room> searchByFloor(int floor)throws Exception;
 
-	public List<Room> searchByNumberPeople(int numberPeople);
+	public List<Room> searchByNumberPeople(int numberPeople)throws Exception;
 
-	public List<Room> searchByNumberBeds(int minNum, int maxNum);
+	public List<Room> searchByNumberBeds(int minNum, int maxNum)throws Exception;
 
-	public List<Room> searchByBedSize(List<String> BedSize);
+	public List<Room> searchByBedSize(List<String> BedSize)throws Exception;
 
 }
