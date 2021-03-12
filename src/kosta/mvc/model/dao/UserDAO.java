@@ -1,5 +1,12 @@
 package kosta.mvc.model.dao;
 
-public interface UserDAO {
+import java.sql.SQLException;
 
+import kosta.mvc.model.dto.User;
+
+public interface UserDAO {
+	/**
+	 * 회원등록
+	 * */
+	public int insertUser(User user) throws SQLException;
 }
