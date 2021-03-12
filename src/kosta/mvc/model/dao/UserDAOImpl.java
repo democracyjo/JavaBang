@@ -1,5 +1,5 @@
 package kosta.mvc.model.dao;
 
-public class UserDAOImpl {
+public class UserDAOImpl implements UserDAO {
 
 }
