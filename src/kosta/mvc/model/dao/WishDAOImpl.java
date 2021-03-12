@@ -11,6 +11,10 @@ import java.util.Properties;
 import kosta.mvc.model.dto.Wish;
 import kosta.mvc.util.DbUtil;
 
+/*
+ * 더 생각해 볼 것.
+ * - 위시리스트에 많이 오른 방을 인기방에 검색되도록 하는 기능
+ * */
 public class WishDAOImpl implements WishDAO {
 	RoomsDAO roomsDAO = new RoomsDAOImpl();
 	private Properties proFile = DbUtil.getProFile();
@@ -71,12 +75,13 @@ public class WishDAOImpl implements WishDAO {
 		List<Wish> wishList = new ArrayList<>();
 		Wish wish = null;
 		String sql=proFile.getProperty("wish.select"); 
-//		wish.select=select * from WISH_LIST 
+//		wish.select=select * from WISH_LIST where user_Id=?
 		
 		try {
 
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
+			ps.setString(1, userId);
 			rs= ps.executeQuery();
 			
 			while(rs.next()) {
@@ -86,10 +91,11 @@ public class WishDAOImpl implements WishDAO {
 				String wishDate = rs.getString(4);
 				
 				wish = new Wish(wishNo, userNo, roomNo, wishDate);
+				wishList.add(wish);
 			}
 			
 		}finally {
-			DbUtil.close(con, ps);	
+			DbUtil.close(con, ps, rs);	
 		}
 
 		return wishList;
