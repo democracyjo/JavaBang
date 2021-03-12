@@ -36,7 +36,7 @@ public class RoomsDAOImpl implements RoomsDAO {
 				int roomType = rs.getInt(2); // 방 종류
 				double roomSize = rs.getDouble(3); // 방크기
 				int price = rs.getInt(4); // 방가격
-				String floor = rs.getString(5); // 층수
+				int floor = rs.getInt(5); // 층수
 				int aprprNmbP = rs.getInt(6);
 				int numberBeds = rs.getInt(7);
 				boolean breakfastStatus = rs.getString(8).toUpperCase().equals("TRUE");
@@ -74,7 +74,7 @@ public class RoomsDAOImpl implements RoomsDAO {
 				int roomType = rs.getInt(2); // 방 종류
 				double roomSize = rs.getDouble(3); // 방크기
 				int price = rs.getInt(4); // 방가격
-				String floor = rs.getString(5); // 층수
+				int floor = rs.getInt(5); // 층수
 				int aprprNmbP = rs.getInt(6);
 				int numberBeds = rs.getInt(7);
 				boolean breakfastStatus = rs.getString(8).toUpperCase().equals("TRUE");
@@ -108,17 +108,17 @@ public class RoomsDAOImpl implements RoomsDAO {
 
 				while (rs.next()) {
 					int roomNo = rs.getInt(1); // 방번호
-					int roomTypeNo=rs.getInt(2);
+					int roomTypeNo = rs.getInt(2);
 					double roomSize = rs.getDouble(3); // 방크기
 					int price = rs.getInt(4); // 방가격
-					String floor = rs.getString(5); // 층수
+					int floor = rs.getInt(5); // 층수
 					int aprprNmbP = rs.getInt(6);
 					int numberBeds = rs.getInt(7);
 					boolean breakfastStatus = rs.getString(8).toUpperCase().equals("TRUE");
 					int prcadPrsn = rs.getInt(9);
 
-					Room rm = new Room(roomNo, roomTypeNo, roomSize, price, floor, aprprNmbP, numberBeds, breakfastStatus,
-							prcadPrsn);
+					Room rm = new Room(roomNo, roomTypeNo, roomSize, price, floor, aprprNmbP, numberBeds,
+							breakfastStatus, prcadPrsn);
 
 					list.add(rm);
 
@@ -132,7 +132,7 @@ public class RoomsDAOImpl implements RoomsDAO {
 	}
 
 	@Override
-	public List<Room> searchByRoomSize(double minSize, double maxSize) throws SQLException{
+	public List<Room> searchByRoomSize(double minSize, double maxSize) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -151,7 +151,7 @@ public class RoomsDAOImpl implements RoomsDAO {
 				int roomType = rs.getInt(2); // 방 종류
 				double roomSize = rs.getDouble(3); // 방크기
 				int price = rs.getInt(4); // 방가격
-				String floor = rs.getString(5); // 층수
+				int floor = rs.getInt(5); // 층수
 				int aprprNmbP = rs.getInt(6);
 				int numberBeds = rs.getInt(7);
 				boolean breakfastStatus = rs.getString(8).toUpperCase().equals("TRUE");
@@ -171,7 +171,7 @@ public class RoomsDAOImpl implements RoomsDAO {
 	}
 
 	@Override
-	public List<Room> searchByRoomPrice(int minPrice, int maxPrice) throws SQLException{
+	public List<Room> searchByRoomPrice(int minPrice, int maxPrice) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -190,7 +190,7 @@ public class RoomsDAOImpl implements RoomsDAO {
 				int roomType = rs.getInt(2); // 방 종류
 				double roomSize = rs.getDouble(3); // 방크기
 				int price = rs.getInt(4); // 방가격
-				String floor = rs.getString(5); // 층수
+				int floor = rs.getInt(5); // 층수
 				int aprprNmbP = rs.getInt(6);
 				int numberBeds = rs.getInt(7);
 				boolean breakfastStatus = rs.getString(8).toUpperCase().equals("TRUE");
@@ -210,27 +210,160 @@ public class RoomsDAOImpl implements RoomsDAO {
 	}
 
 	@Override
-	public List<Room> searchByFloor(int floor) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Room> searchByFloor(int floor) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<Room> list = new ArrayList<Room>();
+		String sql = proFile.getProperty("room.searchByFloor");
+
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, floor);
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				int roomNo = rs.getInt(1); // 방번호
+				int roomType = rs.getInt(2); // 방 종류
+				double roomSize = rs.getDouble(3); // 방크기
+				int price = rs.getInt(4); // 방가격
+				// 층수
+				int aprprNmbP = rs.getInt(6);
+				int numberBeds = rs.getInt(7);
+				boolean breakfastStatus = rs.getString(8).toUpperCase().equals("TRUE");
+				int prcadPrsn = rs.getInt(9);
+
+				Room rm = new Room(roomNo, roomType, roomSize, price, floor, aprprNmbP, numberBeds, breakfastStatus,
+						prcadPrsn);
+
+				list.add(rm);
+
+				// 추가인원당 가격
+			}
+		} finally {
+			DbUtil.close(con, ps, rs);
+		}
+		return list;
 	}
 
 	@Override
-	public List<Room> searchByNumberPeople(int numberPeople) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Room> searchByNumberPeople(int numberPeople) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<Room> list = new ArrayList<Room>();
+		String sql = proFile.getProperty("room.searchByNumberPeople");
+
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, numberPeople);
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				int roomNo = rs.getInt(1); // 방번호
+				int roomType = rs.getInt(2); // 방 종류
+				double roomSize = rs.getDouble(3); // 방크기
+				int price = rs.getInt(4); // 방가격
+				int floor = rs.getInt(5); // 층수
+				int aprprNmbP = rs.getInt(6);
+				int numberBeds = rs.getInt(7);
+				boolean breakfastStatus = rs.getString(8).toUpperCase().equals("TRUE");
+				int prcadPrsn = rs.getInt(9);
+
+				Room rm = new Room(roomNo, roomType, roomSize, price, floor, aprprNmbP, numberBeds, breakfastStatus,
+						prcadPrsn);
+
+				list.add(rm);
+
+				// 추가인원당 가격
+			}
+		} finally {
+			DbUtil.close(con, ps, rs);
+		}
+		return list;
 	}
 
 	@Override
-	public List<Room> searchByNumberBeds(int minNum, int maxNum) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Room> searchByNumberBeds(int minNum, int maxNum) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<Room> list = new ArrayList<Room>();
+		String sql = proFile.getProperty("room.searchByNumberBeds");
+
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, minNum);
+			ps.setInt(2, maxNum);
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				int roomNo = rs.getInt(1); // 방번호
+				int roomType = rs.getInt(2); // 방 종류
+				double roomSize = rs.getDouble(3); // 방크기
+				int price = rs.getInt(4); // 방가격
+				int floor = rs.getInt(5); // 층수
+				int aprprNmbP = rs.getInt(6);
+				int numberBeds = rs.getInt(7);
+				boolean breakfastStatus = rs.getString(8).toUpperCase().equals("TRUE");
+				int prcadPrsn = rs.getInt(9);
+
+				Room rm = new Room(roomNo, roomType, roomSize, price, floor, aprprNmbP, numberBeds, breakfastStatus,
+						prcadPrsn);
+
+				list.add(rm);
+
+				// 추가인원당 가격
+			}
+		} finally {
+			DbUtil.close(con, ps, rs);
+		}
+		return list;
 	}
 
 	@Override
-	public List<Room> searchByBedSize(List<String> BedSize) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Room> searchByBreakfastStat(boolean bfStat) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<Room> list = new ArrayList<Room>();
+		String sql = proFile.getProperty("room.searchByBreakfastStat");
+
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			if (bfStat) {
+				ps.setString(1, "true");
+			} else {
+				ps.setString(1, "false");
+			}
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				int roomNo = rs.getInt(1); // 방번호
+				int roomType = rs.getInt(2); // 방 종류
+				double roomSize = rs.getDouble(3); // 방크기
+				int price = rs.getInt(4); // 방가격
+				int floor = rs.getInt(5); // 층수
+				int aprprNmbP = rs.getInt(6);
+				int numberBeds = rs.getInt(7);
+				boolean breakfastStatus = rs.getString(8).toUpperCase().equals("TRUE");
+				int prcadPrsn = rs.getInt(9);
+
+				Room rm = new Room(roomNo, roomType, roomSize, price, floor, aprprNmbP, numberBeds, breakfastStatus,
+						prcadPrsn);
+
+				list.add(rm);
+
+				// 추가인원당 가격
+			}
+		} finally {
+			DbUtil.close(con, ps, rs);
+		}
+		return list;
 	}
 
 }
