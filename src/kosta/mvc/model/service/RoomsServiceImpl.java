@@ -4,43 +4,43 @@ import java.util.List;
 
 import kosta.mvc.model.dao.RoomsDAO;
 import kosta.mvc.model.dao.RoomsDAOImpl;
-import kosta.mvc.model.dto.RoomDTO;
+import kosta.mvc.model.dto.Room;
 
 
 
 public class RoomsServiceImpl implements RoomsService{
 	RoomsDAO roomDAO=new RoomsDAOImpl();
 	
-	public List<RoomDTO> selectAll() {
+	public List<Room> selectAll() {
 		return null;
 	}
 	
-	public RoomDTO searchByRoomNo(int roomNo) {
+	public Room searchByRoomNo(int roomNo) {
 		return null;
 	}
-	public List<RoomDTO> searchByRoomType(List<String> roomType) {
-		return null;
-	}
-	
-	public List<RoomDTO> searchByRoomSize(int minSize,int maxSize) {
-		return null;
-	}
-	public List<RoomDTO> searchByRoomPrice(int minPrice,int maxPrice) {
-		return null;
-	}
-	public List<RoomDTO> searchByFloor(int floor) {
+	public List<Room> searchByRoomType(List<String> roomType) {
 		return null;
 	}
 	
-	public List<RoomDTO> searchByNumberBeds(int minNum,int maxNum) {
+	public List<Room> searchByRoomSize(int minSize,int maxSize) {
 		return null;
 	}
-	public List<RoomDTO> searchByBedSize(List<String> BedSize) {
+	public List<Room> searchByRoomPrice(int minPrice,int maxPrice) {
+		return null;
+	}
+	public List<Room> searchByFloor(int floor) {
+		return null;
+	}
+	
+	public List<Room> searchByNumberBeds(int minNum,int maxNum) {
+		return null;
+	}
+	public List<Room> searchByBedSize(List<String> BedSize) {
 		return null;
 	}
 
 	@Override
-	public List<RoomDTO> searchByNumberPeople(int minNbPeople, int maxNbPeople) {
+	public List<Room> searchByNumberPeople(int minNbPeople, int maxNbPeople) {
 		// TODO Auto-generated method stub
 		return null;
 	}
