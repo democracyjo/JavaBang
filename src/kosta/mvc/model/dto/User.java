@@ -11,6 +11,18 @@ public class User {
 
 	// »ý¼ºÀÚ
 	public User() {}
+	
+	
+	
+	public User(String userName, String id, String pw, String ssn, String tel) {
+		super();
+		this.userName = userName;
+		this.id = id;
+		this.pw = pw;
+		this.ssn = ssn;
+		this.tel = tel;
+	}
+
 	public User(int userNo, String userName, String id, String pw, String ssn, String tel) {
 		super();
 		this.userNo = userNo;

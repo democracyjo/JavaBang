@@ -6,7 +6,6 @@ import java.sql.SQLException;
 import java.util.Properties;
 import kosta.mvc.model.dto.User;
 import kosta.mvc.util.DbUtil;
-import kosta.mvc.model.dto.User;
 
 public class UserDAOImpl implements UserDAO {
 	private Properties JavaBang = DbUtil.getProFile();
@@ -24,7 +23,6 @@ public class UserDAOImpl implements UserDAO {
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
-			
 			ps.setString(1, user.getUserName());
 			ps.setString(2, user.getId());
 			ps.setString(3, user.getPw());

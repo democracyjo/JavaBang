@@ -12,11 +12,7 @@ public class UserController {
 	/**
 	 * 회원등록
 	 * */
-	public static void inputUser(User dto) {
-		try {
+	public static void inputUser(User dto) throws SQLException{
 			userService.inputUser(dto);
-		} catch (SQLException e) {
-			e.getMessage();
-		}
 	}
 }
