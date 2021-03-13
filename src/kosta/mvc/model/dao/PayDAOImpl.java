@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Properties;
 
 import kosta.mvc.model.dto.Pay;
-import kosta.mvc.model.dto.Wish;
 import kosta.mvc.util.DbUtil;
 
 public class PayDAOImpl implements PayDAO {
@@ -70,6 +69,30 @@ public class PayDAOImpl implements PayDAO {
 		}
 
 		return payList;
+	}
+
+	@Override
+	public int payDelete(int payNo) throws SQLException {
+		Connection con=null;
+		PreparedStatement ps=null;
+		String sql=proFile.getProperty("pay.delete"); 
+//		pay.delete=delete from PAY_LIST where pay_No = ?
+//		payNo
+		
+		int result=0;
+		try {
+
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1,payNo);
+
+			result = ps.executeUpdate();
+			
+		}finally {
+			DbUtil.close(con, ps);	
+		}
+
+		return result;
 	}
 
 }

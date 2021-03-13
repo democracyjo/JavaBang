@@ -2,8 +2,8 @@ package kosta.mvc.view;
 
 public class FailView {
 	/**
-	 * 예외가 발생했을때 예외메세지 출력
-	 */
+	 * 예외시 오류메시지 출력
+	 * */
 	public static void errorMessage(String message){
 		System.out.println(message);
 	}

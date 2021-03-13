@@ -3,26 +3,39 @@ package kosta.mvc.model.service;
 import java.sql.SQLException;
 import java.util.List;
 
+import kosta.mvc.model.dao.PayDAO;
+import kosta.mvc.model.dao.PayDAOImpl;
 import kosta.mvc.model.dto.Pay;
 
 public class PayServiceImpl implements PayService {
 
+	private PayDAO payDAO = new PayDAOImpl();
+	
 	@Override
 	public void insertPay(Pay pay) throws SQLException {
-		// TODO Auto-generated method stub
-
+		int res = payDAO.payInsert(pay);
+		if(res ==0) {
+			throw new SQLException("결제리스트 등록 실패하였습니다.");
+		}
 	}
 
 	@Override
 	public void payDelete(int payNo) throws SQLException {
-		// TODO Auto-generated method stub
-
+		int res = payDAO.payDelete(payNo);
+		if(res ==0) {
+			throw new SQLException(payNo+"번 결제정보 삭제 실패하였습니다.");
+		}
 	}
 
 	@Override
 	public List<Pay> selectPayByUserId(String userId) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		List<Pay> payList = payDAO.selectPayByUserId(userId);
+		if(payList ==null || payList.size()==0 ) { 
+			throw new SQLException("검색된 정보가 없습니다.");
+		}
+
+		return payList;
 	}
 
 }

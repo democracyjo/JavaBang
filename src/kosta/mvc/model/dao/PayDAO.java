@@ -16,7 +16,10 @@ public interface PayDAO {
 	   * */
 		int payInsert(Pay pay)throws SQLException;
 		
-		
+		/**
+		 * 결제리스트 삭제하기 
+		 * */
+		int payDelete(int payNo) throws SQLException;
 		
 		/**
 		 * 결제리스트 전체 보기 

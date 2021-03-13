@@ -23,15 +23,16 @@ public class UserController {
 			FailView.errorMessage(e.getMessage());
 		}
 	}
-	
+
 	/**
 	 * ·Î±×ÀÎ
 	 */
-	public static void login(String userId, String userPwd) {
+	public static void login(String userId, String userPwd) {	
 		try {
-			userService.login(userId, userPwd);
+			User user = userService.login(userId, userPwd);
 			MenuView.printUserMenu(userId);
-		} catch (Exception e) {
+			//MenuView.menu();
+		}catch (Exception e) {
 			FailView.errorMessage(e.getMessage());
 		}
 	}
