@@ -1,10 +1,8 @@
 package kosta.mvc.test;
 
-import java.sql.SQLException;
 import java.util.Scanner;
 import kosta.mvc.controller.UserController;
 import kosta.mvc.model.dto.User;
-import kosta.mvc.session.Session;
 
 public class TestDongso {
 	static Scanner sc = new Scanner(System.in);
@@ -26,11 +24,12 @@ public class TestDongso {
 
 			case 3:
 				// 종료
+				System.out.println("=== JavaBang 숙박업체에 다음에도 방문해주세요^^ ===");
 				System.exit(0);
 			}
 		} // while문 끝.
 	} // main끝.
-
+/////////////////////////////////////////////////////////////////////
 	// 메뉴 뷰
 	public static void printMenu() {
 		System.out.println("=== JavaBang 숙박업체 ===");
@@ -45,18 +44,9 @@ public class TestDongso {
 		System.out.print("비밀번호 : ");
 		String userPwd = sc.nextLine();
 		
-		// controller
-		/*
-		try {
-			UserController.login(userId, userPwd);
-			printUserMenu(userId);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		*/
 		UserController.login(userId, userPwd);
 	}
-
+	
 	// 회원가입 뷰
 	public static void printJoin() {
 		System.out.print("ID : ");
@@ -77,12 +67,7 @@ public class TestDongso {
 		User dto = new User(0, name, id, pw, ssn, tel);
 
 		// controller
-		try {
-			UserController.inputUser(dto);
-			System.out.println("등록이 완료되었습니다.");
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		UserController.inputUser(dto);
 	} // printJoin() 메소드 끝.
 
 	// 유저메뉴 뷰
@@ -92,7 +77,7 @@ public class TestDongso {
 		int menu = Integer.parseInt(sc.nextLine());
 		switch (menu) {
 		case 1:
-
+			
 			break;
 		case 2:
 
