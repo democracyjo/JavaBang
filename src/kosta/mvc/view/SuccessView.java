@@ -7,11 +7,10 @@ import kosta.mvc.model.dto.Reservation;
 import kosta.mvc.model.dto.Wish;
 
 public class SuccessView {
-  
+
 	/**
 	 * 성공했을 때 메시지 출력
 	 * */
-
 	public static void messagePrint(String message) {
 		System.out.println(message);
 	}
@@ -34,19 +33,14 @@ public class SuccessView {
 	}
 
 	public static void selectPayByUserIdPrint(List<Pay> payList) {
-
 		System.out.println("========= 결제리스트["+payList.size()+"]=========");
 		for(Pay pay : payList) {
 			System.out.println(pay);
 		}
 		System.out.println();
 	}
-		
-	
+
 }
-
-
-
 
 
 
