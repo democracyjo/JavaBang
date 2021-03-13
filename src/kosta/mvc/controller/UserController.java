@@ -18,7 +18,7 @@ public class UserController {
 	public static void inputUser(User dto) {
 		try {
 			userService.inputUser(dto);
-			SuccessView.printMessage(dto.getId() + "님 회원가입을 축하드립니다.!!!!");
+			SuccessView.printMessage(dto.getId() + "님 회원가입을 축하드립니다.");
 		} catch (SQLException e) {
 			FailView.errorMessage(e.getMessage());
 		}

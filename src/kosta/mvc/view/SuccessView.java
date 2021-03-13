@@ -9,7 +9,7 @@ public class SuccessView {
 	public static void printMessage(String message) {
 		System.out.println(message);
 	}
-
+	
 	/**
 	 * 성공했을 때 메시지 출력
 	 * */
