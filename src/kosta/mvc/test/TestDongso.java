@@ -44,14 +44,17 @@ public class TestDongso {
 
 		System.out.print("비밀번호 : ");
 		String userPwd = sc.nextLine();
-
+		
 		// controller
+		/*
 		try {
 			UserController.login(userId, userPwd);
 			printUserMenu(userId);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		*/
+		UserController.login(userId, userPwd);
 	}
 
 	// 회원가입 뷰
