@@ -6,6 +6,9 @@ import kosta.mvc.exception.NotFoundException;
 import kosta.mvc.model.dto.User;
 import kosta.mvc.model.service.UserService;
 import kosta.mvc.model.service.UserServiceImpl;
+import kosta.mvc.view.FailView;
+import kosta.mvc.view.MenuView;
+import kosta.mvc.view.SuccessView;
 
 public class UserController {
 	private static UserService userService = new UserServiceImpl();
@@ -13,18 +16,30 @@ public class UserController {
 	/**
 	 * 회원등록
 	 */
-	public static void inputUser(User dto) throws SQLException {
-		userService.inputUser(dto);
-		/*
-		 * try { userService.inputUser(dto); SuccessView.printMessage("등록이 완료되었습니다."); }
-		 * catch (SQLException e) { FailView.errorMessage(e.getMessage()); }
-		 */
+	public static void inputUser(User dto)  {
+		try {
+			userService.inputUser(dto);
+			SuccessView.messagePrint("회원가입되었습니다.");
+		} catch (SQLException e) {
+			FailView.errorMessage(e.getMessage());
+		}
+		
 	}
 
 	/**
 	 * 로그인
 	 */
-	public static void login(String userId, String userPwd) throws SQLException, NotFoundException {
-		User user = userService.login(userId, userPwd);
+	public static void login(String userId, String userPwd) {
+		
+		try {
+			User user = userService.login(userId, userPwd);
+			MenuView.printUserMenu(userId);
+			//MenuView.menu();
+		}catch (Exception e) {
+			FailView.errorMessage(e.getMessage());
+			
+		}
 	}
+
+	
 }
