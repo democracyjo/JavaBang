@@ -7,6 +7,8 @@ import kosta.mvc.controller.UserController;
 import kosta.mvc.model.dto.User;
 import kosta.mvc.session.Session;
 import kosta.mvc.session.SessionSet;
+import kosta.mvc.controller.UserController;
+
 
 public class MenuView {
 private static Scanner sc = new Scanner(System.in);
@@ -186,7 +188,7 @@ private static Scanner sc = new Scanner(System.in);
 		SessionSet ss = SessionSet.getInstance();
 		ss.remove(session);	
 	}
-	
-
 
 }
+
+

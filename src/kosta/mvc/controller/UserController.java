@@ -25,11 +25,12 @@ public class UserController {
 		}
 		
 	}
-
+	
 	/**
 	 * ·Î±×ÀÎ
 	 */
 	public static void login(String userId, String userPwd) {
+
 		
 		try {
 			User user = userService.login(userId, userPwd);
@@ -37,9 +38,7 @@ public class UserController {
 			//MenuView.menu();
 		}catch (Exception e) {
 			FailView.errorMessage(e.getMessage());
-			
 		}
-	}
 
-	
+	}
 }
