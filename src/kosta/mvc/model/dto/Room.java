@@ -12,7 +12,7 @@ public class Room{
 	private int roomType; //방 종류
 	private double size; // 방크기
 	private int price; // 방가격
-	private String floor; // 층수
+	private int floor; // 층수
 	private int aprprNmbP;
 	private int numberBeds;
 	private boolean breakfastStatus;
@@ -25,7 +25,7 @@ public class Room{
 	
 
 
-	public Room(int roomNo, int roomType, double size, int price, String floor, int aprprNmbP, int numberBeds,
+	public Room(int roomNo, int roomType, double size, int price, int floor, int aprprNmbP, int numberBeds,
 			boolean breakfastStatus, int prcadPrsn) {
 		super();
 		this.roomNo = roomNo;
@@ -72,10 +72,10 @@ public class Room{
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public String getFloor() {
+	public int getFloor() {
 		return floor;
 	}
-	public void setFloor(String floor) {
+	public void setFloor(int floor) {
 		this.floor = floor;
 	}
 	public int getNumberBeds() {
@@ -98,6 +98,7 @@ public class Room{
 		this.breakfastStatus = breakfastStatus;
 	}
 
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -111,6 +112,8 @@ public class Room{
 		builder.append(price);
 		builder.append(", floor=");
 		builder.append(floor);
+		builder.append(", aprprNmbP=");
+		builder.append(aprprNmbP);
 		builder.append(", numberBeds=");
 		builder.append(numberBeds);
 		builder.append(", breakfastStatus=");
@@ -120,6 +123,8 @@ public class Room{
 		builder.append("]");
 		return builder.toString();
 	}
+
+	
 
 	
 }

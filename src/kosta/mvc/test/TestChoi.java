@@ -34,8 +34,25 @@ public class TestChoi {
 			System.out.println(list);
 			
 			System.out.println("방가격으로 찾기");
-			list=dao.searchByRoomSize(70000, 120000);
+			list=dao.searchByRoomPrice(70000, 120000);
 			System.out.println(list);
+			
+			System.out.println("층수로 찾기");
+			list=dao.searchByFloor(3);
+			System.out.println(list);
+			
+			System.out.println("사람수로 찾기");
+			list=dao.searchByNumberPeople(4);
+			System.out.println(list);
+			
+			System.out.println("침대수로 찾기");
+			list=dao.searchByNumberBeds(5,6);
+			System.out.println(list);
+			
+			System.out.println("아침가능으로 찾기");
+			list=dao.searchByBreakfastStat(true);
+			System.out.println(list);
+			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
