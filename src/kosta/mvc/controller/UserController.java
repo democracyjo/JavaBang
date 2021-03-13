@@ -6,6 +6,7 @@ import kosta.mvc.exception.NotFoundException;
 import kosta.mvc.model.dto.User;
 import kosta.mvc.model.service.UserService;
 import kosta.mvc.model.service.UserServiceImpl;
+import kosta.mvc.view.MenuView;
 
 public class UserController {
 	private static UserService userService = new UserServiceImpl();
@@ -20,11 +21,15 @@ public class UserController {
 		 * catch (SQLException e) { FailView.errorMessage(e.getMessage()); }
 		 */
 	}
-
+	
 	/**
 	 * ·Î±×ÀÎ
 	 */
-	public static void login(String userId, String userPwd) throws SQLException, NotFoundException {
-		User user = userService.login(userId, userPwd);
+	public static void login(String userId, String userPwd) {
+		try {
+			MenuView.printUserMenu(userId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }
