@@ -1,8 +1,6 @@
 package kosta.mvc.model.dao;
 
-import java.sql.SQLException;
-
-import kosta.mvc.exception.DuplicatedException;
+import java.sql.SQLException; 
 import kosta.mvc.model.dto.User;
 
 public interface UserDAO {
@@ -17,11 +15,6 @@ public interface UserDAO {
 	public boolean duplicateByUser(String userId) throws SQLException;
 	
 	/**
-	 * 회원정보 수정
-	 * */
-//	public int updateUser
-	
-	/**
 	 * 회원탈퇴
 	 * */
 	int deleteUser(User dto) throws SQLException;
@@ -30,5 +23,4 @@ public interface UserDAO {
 	 * 로그인
 	 * */
 	public User login(String userId, String userPwd) throws SQLException;
-	
 }
