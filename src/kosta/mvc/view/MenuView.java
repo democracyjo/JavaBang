@@ -1,6 +1,8 @@
 package kosta.mvc.view;
 
 import java.util.Scanner;
+
+import kosta.mvc.controller.PayController;
 import kosta.mvc.controller.RoomsController;
 import kosta.mvc.controller.UserController;
 import kosta.mvc.model.dto.User;
@@ -75,7 +77,7 @@ public class MenuView {
 		UserController.inputUser(dto);
 	}
 
-//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////// => 검색 페이지
 	// 로그인시 메뉴
 	public static void printUserMenu(String userId) {
 		while (true) {
@@ -90,11 +92,12 @@ public class MenuView {
 			int menu = Integer.parseInt(sc.nextLine());
 			switch (menu) {
 			case 1:
+				// 검색페이지
 				printSelectmenu(userId);
 				break;
 			case 2:
 				// 마이페이지
-
+				printMyPage(userId);
 				break;
 			case 3:
 				// 로그아웃
@@ -104,6 +107,8 @@ public class MenuView {
 				// 회원탈퇴
 				printDelete(userId);
 				return;
+			default :
+				System.out.println("1에서 4사이의 숫자를 입력해주세요.");
 			}
 		}
 	}
@@ -127,7 +132,7 @@ public class MenuView {
 		UserController.deleteUser(dto);
 	}
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////// => 검색 페이지
 	private static void printSelectmenu(String userId) {
 		System.out.println("\n-----" + userId + " 로그인 중 -----");
 		System.out.println("┌──────────────┐");
@@ -140,51 +145,128 @@ public class MenuView {
 		switch (menu) {
 		case 1:
 			RoomsController.selectAll();
-			return;
+			printSelectmenu(userId);
 		case 2:
 			printKeywordSelectmenu(userId);
 			break;
+		default :
+			System.out.println("1에서 2사이의 숫자를 입력해주세요.");
 		}
 	}
 
 	private static void printKeywordSelectmenu(String userId) {
 		System.out.println("\n-----" + userId + " 로그인 중 -----");
-		System.out.println("\n┌──────────────┐");
+		System.out.println("┌──────────────┐");
 		System.out.println("  	 1. 방크기로 검색						");
-		System.out.println("  	 2. 가격으로 검색					   	");
-		System.out.println("  	 3. 숙박인원으로 검색				    ");
-		System.out.println("  	 4. 층으로 검색							");
-		System.out.println("  	 5. 조식여부로 검색			       	");
+		System.out.println("  	 2. 방종류로 검색						");
+		System.out.println("  	 3. 방가격으로 검색					   	");
+		System.out.println("  	 4. 방층으로 검색							");
+		System.out.println("  	 5. 숙박인원으로 검색				    ");
 		System.out.println("  	 6. 침대수로 검색					    ");
-		System.out.println("  	 7. 추가인원당 가격으로 검색     ");
+		System.out.println("  	 7. 조식여부로 검색			       	");
+		System.out.println("  	 8. 결과내 검색			       	");
 		System.out.println("└──────────────┘");
 		System.out.println("선택>>");
 
 		int menu = Integer.parseInt(sc.nextLine());
 		switch (menu) {
 		case 1:
-			
-			return;
+			printRoomSize();
+			printKeywordSelectmenu(userId);
+			break;
 		case 2:
-			
+			printRoomTye();
+			printKeywordSelectmenu(userId);
 			break;
 		case 3:
+			printRoomPrice();
+			printKeywordSelectmenu(userId);
 			break;
 		case 4:
+			printFloor();
+			printKeywordSelectmenu(userId);
 			break;
 		case 5:
+			printNumberPeople();
+			printKeywordSelectmenu(userId);
 			break;
 		case 6:
+			printNumberBeds();
+			printKeywordSelectmenu(userId);
 			break;
 		case 7:
+			printBreakfastStat();
+			printKeywordSelectmenu(userId);
 			break;
+	
+		case 8:
+			printsearchWthRsl();
+			printKeywordSelectmenu(userId);
+			break;
+			default :
+				System.out.println("1에서 8사이의 숫자를 입력해주세요.");
 		}
 	}
+
+	// 1. 방크기로 검색
+	public static void printRoomSize() {}
 	
+	// 2. 방종류로 검색
+	public static void printRoomTye() {}
 	
+	// 3, 방가격으로 검색
+	public static void printRoomPrice() {}
 	
+	// 4. 방층으로 검색
+	public static void printFloor() {}
 	
+	// 5. 숙박인원으로 검색
+	public static void printNumberPeople() {}
 	
+	// 6. 침대수로 검색
+	public static void printNumberBeds() {}
 	
+	// 7. 조식여부로 검색
+	public static void printBreakfastStat() {}
 	
+	// 8, 결과내 검색
+	public static void printsearchWthRsl() {}
+	
+//////////////////////////////// => 마이 페이지
+	
+	private static void printMyPage(String userId) {
+		while (true) {
+			System.out.println("\n-----" + userId + " 로그인 중 -----");
+			System.out.println("┌──────────────┐");
+			System.out.println("  	 1. 관심리트스								");
+			System.out.println("  	 2. 예약리스트							");
+			System.out.println("  	 3. 결제리트스						    ");
+			System.out.println("  	 4. 리뷰관리						    ");
+			System.out.println("└──────────────┘");
+			System.out.print("선택>>");
+			int menu = Integer.parseInt(sc.nextLine());
+			switch (menu) {
+			case 1:
+				// 관심리스트
+				
+				break;
+			case 2:
+				// 예약리스트
+				
+				break;
+			case 3:
+				// 결제리스트
+				PayController.selectPayByUserId(userId);
+				printMyPage(userId);
+				break;
+			case 4:
+				// 리뷰관리
+				
+				printMyPage(userId);
+				break;
+			default :
+				System.out.println("1에서 4사이의 숫자를 입력해주세요.");
+			}
+		}	
+	} // printMyPage() 끝.
 }

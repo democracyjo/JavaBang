@@ -411,12 +411,12 @@ public class RoomsDAOImpl implements RoomsDAO {
 		}
 		return roomType;
 	}
-
+	
 	@Override
 	public List<Room> searchByResDate(String checkinDate, String checkoutDate) throws SQLException {
 		Reservation rv=new Reservation(0, null, 0, checkinDate, checkoutDate, 0, 0, 0);
 		
-		RsrvtDAOImpl.isDuplicatedReser(null, rv);
+//		RsrvtDAOImpl.isDuplicatedReser(null, rv);
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
