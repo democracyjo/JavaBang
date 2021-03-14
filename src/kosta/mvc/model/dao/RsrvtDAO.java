@@ -4,6 +4,8 @@ import java.sql.SQLException;
 import java.util.List;
 
 import kosta.mvc.model.dto.Reservation;
+import kosta.mvc.model.dto.Room;
+import kosta.mvc.model.dto.User;
 
 public interface RsrvtDAO {
 	
@@ -14,7 +16,7 @@ public interface RsrvtDAO {
 	   * @param Reservation rsrv
 	   * @return int 
 	   * */
-		int reservationInsert(Reservation rsrvt)throws SQLException;
+		int reservationInsert(Reservation rsrvt,  Room room)throws SQLException;
 		
 		/**
 		   * 예약리스트 삭제하기

@@ -9,9 +9,9 @@ import kosta.mvc.model.dto.Room;
 
 public interface RoomsDAO {
 
-	public List<Room> selectAll() throws Exception;
+	public List<Room> selectAll() throws SQLException;
 
-	public Room searchByRoomNo(int roomNo)throws Exception;
+	public Room searchByRoomNo(int roomNo)throws SQLException;
 
 	public List<Room> searchByRoomType(List<String> roomType)throws Exception;
 

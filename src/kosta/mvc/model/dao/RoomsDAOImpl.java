@@ -18,7 +18,7 @@ public class RoomsDAOImpl implements RoomsDAO {
 	/**
 	 * 모든 방 출력
 	 */
-	public List<Room> selectAll() throws Exception {
+	public List<Room> selectAll() throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;

@@ -25,6 +25,14 @@ public class Room{
 	
 
 
+	public Room() {}
+
+
+	public Room(int roomNo) {
+		this.roomNo = roomNo;
+	}
+
+
 	public Room(int roomNo, int roomType, double size, int price, int floor, int aprprNmbP, int numberBeds,
 			boolean breakfastStatus, int prcadPrsn) {
 		super();
