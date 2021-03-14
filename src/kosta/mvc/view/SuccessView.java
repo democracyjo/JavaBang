@@ -3,6 +3,7 @@ package kosta.mvc.view;
 import java.util.List; 
 import kosta.mvc.model.dto.Pay;
 import kosta.mvc.model.dto.Reservation;
+import kosta.mvc.model.dto.Review;
 import kosta.mvc.model.dto.Wish;
 
 public class SuccessView {
@@ -38,6 +39,22 @@ public class SuccessView {
 		System.out.println("========= 결제리스트["+payList.size()+"]=========");
 		for(Pay pay : payList) {
 			System.out.println(pay);
+		}
+		System.out.println();
+	}
+	
+	public static void selectReviewByRoomNoPrint(List<Review> reviewList) {
+		System.out.println("========= 리뷰리스트["+reviewList.size()+"]=========");
+		for(Review review : reviewList) {
+			System.out.println(review);
+		}
+		System.out.println();
+	}
+	
+	public static void selectReviewByUserNoPrint(List<Review> reviewList) {
+		System.out.println("========= 리뷰리스트["+reviewList.size()+"]=========");
+		for(Review review : reviewList) {
+			System.out.println(review);
 		}
 		System.out.println();
 	}
