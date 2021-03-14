@@ -17,6 +17,11 @@ public interface UserDAO {
 	public boolean duplicateByEmpno(String userId) throws SQLException;
 	
 	/**
+	 * È¸¿øÅ»Åð
+	 * */
+	int deleteUser(User dto) throws SQLException;
+	
+	/**
 	 * ·Î±×ÀÎ
 	 * */
 	public User login(String userId, String userPwd) throws SQLException;
