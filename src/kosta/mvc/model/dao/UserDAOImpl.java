@@ -39,7 +39,16 @@ public class UserDAOImpl implements UserDAO {
 		return result;
 
 	} // insertUser 메소드 끝.
-
+	
+	/**
+	 * 회원등록시 ID중복 체크
+	 * */
+	@Override
+	public boolean duplicateByEmpno(String userId) throws SQLException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
 	/**
 	 * 로그인
 	 */
@@ -70,5 +79,4 @@ public class UserDAOImpl implements UserDAO {
 		return user;
 
 	} // login 메소드 끝.
-
 } // 클래스 끝.

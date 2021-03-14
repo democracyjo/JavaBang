@@ -1,13 +1,15 @@
 package kosta.mvc.view;
 
-import java.util.List;
-
+import java.util.List; 
 import kosta.mvc.model.dto.Pay;
 import kosta.mvc.model.dto.Reservation;
 import kosta.mvc.model.dto.Wish;
 
 public class SuccessView {
-
+	public static void printMessage(String message) {
+		System.out.println(message);
+	}
+	
 	/**
 	 * 성공했을 때 메시지 출력
 	 * */
@@ -39,14 +41,4 @@ public class SuccessView {
 		}
 		System.out.println();
 	}
-
 }
-
-
-
-
-
-
-
-
-
