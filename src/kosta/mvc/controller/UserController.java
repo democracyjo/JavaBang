@@ -26,18 +26,7 @@ public class UserController {
 			TestDongso.printJoin();
 		}
 	}
-	
-	/**
-	 * 회원정보수정
-	 * */
-	public static void updateUser(User dto) {
-		try {
-//			userService.duplicateByUser(dto);
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-	}
-	
+		
 	/**
 	 * 회원탈퇴
 	 * */
@@ -47,7 +36,7 @@ public class UserController {
 			SuccessView.printMessage("그 동안 JavaBang HOTEL을 이용해 주셔서 감사합니다.\n");
 		} catch (Exception e) {
 			FailView.errorMessage(e.getMessage());
-			TestDongso.printUserMenu(dto.getId());
+			MenuView.printUserMenu(dto.getId());
 		}
 	}
 	
@@ -56,8 +45,8 @@ public class UserController {
 	 */
 	public static void login(String userId, String userPwd) {	
 		try {
-			User user = userService.login(userId, userPwd);
-			TestDongso.printUserMenu(userId);
+			userService.login(userId, userPwd);
+			MenuView.printUserMenu(userId);
 			//MenuView.menu();
 		}catch (Exception e) {
 			FailView.errorMessage(e.getMessage());

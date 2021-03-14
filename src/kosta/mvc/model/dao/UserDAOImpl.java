@@ -1,13 +1,11 @@
 package kosta.mvc.model.dao;
 
-import java.sql.Connection;
+import java.sql.Connection; 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 import kosta.mvc.model.dto.User;
-import kosta.mvc.session.Session;
-import kosta.mvc.session.SessionSet;
 import kosta.mvc.util.DbUtil;
 
 public class UserDAOImpl implements UserDAO {
@@ -122,5 +120,6 @@ public class UserDAOImpl implements UserDAO {
 
 		return user;
 
-	} // login 메소드 끝.
+	}
+	
 } // 클래스 끝.

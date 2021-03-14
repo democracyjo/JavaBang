@@ -27,5 +27,4 @@ public interface UserService {
 	 * */
 	public User login(String userId, String userPwd) throws NotFoundException, SQLException;
 	
-
 }
