@@ -17,8 +17,10 @@ public class Review {
 	private int score;
 	private String reviewContent;
 	private String reviewDate;
+	
 	public Review() {}
-	public Review(int reviewNo, int userNo, int roomNo, int score, String content, String reviewDate) {
+	
+	public Review(int reviewNo, int userNo, int roomNo, int score, String reviewContent, String reviewDate) {
 		this.reviewNo = reviewNo;
 		this.userNo = userNo;
 		this.roomNo = roomNo;

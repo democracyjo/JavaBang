@@ -231,9 +231,5 @@ public class TestJo {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			
-			
 		}
-
-
 }

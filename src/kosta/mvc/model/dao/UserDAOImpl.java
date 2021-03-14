@@ -6,11 +6,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 import kosta.mvc.model.dto.User;
+import kosta.mvc.session.Session;
+import kosta.mvc.session.SessionSet;
 import kosta.mvc.util.DbUtil;
 
 public class UserDAOImpl implements UserDAO {
 	private Properties JavaBang = DbUtil.getProFile();
-
+	
 	/**
 	 * 회원등록
 	 **/
@@ -44,9 +46,51 @@ public class UserDAOImpl implements UserDAO {
 	 * 회원등록시 ID중복 체크
 	 * */
 	@Override
-	public boolean duplicateByEmpno(String userId) throws SQLException {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean duplicateByUser(String userId) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		boolean result = false;
+		String sql = JavaBang.getProperty("user.duplicate");
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, userId);
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				result = true;
+			}
+	
+		} finally {
+			DbUtil.close(con, ps, rs);
+		}
+		
+		return result;
+		
+	} // duplicateByEmpno() 메소드 끝.
+	
+	/**
+	 * 회원탈퇴
+	 * */
+	@Override
+	public int deleteUser(User dto) throws SQLException {
+		Connection con  = null;
+		PreparedStatement ps = null;
+		int result = 0;
+		String sql = JavaBang.getProperty("user.delete");
+
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, dto.getId());
+			ps.setString(2, dto.getPw());
+			result = ps.executeUpdate();
+			
+		} finally {
+			DbUtil.close(con, ps);
+		}
+		return result;
 	}
 	
 	/**
