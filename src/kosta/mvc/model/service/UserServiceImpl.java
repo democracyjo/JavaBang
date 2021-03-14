@@ -15,7 +15,7 @@ public class UserServiceImpl implements UserService{
 	
 	@Override
 	public void inputUser(User dto) throws SQLException, DuplicatedException {
-		if(!userDAO.duplicateByEmpno(dto.getId())) {
+		if(!userDAO.duplicateByUser(dto.getId())) {
 			int result = userDAO.insertUser(dto);
 			if(result == 0) throw new SQLException("회원가입에 실패했습니다.\n");
 		} else {
