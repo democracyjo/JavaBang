@@ -3,11 +3,12 @@ package kosta.mvc.test;
 import java.util.Scanner;
 
 import kosta.mvc.controller.RoomsController;
+import kosta.mvc.controller.RsrvtController;
 import kosta.mvc.controller.UserController;
+import kosta.mvc.model.dto.Reservation;
 import kosta.mvc.model.dto.User;
 import kosta.mvc.session.Session;
 import kosta.mvc.session.SessionSet;
-import kosta.mvc.view.MenuView;
 
 public class TestJo {
 	private static Scanner sc = new Scanner(System.in);
@@ -17,14 +18,14 @@ public class TestJo {
 				SessionSet ss = SessionSet.getInstance();
 				System.out.println(ss.getSet());
 				
-				MenuView.printMenu();
+				TestJo.printMenu();
 				int menu = Integer.parseInt(sc.nextLine());
 				switch(menu) {
 				case 1 :
-					MenuView.inputUser(); // 가입
+					TestJo.inputUser(); // 가입
 					break;
 				case 2 :
-					MenuView.login();// 로그인
+					TestJo.login();// 로그인
 					break;
 
 				case 9 : 
@@ -188,6 +189,39 @@ public class TestJo {
 			ss.remove(session);	
 		}
 
+		/*
+		 * 예약
+		 * reservation.insert=insert into RESERVATION_LIST values(RESERVATION_LIST_NO_SEQ.NEXTVAL, SYSDATE, ?, ?, ?, ?, ?, ? )
+//		user_No	NUMBER(3) NOT NULL,
+//		checkin_Date	DATE NOT NULL,
+//		checkout_Date	DATE NOT NULL,
+//		total_people_Num	 NUMBER(2) NOT NULL,
+//		total_Price	NUMBER NOT NULL,
+//		room_No	NUMBER(3) NOT NULL,
+		 * */
+		public static void printInputReser(String userId) {
+			System.out.print("회원번호 : ");
+			int userNo = Integer.parseInt(sc.nextLine()); //Reservation
+			
+			System.out.print("체크인 날짜 : ");
+			String checkinDate = sc.nextLine();
+			
+			System.out.print("체크아웃 날짜 : ");
+			String checkoutDate = sc.nextLine();
+			
+			System.out.print("숙박할 인원수 : ");
+			int totalpeopleNum = Integer.parseInt(sc.nextLine());
+			
+//			System.out.print("총금액 : ");
+//			int totalPrice = Integer.parseInt(sc.nextLine());
+			
+			System.out.print("예약할 방번호 : ");
+			int roomNo = Integer.parseInt(sc.nextLine());
+			
+			Reservation reser = new Reservation(0, null, userNo, checkinDate, checkoutDate, totalpeopleNum, 0, roomNo);
+			RsrvtController.insertReservation(reser);
+			
+		}
 
 
 }

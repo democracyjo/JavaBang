@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Properties;
 
 import kosta.mvc.model.dto.Reservation;
-import kosta.mvc.model.dto.Wish;
 import kosta.mvc.util.DbUtil;
 
 public class RsrvtDAOImpl implements RsrvtDAO {
