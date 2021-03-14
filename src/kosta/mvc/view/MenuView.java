@@ -7,8 +7,6 @@ import kosta.mvc.controller.UserController;
 import kosta.mvc.model.dto.User;
 import kosta.mvc.session.Session;
 import kosta.mvc.session.SessionSet;
-import kosta.mvc.controller.UserController;
-
 
 public class MenuView {
 private static Scanner sc = new Scanner(System.in);
@@ -36,7 +34,7 @@ private static Scanner sc = new Scanner(System.in);
 	}//end of menu() method
 	
 	
-	private static void inputUser() {
+	public static void inputUser() {
 
 		System.out.print("ID : ");
 		String id = sc.nextLine();
@@ -56,8 +54,7 @@ private static Scanner sc = new Scanner(System.in);
 		User dto = new User(0, name, id, pw, ssn, tel);
 
 		UserController.inputUser(dto);
-	} // printJoin() 메소드 끝.
-	
+	} 
 
 
 	public static void printMenu() {
@@ -69,7 +66,6 @@ private static Scanner sc = new Scanner(System.in);
 		System.out.println("└──────────────┘");
 		System.out.println("선택>>");
 	}
-	
 	
 	public static void printUserMenu(String userId) {
 		while(true) {
@@ -103,7 +99,6 @@ private static Scanner sc = new Scanner(System.in);
 		
 	}
 
-
 	private static void printSelectmenu(String userId) {
 
 		System.out.println("┌──────────────┐");
@@ -121,10 +116,7 @@ private static Scanner sc = new Scanner(System.in);
 		case 2 :
 			printKeywordSelectmenu(userId);
 			break;
-		
 		}
-		
-		
 	}
 	
 	private static void printKeywordSelectmenu(String userId) {
@@ -158,13 +150,8 @@ private static Scanner sc = new Scanner(System.in);
 			break;
 		case 7 :
 			break;
-		
 		}
-		
 	}
-
-
-
 	
 	/**
 	 * 로그인 메뉴
@@ -188,7 +175,6 @@ private static Scanner sc = new Scanner(System.in);
 		SessionSet ss = SessionSet.getInstance();
 		ss.remove(session);	
 	}
-
 }
 
 
