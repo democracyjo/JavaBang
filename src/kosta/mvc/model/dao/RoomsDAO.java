@@ -21,10 +21,10 @@ public interface RoomsDAO {
 
 	public List<Room> searchByFloor(int floor)throws SQLException;
 
-	public List<Room> searchByNumberPeople(int numberPeople)throws SQLException;
+	public List<Room> searchByNumberPeople(int minNum, int maxNum)throws SQLException;
 
 	public List<Room> searchByNumberBeds(int minNum, int maxNum)throws SQLException;
 
-	List<Room> searchByBreakfastStat(boolean bfStat) throws SQLException;
+	public List<Room> searchByBreakfastStat(boolean bfStat) throws SQLException;
 
 }

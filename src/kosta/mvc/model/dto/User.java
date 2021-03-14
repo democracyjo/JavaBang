@@ -11,9 +11,6 @@ public class User {
 
 	// »ý¼ºÀÚ
 	public User() {}
-	
-	
-	
 	public User(String userName, String id, String pw, String ssn, String tel) {
 		super();
 		this.userName = userName;
@@ -33,6 +30,12 @@ public class User {
 		this.tel = tel;
 	}
 
+	public User(String id, String pw) {
+		super();
+		this.id = id;
+		this.pw = pw;
+	}
+	
 	// get, set
 	public int getUserNo() {
 		return userNo;
