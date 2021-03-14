@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -175,17 +176,77 @@ public class RsrvtDAOImpl implements RsrvtDAO {
 	
 	/**
 	 * 예약날짜 중복체크 
+	 * @throws SQLException 
 	 * */
-	public static boolean isDuplicatedReser(List<Reservation> reserList, Reservation reser) {
+	public static boolean isDuplicatedReser(List<Reservation> reserList, Reservation reser) throws SQLException {
 		for(Reservation reserv :reserList) {
 			if(reser.getRoomNo()==reserv.getRoomNo()) {
-				if(reser.getCheckinDate() > reserv.getCheckoutDate() && reser.getCheckoutDate() > reserv.getCheckinDate()) {
-					throw new SQLException("이미 예약된 날짜입니다. 다른 날짜를 선택해 주세요.");
+				SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
+				Date day1=null;
+				Date day2=null;
+				Date day3=null;
+				Date day4=null;
+				try {
+					day1 =format.parse(reser.getCheckinDate()) ;
+					day2 =format.parse(reserv.getCheckoutDate());
+					day3 =format.parse(reser.getCheckoutDate());
+					day4 =format.parse(reserv.getCheckinDate());
+					
+					int compare12 = day1.compareTo(day2);
+					int compare34 = day3.compareTo(day4);
+					
+					if(compare12 > 0  && compare34 > 0) {
+						throw new SQLException("이미 예약된 날짜입니다. 다른 날짜를 선택해 주세요.");
+					}
+				}catch(ParseException e) {
+					e.printStackTrace();
 				}
 			}
 		}
 		
 		return false;
+	}
+
+	/**
+	 * 회원 전체 예약리스트
+	 * reservation.selectAll=select * from RESERVATION_LIST
+	 * */
+	@Override
+	public List<Reservation> selectRsrvtAll() throws SQLException {
+		Connection con=null;
+		PreparedStatement ps=null;
+		ResultSet rs = null;
+		List<Reservation> reserList = new ArrayList<>();
+		Reservation rsrvt = null;
+		String sql=proFile.getProperty("reservation.selectAll"); 
+		
+		try {
+
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			rs= ps.executeQuery();
+			
+			while(rs.next()) {
+				int reserListNo = rs.getInt(1);
+				String date = rs.getString(2);
+				int userNo = rs.getInt(3);
+				String checkinDate = rs.getString(4);
+				String checkoutDate = rs.getString(5);
+				int totalPplNum = rs.getInt(6);
+				int totalPrice = rs.getInt(7);
+				int roomNo = rs.getInt(8);
+				
+				
+				rsrvt = new Reservation(reserListNo, date, userNo, checkinDate, checkoutDate, totalPplNum, totalPrice, roomNo);
+				reserList.add(rsrvt);
+			
+			}
+			
+		}finally {
+			DbUtil.close(con, ps, rs);	
+		}
+
+		return reserList;
 	}
 
 }//end of class
