@@ -26,12 +26,15 @@ public interface RsrvtDAO {
 		int reservationDelete(int reserNo) throws SQLException;
 		
 		/**
-		 * 예약리스트 전체 보기 
+		 * 예약리스트 전체 보기 (아이디로)
 		 * @param String userId
 		 * @return List<Reservation> 
 		 * */
 		List<Reservation> selectRsrvtByUserId(String userId)throws SQLException;
 		
+		/**
+		 * 모든 회원 예약리스트 보기
+		 * */
 		List<Reservation> selectRsrvtAll() throws SQLException;
 
 }
