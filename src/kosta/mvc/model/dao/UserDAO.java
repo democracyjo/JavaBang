@@ -14,7 +14,12 @@ public interface UserDAO {
 	/**
 	 * 회원등록시 ID중복 체크
 	 * */
-	public boolean duplicateByEmpno(String userId) throws SQLException;
+	public boolean duplicateByUser(String userId) throws SQLException;
+	
+	/**
+	 * 회원정보 수정
+	 * */
+//	public int updateUser
 	
 	/**
 	 * 회원탈퇴

@@ -53,7 +53,8 @@ public class TestDongso {
 			return; 
 		
 		case 4:
-			
+			// 회원정보수정.
+			printUpdate();
 			break;
 		case 5:
 			// 회원탈퇴	
@@ -95,6 +96,20 @@ public class TestDongso {
 
 		UserController.inputUser(dto);
 	} // printJoin() 메소드 끝.
+	
+	// 회원수정 뷰
+	public static void printUpdate() {
+		System.out.println("************회원정보수정************");
+		 System.out.print("아이디 : ");
+		 String userId = sc.nextLine();
+		 
+		 System.out.print("패스워드 : ");
+		 String userPwd = sc.nextLine();
+		 
+		 User dto = new User(userId, userPwd);
+		 
+		 UserController.updateUser(dto);
+	}
 	
 	// 회원탈퇴 뷰
 	public static void printDelete(String userId) {

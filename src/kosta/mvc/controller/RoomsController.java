@@ -123,7 +123,7 @@ public class RoomsController {
 			System.out.println(e.getMessage());
 		}
 	}
-/*
+	/*
 	public static void selectAllWthRsl() {
 
 	}

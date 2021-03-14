@@ -46,7 +46,7 @@ public class UserDAOImpl implements UserDAO {
 	 * 회원등록시 ID중복 체크
 	 * */
 	@Override
-	public boolean duplicateByEmpno(String userId) throws SQLException {
+	public boolean duplicateByUser(String userId) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;

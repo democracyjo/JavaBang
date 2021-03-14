@@ -11,7 +11,7 @@ import kosta.mvc.view.SuccessView;
 
 public class UserController {
 	private static UserService userService = new UserServiceImpl();
-	
+
 	/**
 	 * 회원등록
 	 */
@@ -30,9 +30,9 @@ public class UserController {
 	/**
 	 * 회원정보수정
 	 * */
-	public static void updateUser() {
+	public static void updateUser(User dto) {
 		try {
-			
+//			userService.duplicateByUser(dto);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
