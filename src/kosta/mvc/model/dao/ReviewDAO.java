@@ -7,6 +7,14 @@ import kosta.mvc.model.dto.Review;
 
 public interface ReviewDAO {
 
+	
+	/**
+	 * 방별 리뷰 보기
+	 */
+	List<Review> selectReviewByRoomNo(int roomNo) throws SQLException;
+
+	
+	
 	/**
 	 * 작성한 리뷰 보기
 	 */

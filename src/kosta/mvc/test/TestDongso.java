@@ -93,7 +93,6 @@ public class TestDongso {
 
 		User dto = new User(0, name, id, pw, ssn, tel);
 
-		// controller
 		UserController.inputUser(dto);
 	} // printJoin() 皋家靛 场.
 	
@@ -107,5 +106,5 @@ public class TestDongso {
 		User dto = new User(userId, pw);
 		
 		UserController.deleteUser(dto);
-	}
+	} // printDelete() 皋家靛 场.
 }
