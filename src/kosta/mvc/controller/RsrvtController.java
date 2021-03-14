@@ -8,6 +8,7 @@ import kosta.mvc.model.dto.Room;
 import kosta.mvc.model.service.RsrvtService;
 import kosta.mvc.model.service.RsrvtServiceImpl;
 import kosta.mvc.view.FailView;
+import kosta.mvc.view.MenuView;
 import kosta.mvc.view.SuccessView;
 
 public class RsrvtController{
@@ -18,7 +19,7 @@ public class RsrvtController{
 		try {
 			reserService.insertReservation(rsrvt, room);
 			SuccessView.messagePrint("예약되었습니다.");
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			FailView.errorMessage(e.getMessage());
 		}
 	}

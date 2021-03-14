@@ -442,12 +442,8 @@ public class RoomsDAOImpl implements RoomsDAO {
 
 				Room rm = new Room(roomNo, roomType, roomSize, price, floor, aprprNmbP, numberBeds, breakfastStatus,
 						prcadPrsn);
-
-				if (RsrvtDAOImpl.isDuplicatedReser(rsDAO.selectRsrvtByRoomNo(roomNo), rv)) {
-
-				}
-				ReviewDAO dao = new ReviewDAOImpl();
-				List<Review> reviewList = dao.selectReviewByRoomNo(roomNo);
+				ReviewDAO dao=new ReviewDAOImpl();
+				List<Review> reviewList=dao.selectReviewByRoomNo(roomNo);
 				rm.setReviewList(reviewList);
 				list.add(rm);
 			}

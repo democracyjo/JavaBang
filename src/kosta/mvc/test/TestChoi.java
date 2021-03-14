@@ -23,7 +23,7 @@ public class TestChoi {
 		
 		System.out.println("방타입으로 찾기");
 		List<String> typeList = new ArrayList<>();
-	   typeList.add("더블룸");
+		typeList.add("더블룸");
 		typeList.add("스위트 더블룸");
 		rc.searchByRoomType(typeList, false);
 		

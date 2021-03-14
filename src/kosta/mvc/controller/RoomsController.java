@@ -6,6 +6,7 @@ import java.util.List;
 import kosta.mvc.model.dto.Room;
 import kosta.mvc.model.service.RoomsService;
 import kosta.mvc.model.service.RoomsServiceImpl;
+import kosta.mvc.view.MenuView;
 import kosta.mvc.view.SuccessView;
 
 public class RoomsController {

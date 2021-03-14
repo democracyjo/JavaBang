@@ -28,7 +28,6 @@ public class PayController {
 		} catch (SQLException e) {
 			FailView.errorMessage(e.getMessage());
 		}
-		
 	}
 
 	public static void selectPayByUserId(String userId) {
@@ -39,5 +38,4 @@ public class PayController {
 			FailView.errorMessage(e.getMessage());
 		}
 	}
-
 }
