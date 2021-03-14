@@ -179,6 +179,8 @@ public class RsrvtDAOImpl implements RsrvtDAO {
 	 * @throws SQLException 
 	 * */
 	public static boolean isDuplicatedReser(List<Reservation> reserList, Reservation reser) throws SQLException, ParseException{
+		if(reserList==null) return false;
+		
 		for(Reservation reserv :reserList) {
 			if(reser.getRoomNo()==reserv.getRoomNo()) {
 				SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
@@ -194,10 +196,13 @@ public class RsrvtDAOImpl implements RsrvtDAO {
 					
 					int compare12 = day1.compareTo(day2);
 					int compare34 = day3.compareTo(day4);
-					
+				
 					if(compare12 < 0  && compare34 > 0) {
 						throw new SQLException("이미 예약된 날짜입니다. 다시 시도해 주세요^^");
 					}
+					
+			}else {
+				return false;
 			}
 		}
 		return false;

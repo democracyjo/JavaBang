@@ -16,12 +16,13 @@ public class RsrvtServiceImpl implements RsrvtService {
 	private RoomsDAO roomDAO = new RoomsDAOImpl();
 	@Override
 	public void insertReservation(Reservation rsrvt, Room room) throws SQLException, ParseException {
-		int res = reserDAO.reservationInsert(rsrvt, room);
 		List<Reservation> reserList = reserDAO.selectRsrvtByRoomNo(room.getRoomNo());
 		boolean state = RsrvtDAOImpl.isDuplicatedReser(reserList, rsrvt);
 		if(state) {
-			throw new ParseException(null, res);
+			throw new ParseException(null, 0);
 		}
+
+		int res = reserDAO.reservationInsert(rsrvt, room);
 		if(res == 0) {
 			throw new SQLException("예약 실패하였습니다.");
 		}

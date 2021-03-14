@@ -8,6 +8,7 @@ import kosta.mvc.model.dto.Room;
 import kosta.mvc.model.service.RsrvtService;
 import kosta.mvc.model.service.RsrvtServiceImpl;
 import kosta.mvc.view.FailView;
+import kosta.mvc.view.MenuView;
 import kosta.mvc.view.SuccessView;
 
 public class RsrvtController{
