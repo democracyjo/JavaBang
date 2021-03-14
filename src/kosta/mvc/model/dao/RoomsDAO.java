@@ -27,6 +27,6 @@ public interface RoomsDAO {
 
 	public List<Room> searchByBreakfastStat(boolean bfStat) throws SQLException;
 	
-	
+	public List<Room> searchByResDate(String checkinDate, String checkoutDate) throws SQLException;
 
 }

@@ -6,6 +6,8 @@ import java.util.List;
 import kosta.mvc.exception.NotFoundException;
 import kosta.mvc.model.dao.RoomsDAO;
 import kosta.mvc.model.dao.RoomsDAOImpl;
+import kosta.mvc.model.dao.RsrvtDAOImpl;
+import kosta.mvc.model.dto.Reservation;
 import kosta.mvc.model.dto.Room;
 
 
@@ -49,6 +51,14 @@ public class RoomsServiceImpl implements RoomsService{
 	public List<Room> searchByBreakfastStat(boolean bfStat) throws SQLException {
 		// TODO Auto-generated method stub
 		return roomDAO.searchByBreakfastStat(bfStat);
+	}
+
+	@Override
+	public List<Room> searchByResDate(String checkinDate, String checkoutDate) throws Exception {
+		Reservation rv=new Reservation(0, null, 0, checkinDate, checkoutDate, 0, 0, 0);
+		RsrvtDAOImpl.isDuplicatedReser(null, rv);
+		
+		return null;
 	}
 
 }

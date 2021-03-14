@@ -249,4 +249,45 @@ public class RsrvtDAOImpl implements RsrvtDAO {
 		return reserList;
 	}
 
+	@Override
+	public List<Reservation> selectRsrvtByRoomNo(int roomNo) throws SQLException {
+		Connection con=null;
+		PreparedStatement ps=null;
+		ResultSet rs = null;
+		List<Reservation> reserList = new ArrayList<>();
+		Reservation rsrvt = null;
+		String sql=proFile.getProperty("reservation.selectByRoomNo"); 
+
+		
+		try {
+
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, roomNo );
+			rs= ps.executeQuery();
+			
+			while(rs.next()) {
+				
+				int reserListNo = rs.getInt(1);
+				String date = rs.getString(2);
+				int userNo = rs.getInt(3);
+				String checkinDate = rs.getString(4);
+				String checkoutDate = rs.getString(5);
+				int totalPplNum = rs.getInt(6);
+				int totalPrice = rs.getInt(7);
+			//	int roomNo = rs.getInt(8);
+				
+				
+				rsrvt = new Reservation(reserListNo, date, userNo, checkinDate, checkoutDate, totalPplNum, totalPrice, roomNo);
+				reserList.add(rsrvt);
+			
+			}
+			
+		}finally {
+			DbUtil.close(con, ps, rs);	
+		}
+
+		return reserList;
+	}
+
 }//end of class

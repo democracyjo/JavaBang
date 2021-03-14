@@ -33,5 +33,6 @@ public interface RsrvtDAO {
 		List<Reservation> selectRsrvtByUserId(String userId)throws SQLException;
 		
 		List<Reservation> selectRsrvtAll() throws SQLException;
-
+		
+		List<Reservation> selectRsrvtByRoomNo(int RoomNo)throws SQLException;
 }

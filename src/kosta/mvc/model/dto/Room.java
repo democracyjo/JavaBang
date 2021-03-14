@@ -118,6 +118,15 @@ public class Room {
 	public void setBreakfastStatus(boolean breakfastStatus) {
 		this.breakfastStatus = breakfastStatus;
 	}
+	
+
+	public List<Review> getReviewList() {
+		return reviewList;
+	}
+
+	public void setReviewList(List<Review> reviewList) {
+		this.reviewList = reviewList;
+	}
 
 	@Override
 	public String toString() {

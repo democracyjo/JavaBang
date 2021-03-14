@@ -53,5 +53,5 @@ public interface RoomsService {
 	
 	public List<Room> searchByBreakfastStat(boolean bfStat) throws Exception;
 	
-	
+	public List<Room> searchByResDate(String checkinDate, String checkoutDate) throws Exception;
 }
