@@ -42,7 +42,7 @@ public class RsrvtDAOImpl implements RsrvtDAO {
 			ps.setString(2, rsrvt.getCheckinDate());
 			ps.setString(3, rsrvt.getCheckoutDate());
 			ps.setInt(4, rsrvt.getTotalpeopleNum());
-			ps.setInt(5, getTotalAmount(rsrvt, room));//
+			ps.setInt(5, getTotalAmount(rsrvt, room));//총금액 계산해주는 메서드 호출.
 			ps.setInt(6, rsrvt.getRoomNo());
 			
 
@@ -172,5 +172,20 @@ public class RsrvtDAOImpl implements RsrvtDAO {
 		}
 		return days;
 	} 
+	
+	/**
+	 * 예약날짜 중복체크 
+	 * */
+	public static boolean isDuplicatedReser(List<Reservation> reserList, Reservation reser) {
+		for(Reservation reserv :reserList) {
+			if(reser.getRoomNo()==reserv.getRoomNo()) {
+				if(reser.getCheckinDate() > reserv.getCheckoutDate() && reser.getCheckoutDate() > reserv.getCheckinDate()) {
+					throw new SQLException("이미 예약된 날짜입니다. 다른 날짜를 선택해 주세요.");
+				}
+			}
+		}
+		
+		return false;
+	}
 
 }//end of class
