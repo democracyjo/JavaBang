@@ -196,11 +196,10 @@ public class RsrvtDAOImpl implements RsrvtDAO {
 					int compare34 = day3.compareTo(day4);
 					
 					if(compare12 < 0  && compare34 > 0) {
-						throw new SQLException("이미 예약된 날짜입니다. 다른 날짜를 선택해 주세요.");
+						throw new SQLException("이미 예약된 날짜입니다. 다시 시도해 주세요^^");
 					}
 			}
 		}
-		
 		return false;
 	}
 

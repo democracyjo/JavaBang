@@ -18,7 +18,7 @@ public class RsrvtController{
 		try {
 			reserService.insertReservation(rsrvt, room);
 			SuccessView.messagePrint("예약되었습니다.");
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			FailView.errorMessage(e.getMessage());
 		}
 	}

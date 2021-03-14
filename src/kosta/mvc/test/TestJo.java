@@ -222,17 +222,14 @@ public class TestJo {
 			
 			Reservation reser = new Reservation(0, null, userNo, checkinDate, checkoutDate, totalpeopleNum, 0, roomNo);
 			
+			
 			try {
 				Room room = roomDAO.searchByRoomNo(roomNo);
-				List<Reservation> reserList = reserDAO.selectRsrvtAll();
-				boolean state = RsrvtDAOImpl.isDuplicatedReser(reserList, reser);
-				if(!state) {
-					RsrvtController.insertReservation(reser, room);
-				}
+				RsrvtController.insertReservation(reser, room);
 			} catch (SQLException e) {
 				FailView.errorMessage(e.getMessage());
-			}catch(ParseException e) {
-				FailView.errorMessage(e.getMessage());
+			}finally {
+				printInputReser();
 			}
 		}
 }
