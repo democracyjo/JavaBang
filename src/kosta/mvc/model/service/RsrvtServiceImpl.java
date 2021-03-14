@@ -7,7 +7,6 @@ import kosta.mvc.model.dao.RsrvtDAO;
 import kosta.mvc.model.dao.RsrvtDAOImpl;
 import kosta.mvc.model.dto.Reservation;
 import kosta.mvc.model.dto.Room;
-import kosta.mvc.model.dto.User;
 
 public class RsrvtServiceImpl implements RsrvtService {
 	private RsrvtDAO reserDAO  = new RsrvtDAOImpl();

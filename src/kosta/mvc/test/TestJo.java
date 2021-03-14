@@ -1,7 +1,6 @@
 package kosta.mvc.test;
 
 import java.sql.SQLException;
-import java.util.List;
 import java.util.Scanner;
 
 import kosta.mvc.controller.RoomsController;

@@ -13,9 +13,7 @@ import java.util.Properties;
 
 import kosta.mvc.model.dto.Reservation;
 import kosta.mvc.model.dto.Room;
-import kosta.mvc.model.dto.User;
 import kosta.mvc.util.DbUtil;
-import kosta.mvc.view.FailView;
 
 public class RsrvtDAOImpl implements RsrvtDAO {
 	private Properties proFile = DbUtil.getProFile();

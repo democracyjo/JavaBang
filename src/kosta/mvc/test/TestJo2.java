@@ -10,9 +10,6 @@ public class TestJo2 {
 //		TestJo.menu();
 		
 		TestJo.printInputReser();
-//		Reservation reser = new Reservation(0, null, 0, "2021-03-10", "2021-03-12", 0, 0, 0);
-//		
-//		
 //		int days =RsrvtDAOImpl.calDate(reser);
 //		System.out.println(days);
 		

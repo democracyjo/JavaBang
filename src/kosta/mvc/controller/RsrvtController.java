@@ -5,7 +5,6 @@ import java.util.List;
 
 import kosta.mvc.model.dto.Reservation;
 import kosta.mvc.model.dto.Room;
-import kosta.mvc.model.dto.User;
 import kosta.mvc.model.service.RsrvtService;
 import kosta.mvc.model.service.RsrvtServiceImpl;
 import kosta.mvc.view.FailView;
