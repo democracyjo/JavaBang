@@ -1,6 +1,7 @@
 package kosta.mvc.test;
 
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -16,6 +17,7 @@ import kosta.mvc.model.dto.Room;
 import kosta.mvc.model.dto.User;
 import kosta.mvc.session.Session;
 import kosta.mvc.session.SessionSet;
+import kosta.mvc.view.FailView;
 
 public class TestJo {
 	private static Scanner sc = new Scanner(System.in);
@@ -227,9 +229,10 @@ public class TestJo {
 				if(!state) {
 					RsrvtController.insertReservation(reser, room);
 				}
-			
 			} catch (SQLException e) {
-				e.printStackTrace();
+				FailView.errorMessage(e.getMessage());
+			}catch(ParseException e) {
+				FailView.errorMessage(e.getMessage());
 			}
 		}
 }
