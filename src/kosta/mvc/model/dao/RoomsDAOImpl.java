@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -45,8 +46,8 @@ public class RoomsDAOImpl implements RoomsDAO {
 
 				Room rm = new Room(roomNo, roomType, roomSize, price, floor, aprprNmbP, numberBeds, breakfastStatus,
 						prcadPrsn);
-				ReviewDAO dao=new ReviewDAOImpl();
-				List<Review> reviewList=dao.selectReviewByRoomNo(roomNo);
+				ReviewDAO dao = new ReviewDAOImpl();
+				List<Review> reviewList = dao.selectReviewByRoomNo(roomNo);
 				rm.setReviewList(reviewList);
 				list.add(rm);
 
@@ -85,8 +86,8 @@ public class RoomsDAOImpl implements RoomsDAO {
 
 				rm = new Room(roomNo, roomType, roomSize, price, floor, aprprNmbP, numberBeds, breakfastStatus,
 						prcadPrsn);
-				ReviewDAO dao=new ReviewDAOImpl();
-				List<Review> reviewList=dao.selectReviewByRoomNo(roomNo);
+				ReviewDAO dao = new ReviewDAOImpl();
+				List<Review> reviewList = dao.selectReviewByRoomNo(roomNo);
 				rm.setReviewList(reviewList);
 				// 추가인원당 가격
 			}
@@ -103,7 +104,7 @@ public class RoomsDAOImpl implements RoomsDAO {
 		ResultSet rs = null;
 		List<Room> list = new ArrayList<Room>();
 		String sql = proFile.getProperty("room.searchByRoomType");
-		ReviewDAO dao=new ReviewDAOImpl();
+		ReviewDAO dao = new ReviewDAOImpl();
 		try {
 			for (int i = 0; i < roomType.size(); i++) {
 				con = DbUtil.getConnection();
@@ -121,12 +122,12 @@ public class RoomsDAOImpl implements RoomsDAO {
 					int numberBeds = rs.getInt(7);
 					boolean breakfastStatus = rs.getString(8).toUpperCase().equals("TRUE");
 					int prcadPrsn = rs.getInt(9);
-					
+
 					Room rm = new Room(roomNo, roomTypeNo, roomSize, price, floor, aprprNmbP, numberBeds,
 							breakfastStatus, prcadPrsn);
-					List<Review> reviewList=dao.selectReviewByRoomNo(roomNo);
+					List<Review> reviewList = dao.selectReviewByRoomNo(roomNo);
 					rm.setReviewList(reviewList);
-					
+
 					list.add(rm);
 
 					// 추가인원당 가격
@@ -166,8 +167,8 @@ public class RoomsDAOImpl implements RoomsDAO {
 
 				Room rm = new Room(roomNo, roomType, roomSize, price, floor, aprprNmbP, numberBeds, breakfastStatus,
 						prcadPrsn);
-				ReviewDAO dao=new ReviewDAOImpl();
-				List<Review> reviewList=dao.selectReviewByRoomNo(roomNo);
+				ReviewDAO dao = new ReviewDAOImpl();
+				List<Review> reviewList = dao.selectReviewByRoomNo(roomNo);
 				rm.setReviewList(reviewList);
 				list.add(rm);
 
@@ -207,8 +208,8 @@ public class RoomsDAOImpl implements RoomsDAO {
 
 				Room rm = new Room(roomNo, roomType, roomSize, price, floor, aprprNmbP, numberBeds, breakfastStatus,
 						prcadPrsn);
-				ReviewDAO dao=new ReviewDAOImpl();
-				List<Review> reviewList=dao.selectReviewByRoomNo(roomNo);
+				ReviewDAO dao = new ReviewDAOImpl();
+				List<Review> reviewList = dao.selectReviewByRoomNo(roomNo);
 				rm.setReviewList(reviewList);
 				list.add(rm);
 
@@ -247,8 +248,8 @@ public class RoomsDAOImpl implements RoomsDAO {
 
 				Room rm = new Room(roomNo, roomType, roomSize, price, floor, aprprNmbP, numberBeds, breakfastStatus,
 						prcadPrsn);
-				ReviewDAO dao=new ReviewDAOImpl();
-				List<Review> reviewList=dao.selectReviewByRoomNo(roomNo);
+				ReviewDAO dao = new ReviewDAOImpl();
+				List<Review> reviewList = dao.selectReviewByRoomNo(roomNo);
 				rm.setReviewList(reviewList);
 				list.add(rm);
 
@@ -288,8 +289,8 @@ public class RoomsDAOImpl implements RoomsDAO {
 
 				Room rm = new Room(roomNo, roomType, roomSize, price, floor, aprprNmbP, numberBeds, breakfastStatus,
 						prcadPrsn);
-				ReviewDAO dao=new ReviewDAOImpl();
-				List<Review> reviewList=dao.selectReviewByRoomNo(roomNo);
+				ReviewDAO dao = new ReviewDAOImpl();
+				List<Review> reviewList = dao.selectReviewByRoomNo(roomNo);
 				rm.setReviewList(reviewList);
 				list.add(rm);
 
@@ -329,8 +330,8 @@ public class RoomsDAOImpl implements RoomsDAO {
 
 				Room rm = new Room(roomNo, roomType, roomSize, price, floor, aprprNmbP, numberBeds, breakfastStatus,
 						prcadPrsn);
-				ReviewDAO dao=new ReviewDAOImpl();
-				List<Review> reviewList=dao.selectReviewByRoomNo(roomNo);
+				ReviewDAO dao = new ReviewDAOImpl();
+				List<Review> reviewList = dao.selectReviewByRoomNo(roomNo);
 				rm.setReviewList(reviewList);
 				list.add(rm);
 
@@ -373,8 +374,8 @@ public class RoomsDAOImpl implements RoomsDAO {
 
 				Room rm = new Room(roomNo, roomType, roomSize, price, floor, aprprNmbP, numberBeds, breakfastStatus,
 						prcadPrsn);
-				ReviewDAO dao=new ReviewDAOImpl();
-				List<Review> reviewList=dao.selectReviewByRoomNo(roomNo);
+				ReviewDAO dao = new ReviewDAOImpl();
+				List<Review> reviewList = dao.selectReviewByRoomNo(roomNo);
 				rm.setReviewList(reviewList);
 				list.add(rm);
 
@@ -390,19 +391,19 @@ public class RoomsDAOImpl implements RoomsDAO {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		
+
 		String sql = proFile.getProperty("room.getRoomType");
 		String roomType = "";
-					
+
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, roomTypeNo);
-			rs=ps.executeQuery();
+			rs = ps.executeQuery();
 			if (rs.next()) {
 
 				roomType = rs.getString("room_Type");
-				
+
 			}
 		} finally
 
@@ -414,9 +415,9 @@ public class RoomsDAOImpl implements RoomsDAO {
 
 	@Override
 	public List<Room> searchByResDate(String checkinDate, String checkoutDate) throws SQLException {
-		Reservation rv=new Reservation(0, null, 0, checkinDate, checkoutDate, 0, 0, 0);
-		
-		RsrvtDAOImpl.isDuplicatedReser(null, rv);
+		Reservation rv = new Reservation(0, null, 0, checkinDate, checkoutDate, 0, 0, 0);
+		RsrvtDAO rsDAO = new RsrvtDAOImpl();
+
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -441,13 +442,18 @@ public class RoomsDAOImpl implements RoomsDAO {
 
 				Room rm = new Room(roomNo, roomType, roomSize, price, floor, aprprNmbP, numberBeds, breakfastStatus,
 						prcadPrsn);
-				ReviewDAO dao=new ReviewDAOImpl();
-				List<Review> reviewList=dao.selectReviewByRoomNo(roomNo);
+
+				if (RsrvtDAOImpl.isDuplicatedReser(rsDAO.selectRsrvtByRoomNo(roomNo), rv)) {
+
+				}
+				ReviewDAO dao = new ReviewDAOImpl();
+				List<Review> reviewList = dao.selectReviewByRoomNo(roomNo);
 				rm.setReviewList(reviewList);
 				list.add(rm);
-
-				// 추가인원당 가격
 			}
+			// 추가인원당 가격
+		} catch (ParseException e) {
+			System.out.println(e.getMessage());
 		} finally {
 			DbUtil.close(con, ps, rs);
 		}
