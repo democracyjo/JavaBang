@@ -147,5 +147,20 @@ public class Room {
 
 		return builder.toString();
 	}
+	@Override
+	public int hashCode() {
+		// TODO Auto-generated method stub
+		return roomNo;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		// TODO Auto-generated method stub
+		Room rm= (Room)obj;
+		if(this.roomNo==rm.getRoomNo()) {
+			return true;
+		}else {
+			return false;
+		}
+	}
 
 }

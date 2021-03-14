@@ -99,6 +99,8 @@ public class RoomsController {
 	public static void searchByNumberBeds(int minNum, int maxNum, boolean searchWthRsl) {
 		try {
 			List<Room> list = roomService.searchByNumberBeds(minNum, maxNum);
+			System.out.println(roomList);
+			System.out.println(list);
 			if(searchWthRsl) {
 				list.retainAll(roomList);
 			}

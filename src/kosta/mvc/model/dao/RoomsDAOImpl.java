@@ -107,8 +107,8 @@ public class RoomsDAOImpl implements RoomsDAO {
 				rs = ps.executeQuery();
 
 				while (rs.next()) {
-					int roomNo = rs.getInt(1); // 방번호
-					int roomTypeNo = rs.getInt(2);
+					int roomNo = rs.getInt("room_no"); // 방번호
+					int roomTypeNo = rs.getInt("room_type_no");
 					double roomSize = rs.getDouble(3); // 방크기
 					int price = rs.getInt(4); // 방가격
 					int floor = rs.getInt(5); // 층수
@@ -116,10 +116,10 @@ public class RoomsDAOImpl implements RoomsDAO {
 					int numberBeds = rs.getInt(7);
 					boolean breakfastStatus = rs.getString(8).toUpperCase().equals("TRUE");
 					int prcadPrsn = rs.getInt(9);
-
+					
 					Room rm = new Room(roomNo, roomTypeNo, roomSize, price, floor, aprprNmbP, numberBeds,
 							breakfastStatus, prcadPrsn);
-
+					
 					list.add(rm);
 
 					// 추가인원당 가격

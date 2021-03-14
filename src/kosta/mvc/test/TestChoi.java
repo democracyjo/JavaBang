@@ -29,7 +29,24 @@ public class TestChoi {
 		
 		System.out.println("방가격으로 찾기");
 		rc.searchByRoomPrice(70000, 150000,false);
-		System.out.println(list);
+		
+		
+		System.out.println("층수로 찾기");
+		rc.searchByFloor(1, false);
+		
+		System.out.println("사람수로 찾기");
+		rc.searchByNumberPeople(4, 4, false);
+		
+		System.out.println("침대수로 찾기");
+		rc.searchByNumberBeds(5,6,false);
+		
+		
+		System.out.println("아침가능으로 찾기");
+		rc.searchByBreakfastStat(true,false);
+		
+		System.out.println("결과내 검색");
+		System.out.println("침대수로 찾기");
+		rc.searchByNumberBeds(5,6,true);
 		/*
 		try {
 			
