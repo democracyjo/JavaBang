@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import kosta.mvc.controller.RoomsController;
 import kosta.mvc.model.dao.RoomsDAO;
 import kosta.mvc.model.dao.RoomsDAOImpl;
 import kosta.mvc.model.dto.Room;
@@ -12,7 +13,24 @@ public class TestChoi {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		List<Room> list=null;
 		RoomsDAO dao = new RoomsDAOImpl();
+		RoomsController rc=new RoomsController();
+		rc.selectAll();
+		
+		System.out.println("방 사이즈 검색");
+		rc.searchByRoomSize(6, 8, false);
+		
+		System.out.println("방타입으로 찾기");
+		List<String> typeList = new ArrayList<>();
+	   typeList.add("더블룸");
+		typeList.add("스위트 더블룸");
+		rc.searchByRoomType(typeList, false);
+		
+		System.out.println("방가격으로 찾기");
+		rc.searchByRoomPrice(70000, 150000,false);
+		System.out.println(list);
+		/*
 		try {
 			
 			List<Room> list = dao.selectAll();
@@ -54,10 +72,12 @@ public class TestChoi {
 			System.out.println(list);
 			
 			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			// TODO: handle exception
 		}
+		*/
 	}
 
 }

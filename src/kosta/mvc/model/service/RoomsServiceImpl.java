@@ -3,6 +3,7 @@ package kosta.mvc.model.service;
 import java.sql.SQLException;
 import java.util.List;
 
+import kosta.mvc.exception.NotFoundException;
 import kosta.mvc.model.dao.RoomsDAO;
 import kosta.mvc.model.dao.RoomsDAOImpl;
 import kosta.mvc.model.dto.Room;
@@ -49,8 +50,5 @@ public class RoomsServiceImpl implements RoomsService{
 		// TODO Auto-generated method stub
 		return roomDAO.searchByBreakfastStat(bfStat);
 	}
-	
 
-	
-	
 }

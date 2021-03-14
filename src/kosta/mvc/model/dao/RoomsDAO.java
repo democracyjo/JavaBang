@@ -26,5 +26,7 @@ public interface RoomsDAO {
 	public List<Room> searchByNumberBeds(int minNum, int maxNum)throws SQLException;
 
 	public List<Room> searchByBreakfastStat(boolean bfStat) throws SQLException;
+	
+	
 
 }

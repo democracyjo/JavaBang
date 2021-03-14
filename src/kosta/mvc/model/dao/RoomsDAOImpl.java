@@ -13,7 +13,7 @@ import kosta.mvc.model.dto.Room;
 import kosta.mvc.util.DbUtil;
 
 public class RoomsDAOImpl implements RoomsDAO {
-	private Properties proFile = DbUtil.getProFile();
+	private static Properties proFile = DbUtil.getProFile();
 
 	/**
 	 * 모든 방 출력
@@ -365,6 +365,32 @@ public class RoomsDAOImpl implements RoomsDAO {
 			DbUtil.close(con, ps, rs);
 		}
 		return list;
+	}
+
+	public static String getRoomType(int roomTypeNo) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = proFile.getProperty("room.getRoomType");
+		String roomType = "";
+					
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, roomTypeNo);
+			rs=ps.executeQuery();
+			if (rs.next()) {
+
+				roomType = rs.getString("room_Type");
+				
+			}
+		} finally
+
+		{
+			DbUtil.close(con, ps, rs);
+		}
+		return roomType;
 	}
 
 }
