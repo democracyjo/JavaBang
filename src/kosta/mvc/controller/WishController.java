@@ -6,28 +6,41 @@ import java.util.List;
 import kosta.mvc.model.dto.Wish;
 import kosta.mvc.model.service.WishService;
 import kosta.mvc.model.service.WishServiceImpl;
+import kosta.mvc.view.FailView;
+import kosta.mvc.view.SuccessView;
 
-public interface WishController {
+public class WishController{
+	private  static WishService wishService = new WishServiceImpl();
 	
-	   /**
-	    * 관심 리스트에 추가하기
-	    * */
-	void insertWish(Wish wish) throws SQLException;
-		 
-		 
-		 /**
-		  * 관심리스트 삭제하기 
-		  * */
-	void wishDelete(int wishNo) throws SQLException;
-		 
-		 
-		 /**
-		  * 관심리스트 내역보기
-		  * */
-	void selectWishByUserId(String userId)throws SQLException;
-	
+	public static void insertWish(Wish wish)  {
+		try {
+			wishService.insertWish(wish);
+			SuccessView.messagePrint("관심리스트에 등록되었습니다.");
+		} catch (SQLException e) {
+			FailView.errorMessage(e.getMessage());
+		}
+		
+	}
+
+	public static void wishDelete(int wishNo) {
+		try {
+			wishService.wishDelete(wishNo);
+			SuccessView.messagePrint("관심리스트의"+wishNo+"번이 삭제되었습니다.");
+		} catch (SQLException e) {
+			FailView.errorMessage(e.getMessage());
+		}
+		
+	}
+
+	public static void selectWishByUserId(String userId) {
+		try {
+			List<Wish> wishList = wishService.selectWishByUserId(userId);
+			SuccessView.selectWishByUserIdPrint(wishList);
+		} catch (SQLException e) {
+			FailView.errorMessage(e.getMessage());
+		
+		}
+		
+	}
+
 }
-
-
-
-

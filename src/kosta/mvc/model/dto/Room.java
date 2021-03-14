@@ -21,9 +21,8 @@ public class Room{
 	
 
 	private List<Review> reviewList = new ArrayList<>();
-	
-	
 
+	public Room() {}
 
 	public Room(int roomNo, int roomType, double size, int price, int floor, int aprprNmbP, int numberBeds,
 			boolean breakfastStatus, int prcadPrsn) {
