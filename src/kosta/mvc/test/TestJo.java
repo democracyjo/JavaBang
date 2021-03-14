@@ -1,6 +1,7 @@
 package kosta.mvc.test;
 
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Scanner;
 
 import kosta.mvc.controller.RoomsController;
@@ -8,6 +9,8 @@ import kosta.mvc.controller.RsrvtController;
 import kosta.mvc.controller.UserController;
 import kosta.mvc.model.dao.RoomsDAO;
 import kosta.mvc.model.dao.RoomsDAOImpl;
+import kosta.mvc.model.dao.RsrvtDAO;
+import kosta.mvc.model.dao.RsrvtDAOImpl;
 import kosta.mvc.model.dto.Reservation;
 import kosta.mvc.model.dto.Room;
 import kosta.mvc.model.dto.User;
@@ -17,6 +20,7 @@ import kosta.mvc.session.SessionSet;
 public class TestJo {
 	private static Scanner sc = new Scanner(System.in);
 	static RoomsDAO roomDAO = new RoomsDAOImpl();
+	static RsrvtDAO reserDAO = new RsrvtDAOImpl();
 
 	public static void menu() {
 			while(true) {
@@ -218,7 +222,12 @@ public class TestJo {
 			
 			try {
 				Room room = roomDAO.searchByRoomNo(roomNo);
-				RsrvtController.insertReservation(reser, room);
+				List<Reservation> reserList = reserDAO.selectRsrvtAll();
+				boolean state = RsrvtDAOImpl.isDuplicatedReser(reserList, reser);
+				if(!state) {
+					RsrvtController.insertReservation(reser, room);
+				}
+			
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
