@@ -423,7 +423,7 @@ public class RoomsDAOImpl implements RoomsDAO {
 		ResultSet rs = null;
 		List<Room> list = new ArrayList<Room>();
 		String sql = proFile.getProperty("room.selectAll");
-
+		
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
@@ -443,6 +443,9 @@ public class RoomsDAOImpl implements RoomsDAO {
 				Room rm = new Room(roomNo, roomType, roomSize, price, floor, aprprNmbP, numberBeds, breakfastStatus,
 						prcadPrsn);
 				ReviewDAO dao=new ReviewDAOImpl();
+				if(RsrvtDAOImpl.isDuplicatedReser(rsDAO.selectRsrvtByRoomNo(roomNo), rv)){
+					continue;
+				}
 				List<Review> reviewList=dao.selectReviewByRoomNo(roomNo);
 				rm.setReviewList(reviewList);
 				list.add(rm);

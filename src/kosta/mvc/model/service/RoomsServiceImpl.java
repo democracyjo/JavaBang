@@ -16,49 +16,94 @@ public class RoomsServiceImpl implements RoomsService{
 	RoomsDAO roomDAO=new RoomsDAOImpl();
 	
 	public List<Room> selectAll() throws SQLException{
+		
 		return roomDAO.selectAll();
 	}
 	
-	public Room searchByRoomNo(int roomNo) throws SQLException{
-		return roomDAO.searchByRoomNo(roomNo);
+	public Room searchByRoomNo(int roomNo) throws Exception{
+		Room rm= roomDAO.searchByRoomNo(roomNo);
+		if(rm!=null) {
+			return rm;
+		}else {
+			throw new NotFoundException("검색 한 방 번호가 없습니다");
+		}
 	}
-	public List<Room> searchByRoomType(List<String> roomType) throws SQLException{
-		return roomDAO.searchByRoomType(roomType);
+	public List<Room> searchByRoomType(List<String> roomType) throws Exception{
+		List<Room> list=roomDAO.searchByRoomType(roomType);
+		if(list!=null) {
+			return list;
+		}else {
+			throw new NotFoundException("검색 한 방타입이 없습니다");
+		}
+		
 	}
 	
-	public List<Room> searchByRoomSize(double minSize,double maxSize) throws SQLException{
-		return roomDAO.searchByRoomSize(minSize, maxSize);
+	public List<Room> searchByRoomSize(double minSize,double maxSize) throws Exception{
+		List<Room> list= roomDAO.searchByRoomSize(minSize, maxSize);
+		if(list!=null) {
+			return list;
+		}else {
+			throw new NotFoundException("검색 한 방이 없습니다");
+		}
 	}
-	public List<Room> searchByRoomPrice(int minPrice,int maxPrice) throws SQLException{
-		return roomDAO.searchByRoomPrice(minPrice, maxPrice);
+	public List<Room> searchByRoomPrice(int minPrice,int maxPrice) throws Exception{
+		List<Room> list= roomDAO.searchByRoomPrice(minPrice, maxPrice);
+		if(list!=null) {
+			return list;
+		}else {
+			throw new NotFoundException("검색 한 방이 없습니다");
+		}
 	}
-	public List<Room> searchByFloor(int floor) throws SQLException{
-		return roomDAO.searchByFloor(floor);
+	public List<Room> searchByFloor(int floor) throws Exception{
+		List<Room> list= roomDAO.searchByFloor(floor);
+		if(list!=null) {
+			return list;
+		}else {
+			throw new NotFoundException("검색 한 방이 없습니다");
+		}
 	}
 	
-	public List<Room> searchByNumberBeds(int minNum,int maxNum) throws SQLException{
-		return roomDAO.searchByNumberBeds(minNum, maxNum);
+	public List<Room> searchByNumberBeds(int minNum,int maxNum) throws Exception{
+		List<Room> list= roomDAO.searchByNumberBeds(minNum, maxNum);
+		
+		if(list!=null) {
+			return list;
+		}else {
+			throw new NotFoundException("검색 한 방이 없습니다");
+		}
 	}
 	
 
 	@Override
-	public List<Room> searchByNumberPeople(int minNbPeople, int maxNbPeople) throws SQLException{
+	public List<Room> searchByNumberPeople(int minNbPeople, int maxNbPeople) throws Exception{
 		// TODO Auto-generated method stub
-		return roomDAO.searchByNumberPeople(minNbPeople, maxNbPeople);
+		List<Room> list= roomDAO.searchByNumberPeople(minNbPeople, maxNbPeople);
+		if(list!=null) {
+			return list;
+		}else {
+			throw new NotFoundException("검색 한 방이 없습니다");
+		}
 	}
 
 	@Override
-	public List<Room> searchByBreakfastStat(boolean bfStat) throws SQLException {
+	public List<Room> searchByBreakfastStat(boolean bfStat) throws Exception {
 		// TODO Auto-generated method stub
-		return roomDAO.searchByBreakfastStat(bfStat);
+		List<Room> list= roomDAO.searchByBreakfastStat(bfStat);
+		if(list!=null) {
+			return list;
+		}else {
+			throw new NotFoundException("검색 한 방이 없습니다");
+		}
 	}
 
 	@Override
 	public List<Room> searchByResDate(String checkinDate, String checkoutDate) throws Exception {
-		Reservation rv=new Reservation(0, null, 0, checkinDate, checkoutDate, 0, 0, 0);
-		RsrvtDAOImpl.isDuplicatedReser(null, rv);
-		
-		return null;
+		List<Room> list= roomDAO.searchByResDate(checkinDate, checkoutDate);
+		if(list!=null) {
+			return list;
+		}else {
+			throw new NotFoundException("검색 한 방이 없습니다");
+		}
 	}
 
 }
