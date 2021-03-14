@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import kosta.mvc.model.dto.Reservation;
+import kosta.mvc.model.dto.Room;
 import kosta.mvc.model.service.RsrvtService;
 import kosta.mvc.model.service.RsrvtServiceImpl;
 import kosta.mvc.view.FailView;
@@ -13,9 +14,9 @@ public class RsrvtController{
 	private static RsrvtService reserService = new RsrvtServiceImpl();
 	
 
-	public static void insertReservation(Reservation rsrvt) {
+	public static void insertReservation(Reservation rsrvt,  Room room) {
 		try {
-			reserService.insertReservation(rsrvt);
+			reserService.insertReservation(rsrvt, room);
 			SuccessView.messagePrint("예약되었습니다.");
 		} catch (SQLException e) {
 			FailView.errorMessage(e.getMessage());

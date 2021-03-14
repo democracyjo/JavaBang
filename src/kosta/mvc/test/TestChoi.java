@@ -42,7 +42,7 @@ public class TestChoi {
 			System.out.println(list);
 			
 			System.out.println("사람수로 찾기");
-			list=dao.searchByNumberPeople(4);
+			list=dao.searchByNumberPeople(4,5);
 			System.out.println(list);
 			
 			System.out.println("침대수로 찾기");

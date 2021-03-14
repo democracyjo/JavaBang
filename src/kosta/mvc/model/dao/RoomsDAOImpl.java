@@ -18,7 +18,7 @@ public class RoomsDAOImpl implements RoomsDAO {
 	/**
 	 * 모든 방 출력
 	 */
-	public List<Room> selectAll() throws Exception {
+	public List<Room> selectAll() throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -248,7 +248,7 @@ public class RoomsDAOImpl implements RoomsDAO {
 	}
 
 	@Override
-	public List<Room> searchByNumberPeople(int numberPeople) throws SQLException {
+	public List<Room> searchByNumberPeople(int minNum, int maxNum) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -258,7 +258,8 @@ public class RoomsDAOImpl implements RoomsDAO {
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
-			ps.setInt(1, numberPeople);
+			ps.setInt(1, minNum);
+			ps.setInt(2, maxNum);
 			rs = ps.executeQuery();
 
 			while (rs.next()) {

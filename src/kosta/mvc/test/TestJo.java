@@ -1,17 +1,22 @@
 package kosta.mvc.test;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 import kosta.mvc.controller.RoomsController;
 import kosta.mvc.controller.RsrvtController;
 import kosta.mvc.controller.UserController;
+import kosta.mvc.model.dao.RoomsDAO;
+import kosta.mvc.model.dao.RoomsDAOImpl;
 import kosta.mvc.model.dto.Reservation;
+import kosta.mvc.model.dto.Room;
 import kosta.mvc.model.dto.User;
 import kosta.mvc.session.Session;
 import kosta.mvc.session.SessionSet;
 
 public class TestJo {
 	private static Scanner sc = new Scanner(System.in);
+	static RoomsDAO roomDAO = new RoomsDAOImpl();
 
 	public static void menu() {
 			while(true) {
@@ -192,14 +197,8 @@ public class TestJo {
 		/*
 		 * 예약
 		 * reservation.insert=insert into RESERVATION_LIST values(RESERVATION_LIST_NO_SEQ.NEXTVAL, SYSDATE, ?, ?, ?, ?, ?, ? )
-//		user_No	NUMBER(3) NOT NULL,
-//		checkin_Date	DATE NOT NULL,
-//		checkout_Date	DATE NOT NULL,
-//		total_people_Num	 NUMBER(2) NOT NULL,
-//		total_Price	NUMBER NOT NULL,
-//		room_No	NUMBER(3) NOT NULL,
 		 * */
-		public static void printInputReser(String userId) {
+		public static void printInputReser() {
 			System.out.print("회원번호 : ");
 			int userNo = Integer.parseInt(sc.nextLine()); //Reservation
 			
@@ -212,14 +211,18 @@ public class TestJo {
 			System.out.print("숙박할 인원수 : ");
 			int totalpeopleNum = Integer.parseInt(sc.nextLine());
 			
-//			System.out.print("총금액 : ");
-//			int totalPrice = Integer.parseInt(sc.nextLine());
-			
 			System.out.print("예약할 방번호 : ");
 			int roomNo = Integer.parseInt(sc.nextLine());
 			
 			Reservation reser = new Reservation(0, null, userNo, checkinDate, checkoutDate, totalpeopleNum, 0, roomNo);
-			RsrvtController.insertReservation(reser);
+			
+			try {
+				Room room = roomDAO.searchByRoomNo(roomNo);
+				RsrvtController.insertReservation(reser, room);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
 			
 		}
 

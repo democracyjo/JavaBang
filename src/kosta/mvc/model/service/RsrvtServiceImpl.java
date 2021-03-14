@@ -6,12 +6,13 @@ import java.util.List;
 import kosta.mvc.model.dao.RsrvtDAO;
 import kosta.mvc.model.dao.RsrvtDAOImpl;
 import kosta.mvc.model.dto.Reservation;
+import kosta.mvc.model.dto.Room;
 
 public class RsrvtServiceImpl implements RsrvtService {
 	private RsrvtDAO reserDAO  = new RsrvtDAOImpl();
 	@Override
-	public void insertReservation(Reservation rsrvt) throws SQLException {
-		int res = reserDAO.reservationInsert(rsrvt);
+	public void insertReservation(Reservation rsrvt, Room room) throws SQLException {
+		int res = reserDAO.reservationInsert(rsrvt, room);
 		if(res == 0) {
 			throw new SQLException("예약 실패하였습니다.");
 		}
@@ -34,5 +35,6 @@ public class RsrvtServiceImpl implements RsrvtService {
 			}
 		return reserList;
 	}
+
 
 }
