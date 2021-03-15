@@ -187,7 +187,7 @@ public class MenuView {
 			printSearchWthRes(userId);
 			break;
 		case 2:
-			printRoomSize(true);
+			printResDate(true);
 			
 			printSearchWthRes(userId);
 			break;
@@ -278,7 +278,7 @@ public class MenuView {
 		int menu = Integer.parseInt(sc.nextLine());
 		switch (menu) {
 		case 1:
-			printRoomSize(false);
+			printResDate(false);
 			
 			printSearchWthRes(userId);
 			break;
