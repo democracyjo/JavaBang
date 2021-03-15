@@ -107,6 +107,7 @@ public class TestDongso {
 			case 3:
 				// 로그아웃
 				logout(user);
+				printMenu();
 				return;
 			case 4:
 				// 회원탈퇴
@@ -165,8 +166,6 @@ public class TestDongso {
 
 	// 부분검색
 	private static void printKeywordSelectmenu(User user) {
-		SessionSet ss = SessionSet.getInstance();
-		System.out.println(ss.getSet());
 		System.out.println("\n-----" + user.getId() + " 로그인 중 -----");
 		System.out.println("┌──────────────┐");
 		System.out.println("  	 1. 방크기로 검색						");
@@ -294,8 +293,6 @@ public class TestDongso {
 //////////////////////////////// => 마이 페이지
 	private static void printMyPage(User user) {
 		while (true) {
-			SessionSet ss = SessionSet.getInstance();
-			System.out.println(ss.getSet());
 			System.out.println("\n-----" + user.getId() + " 로그인 중 -----");
 			System.out.println("┌──────────────┐");
 			System.out.println("  	 1. 관심리스트								");
@@ -410,6 +407,7 @@ public class TestDongso {
 			case 1:
 				// 리뷰등록
 //				WishController.selectWishByUserId();
+				ReviewController.selectReviewByUserNo(user.getUserNo());
 				break;
 			case 2:
 				// 리뷰수정
