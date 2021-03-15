@@ -26,8 +26,7 @@ public class TestChoi {
 		
 		String reviewContent = "좋아요좋아요";
 		
-		
-		
+				
 		Review review = new Review(0, userNo, roomNo, score, reviewContent, null);
 		
 		ReviewController.insertReview(review);
