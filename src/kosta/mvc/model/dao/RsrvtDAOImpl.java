@@ -138,10 +138,10 @@ public class RsrvtDAOImpl implements RsrvtDAO {
 	    	
 	    	if(pickedroom==null) throw new SQLException("해당 번호의 방은 존재하지 않습니다. 다시 입력해 주세요");
 	    	    	
-	    	totalPrice += calDate(reser)*roomPrice;
+	    	totalPrice = calDate(reser)*roomPrice;
 	    	
 	    	if(reser.getTotalpeopleNum() > ppl) {
-	    		totalPrice += calDate(reser)*(roomPrice +((reser.getTotalpeopleNum()-ppl)*addPrice));
+	    		totalPrice = calDate(reser)*(roomPrice +((reser.getTotalpeopleNum()-ppl)*addPrice));
 	    	}
 	    			
 	    }
