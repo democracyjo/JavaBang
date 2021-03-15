@@ -2,7 +2,7 @@ package kosta.mvc.model.dto;
 /**
  *관심리스트 관련 클래스
  *wishNo		: int		관심번호(PK)
- *userNo			: int		회원번호--user_data의 PK
+ *userNo		: int		회원번호--user_data의 PK
  *roomNo		: int		방번호--room_data의 PK
  *wishDate		: String	찜등록일
  * */
