@@ -46,9 +46,9 @@ public class Pay {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append(payNo+" | ");
-		builder.append(payDate+" | ");
-		builder.append(reserNo+" | ");
+		builder.append("PayNo : "+payNo+" | ");
+		builder.append("결제일 : "+payDate+" | ");
+		builder.append("예약번호 : "+reserNo+" | ");
 		return builder.toString();
 	}
 	

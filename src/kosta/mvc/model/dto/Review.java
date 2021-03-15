@@ -28,6 +28,13 @@ public class Review {
 		this.reviewContent = reviewContent;
 		this.reviewDate = reviewDate;
 	}
+	
+	public Review(int reviewNo, String reviewContent) {
+		super();
+		this.reviewNo = reviewNo;
+		this.reviewContent = reviewContent;
+	}
+
 	public int getReviewNo() {
 		return reviewNo;
 	}

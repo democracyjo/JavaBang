@@ -1,6 +1,5 @@
 package kosta.mvc.view;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -436,6 +435,7 @@ public class MenuView {
 				break;
 			case 2:
 				// 예약리스트
+				RsrvtController.selectRsrvtByUserId(user.getId());
 				printRsrvtList(user);
 				printMyPage(user);
 				break;
@@ -471,10 +471,11 @@ public class MenuView {
 			switch (menu) {
 			case 1:
 				// 예약
-				WishController.selectWishByUserId(user.getId());
+				printInputReser();
 				break;
 			case 2:
 				// 관심취소
+				printInputWishDelete();
 			case 3:
 				// 뒤로가기
 				printMyPage(user);
@@ -499,10 +500,11 @@ public class MenuView {
 			switch (menu) {
 			case 1:
 				// 결제
-				WishController.selectWishByUserId(user.getId());
+				printInputPay(user);
 				break;
 			case 2:
 				// 예약취소
+				printInputReserDelete(user);
 			case 3:
 				// 뒤로가기
 				printMyPage(user);
@@ -545,15 +547,16 @@ public class MenuView {
 			}
 		}
 	}
-
+	
+	
 	/*
-	 * 예약 reservation.insert=insert into RESERVATION_LIST
-	 * values(RESERVATION_LIST_NO_SEQ.NEXTVAL, SYSDATE, ?, ?, ?, ?, ?, ? )
-	 */
+	 * 예약
+	 * reservation.insert=insert into RESERVATION_LIST values(RESERVATION_LIST_NO_SEQ.NEXTVAL, SYSDATE, ?, ?, ?, ?, ?, ? )
+	 * */
 	public static void printInputReser() {
 		System.out.print("회원번호 : ");
-		int userNo = Integer.parseInt(sc.nextLine()); // Reservation
-
+		int userNo = Integer.parseInt(sc.nextLine()); //Reservation
+		
 		System.out.print("체크인 날짜 : ");
 		String checkinDate = sc.nextLine();
 
@@ -570,22 +573,60 @@ public class MenuView {
 
 		RoomsController.searchByRoomNo(roomNo);
 		RsrvtController.insertReservation(reser, roomNo);
-		printInputReser();
 
 	}// end of printInputReser()
 
 	/**
 	 * 결제하기
 	 */
-	public static void printInputPay() {
+	public static void printInputPay(User user) {
 
 		System.out.print("예약번호 : ");
 		int reserNo = Integer.parseInt(sc.nextLine());
 
-		Pay pay = new Pay(0, null, reserNo);
+		System.out.print("비밀번호: ");
+		String pwd = sc.nextLine();
+		
+		if(user.getPw().equals(pwd)) {
+			Pay pay = new Pay(0, null, reserNo);
+			PayController.insertPay(pay);
+		}else {
+			System.out.println("비밀번호가 틀렸습니다. 다시 시도해 주세요.");
+		}
 
-		PayController.insertPay(pay);
 
 	}// end of printInputPay()
 
+	/**
+	 * 관심취소
+	 * */
+	public static void printInputWishDelete() {
+		
+		System.out.print("예약번호 : ");
+		int wishNo = Integer.parseInt(sc.nextLine());
+		
+		WishController.wishDelete(wishNo);
+		
+	}//end of method
+	
+	/**
+	 * 예약취소
+	 * */
+	public static void printInputReserDelete(User user) {
+		
+		System.out.print("예약번호 : ");
+		int reserNo = Integer.parseInt(sc.nextLine());
+		
+		System.out.print("비밀번호: ");
+		String pwd = sc.nextLine();
+		
+		if(user.getPw().equals(pwd)) {
+			RsrvtController.reservationDelete(reserNo);
+		}else {
+			System.out.println("비밀번호가 틀렸습니다. 다시 시도해 주세요.");
+		}
+		
+		
+	}//end of method
+	
 } // MenuView 클래스 끝.

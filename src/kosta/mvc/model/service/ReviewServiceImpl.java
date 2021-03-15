@@ -28,7 +28,7 @@ public class ReviewServiceImpl implements ReviewService{
 		}
 		return reviewList;
 	}
-
+	
 	@Override
 	public void insertReview(Review review) throws SQLException {
 		int rev = reviewDAO.insertReview(review);
