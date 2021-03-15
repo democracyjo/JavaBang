@@ -44,10 +44,10 @@ public class ReviewServiceImpl implements ReviewService{
 	}
 
 	@Override
-	public void deleteReview(int userNo) throws SQLException {
-		int rev = reviewDAO.deleteReview(userNo);
+	public void deleteReview(int reviewNo) throws SQLException {
+		int rev = reviewDAO.deleteReview(reviewNo);
 		if(rev ==0) {
-			throw new SQLException(userNo + "리뷰 삭제 실패하였습니다.");
+			throw new SQLException(reviewNo + "리뷰 삭제 실패하였습니다.");
 		}
 		
 	}

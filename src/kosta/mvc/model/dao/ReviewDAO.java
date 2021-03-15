@@ -14,7 +14,6 @@ public interface ReviewDAO {
 	List<Review> selectReviewByRoomNo(int roomNo) throws SQLException;
 
 	
-	
 	/**
 	 * 작성한 리뷰 보기
 	 */
@@ -25,15 +24,18 @@ public interface ReviewDAO {
 	 */
 	int insertReview(Review review) throws SQLException;
 	
-	/**
-	 * 리뷰 수정
-	 */
-	 int updateReview(Review review) throws SQLException;
+	
 	
 	/**
 	 * 리뷰 삭제
 	 */
-	int deleteReview(int userNo) throws SQLException;
+	int deleteReview(int reviewNo) throws SQLException;
+
+
+	/**
+	 * 리뷰 수정하기
+	 */
+	int updateReview(Review review) throws SQLException;
 	
 
 

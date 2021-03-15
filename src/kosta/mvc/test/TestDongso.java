@@ -15,6 +15,9 @@ import kosta.mvc.session.SessionSet;
 import kosta.mvc.view.MenuView;
 
 public class TestDongso {
+	static Scanner sc = new Scanner(System.in);
+
+	public static void main(String[] args) {
 	private static Scanner sc = new Scanner(System.in);
 
 	public static void menu() {
@@ -24,6 +27,7 @@ public class TestDongso {
 			switch (menu) {
 			case 1:
 				// 로그인
+				//printLogin();
 				MenuView.login();
 				break;
 			case 2:
@@ -37,6 +41,31 @@ public class TestDongso {
 			}
 		}
 	}
+	
+	// 유저메뉴 뷰
+	public static void printUserMenu(String userId) {
+		System.out.println("-----" + userId + " 로그인 중 -----");
+		System.out.println("1. 검색   |   2. 마이페이지   |  3. 로그아웃  |  4. 회원정보수정  |  5. 회원탈퇴");
+		int menu = Integer.parseInt(sc.nextLine());
+		switch (menu) {
+		case 1:
+			
+			break;
+		case 2:
+			
+			break;
+		case 3:
+			// 로그아웃.
+			return; 
+		
+		case 4:
+			// 회원탈퇴	
+//			printDelete(userId);
+			break;
+			
+		} // switch문 끝.
+	}
+	
 
 	// 메인메뉴
 	public static void printMenu() {
@@ -80,6 +109,10 @@ public class TestDongso {
 		User dto = new User(0, name, id, pw, ssn, tel);
 
 		UserController.inputUser(dto);
+	} // printJoin() 메소드 끝.
+	
+	
+	// 회원탈퇴 뷰
 	}
 
 //////////////////////////////// => 검색 페이지
@@ -136,7 +169,9 @@ public class TestDongso {
 		User dto = new User(user.getId(), pw);
 
 		UserController.deleteUser(dto);
-	}
+	} // printDelete() 메소드 끝.
+	
+	
 
 //////////////////////////////// => 검색 페이지
 	private static void printSelectmenu(User user) {
