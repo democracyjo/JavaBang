@@ -195,7 +195,7 @@ public class TestJo {
 					// 예약취소
 				case 3:
 					// 뒤로가기
-//					printMyPage(userId);
+					printMyPage(userId);
 					break;
 				default:
 					System.out.println("1에서 3사이의 숫자를 입력해주세요.");
@@ -246,18 +246,15 @@ public class TestJo {
 			
 			System.out.print("예약할 방번호 : ");
 			int roomNo = Integer.parseInt(sc.nextLine());
-			
+
 			Reservation reser = new Reservation(0, null, userNo, checkinDate, checkoutDate, totalpeopleNum, 0, roomNo);
-			
-			
-			try {
-				Room room = roomDAO.searchByRoomNo(roomNo);
-				RsrvtController.insertReservation(reser, room);
-			} catch (SQLException e) {
-				FailView.errorMessage(e.getMessage());
-			}finally {
-				printInputReser();
-			}
+
+
+
+			RoomsController.searchByRoomNo(roomNo);
+			RsrvtController.insertReservation(reser, roomNo);
+			printInputReser();
+
 		}//end of printInputReser()
 		
 		
