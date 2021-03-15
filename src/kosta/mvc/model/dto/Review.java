@@ -74,12 +74,12 @@ public class Review {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append(reviewNo+" | ");
-		builder.append(userNo+" | ");
-		builder.append(roomNo+" | ");
-		builder.append(score+" | ");
-		builder.append(reviewContent+" | ");
-		builder.append(reviewDate);
+		builder.append("리뷰번호 : " + reviewNo + " | ");
+		builder.append("유저번호 : " + userNo+" | ");
+		builder.append("방번호 : " + roomNo+" | ");
+		builder.append("평점 : " + score+" | ");
+		builder.append("리뷰내용 : " + reviewContent+" | ");
+		builder.append("리뷰날짜 : " + reviewDate);
 		return builder.toString();
 	}
 	

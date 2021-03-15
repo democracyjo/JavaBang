@@ -12,6 +12,7 @@ import kosta.mvc.controller.UserController;
 import kosta.mvc.controller.WishController;
 import kosta.mvc.model.dto.Pay;
 import kosta.mvc.model.dto.Reservation;
+import kosta.mvc.model.dto.Review;
 import kosta.mvc.model.dto.User;
 import kosta.mvc.session.Session;
 import kosta.mvc.session.SessionSet;
@@ -516,37 +517,67 @@ public class MenuView {
 	}
 
 	// 리뷰관리
-	public static void printReview(User user) {
-		while (true) {
-			System.out.println("\n-----" + user.getId() + " 로그인 중 -----");
-			System.out.println("┌──────────────┐");
-			System.out.println("  	 1. 리뷰등록								");
-			System.out.println("  	 2. 리뷰수정							");
-			System.out.println("  	 3. 리뷰삭제					    ");
-			System.out.println("  	 4. 뒤로가기						    ");
-			System.out.println("└──────────────┘");
-			System.out.print("선택>>");
-			int menu = Integer.parseInt(sc.nextLine());
-			switch (menu) {
-			case 1:
-				// 리뷰등록
-				WishController.selectWishByUserId(user.getId());
-				break;
-			case 2:
-				// 리뷰수정
-			case 3:
-				// 리뷰삭제
-//				printMyPage(userId);
-				break;
-			case 4:
-				// 뒤로가기
-//				printMyPage(userId);
-				break;
-			default:
-				System.out.println("1에서 4사이의 숫자를 입력해주세요.");
+		public static void printReview(User user) {
+			while (true) {
+				System.out.println("\n-----" + user.getId() + " 로그인 중 -----");
+				System.out.println("┌──────────────┐");
+				System.out.println("  	 1. 리뷰등록								");
+				System.out.println("  	 2. 리뷰수정							");
+				System.out.println("  	 3. 리뷰삭제					    ");
+				System.out.println("  	 4. 뒤로가기						    ");
+				System.out.println("└──────────────┘");
+				System.out.print("선택>>");
+				int menu = Integer.parseInt(sc.nextLine());
+				
+				ReviewController.selectReviewByUserNo(user.getUserNo());
+				
+				switch (menu) {
+				case 1:
+					//리뷰 작성하기
+					System.out.print("방번호를 입력해주세요 : ");
+					int roomNo = Integer.parseInt(sc.nextLine());
+					
+					System.out.print("방에대한 점수를 남겨주세요 : ");
+					int score = Integer.parseInt(sc.nextLine());
+
+					System.out.print("방에대한 내용를 남겨주세요 : ");
+					String reviewContent = sc.nextLine();
+					
+					Review review = new Review(0, user.getUserNo(), roomNo, score, reviewContent, null);
+					ReviewController.insertReview(review);
+					break;
+					
+				case 2:
+					//리뷰 수정하기
+					System.out.print("리뷰번호를 입력해주세요 : ");
+					int reviewNo = Integer.parseInt(sc.nextLine());
+					
+					System.out.print("수정할 리뷰 내용을 입력해주세요 : ");
+					String updateContent = sc.nextLine();
+					
+					review = new Review(reviewNo, updateContent);
+					ReviewController.updateReview(review);
+					break;
+					
+				case 3:
+					//리뷰 삭제하기
+					System.out.print("삭제할 리뷰 번호를 입력해주세요 : ");
+					reviewNo = Integer.parseInt(sc.nextLine());
+					
+					ReviewController.deleteReview(reviewNo);
+					break;
+					
+				case 4:
+					//뒤로가기
+					printMyPage(user);
+					break;
+					
+					default : 
+					System.out.println("1에서 4사이의 숫자를 입력해주세요.");
+
+				}
 			}
 		}
-	}
 	
 	
 	/*
