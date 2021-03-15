@@ -9,6 +9,7 @@ import kosta.mvc.controller.RoomsController;
 import kosta.mvc.controller.RsrvtController;
 import kosta.mvc.controller.UserController;
 import kosta.mvc.controller.WishController;
+import kosta.mvc.model.dto.Review;
 import kosta.mvc.model.dto.User;
 import kosta.mvc.session.Session;
 import kosta.mvc.session.SessionSet;
@@ -401,11 +402,20 @@ public class TestDongso {
 			System.out.println("└──────────────┘");
 			System.out.print("선택>>");
 			int menu = Integer.parseInt(sc.nextLine());
+			
+			ReviewController.selectReviewByUserNo(user.getUserNo());
+			
 			switch (menu) {
 			case 1:
 				// 리뷰등록
-//				WishController.selectWishByUserId();
-				ReviewController.selectReviewByUserNo(user.getUserNo());
+				System.out.print("방에대한 리뷰를 남겨주세요 : ");
+				String reviewContent = sc.nextLine();
+				
+				System.out.print("방에대한 점수를 남겨주세요 : ");
+				int score = Integer.parseInt(sc.nextLine());
+				
+//				Review review = new Review(0, user.getUserNo(), 0, score, reviewContent, null);
+//				ReviewController.insertReview(review);
 				break;
 			case 2:
 				// 리뷰수정
