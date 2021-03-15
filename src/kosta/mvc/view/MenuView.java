@@ -11,8 +11,6 @@ import kosta.mvc.controller.RoomsController;
 import kosta.mvc.controller.RsrvtController;
 import kosta.mvc.controller.UserController;
 import kosta.mvc.controller.WishController;
-import kosta.mvc.model.dao.RoomsDAO;
-import kosta.mvc.model.dao.RoomsDAOImpl;
 import kosta.mvc.model.dto.Pay;
 import kosta.mvc.model.dto.Reservation;
 import kosta.mvc.model.dto.Room;
