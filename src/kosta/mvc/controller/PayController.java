@@ -15,7 +15,7 @@ public class PayController {
 	public static void insertPay(Pay pay)  {
 		try {
 			payService.insertPay(pay);
-			SuccessView.messagePrint("결제리스트에 등록되었습니다.");
+			SuccessView.messagePrint("결제 완료되었습니다.");
 		} catch (SQLException e) {
 			FailView.errorMessage(e.getMessage());
 		}

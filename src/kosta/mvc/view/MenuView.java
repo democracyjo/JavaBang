@@ -13,7 +13,6 @@ import kosta.mvc.controller.WishController;
 import kosta.mvc.model.dto.Pay;
 import kosta.mvc.model.dto.Reservation;
 import kosta.mvc.model.dto.User;
-import kosta.mvc.model.dto.Wish;
 import kosta.mvc.session.Session;
 import kosta.mvc.session.SessionSet;
 
@@ -494,10 +493,11 @@ public class MenuView {
 			switch (menu) {
 			case 1:
 				// 결제
-				printInputPay();
+				printInputPay(user);
 				break;
 			case 2:
 				// 예약취소
+				printInputReserDelete(user);
 			case 3:
 				// 뒤로가기
 				printMyPage(user);
@@ -573,14 +573,21 @@ public class MenuView {
 	/**
 	 * 결제하기
 	 * */
-	public static void printInputPay() {
+	public static void printInputPay(User user) {
 		
 		System.out.print("예약번호 : ");
 		int reserNo = Integer.parseInt(sc.nextLine());
 		
-		Pay pay = new Pay(0, null, reserNo);
+		System.out.print("비밀번호: ");
+		String pwd = sc.nextLine();
 		
-		PayController.insertPay(pay);
+		if(user.getPw().equals(pwd)) {
+			Pay pay = new Pay(0, null, reserNo);
+			PayController.insertPay(pay);
+		}else {
+			System.out.println("비밀번호가 틀렸습니다. 다시 시도해 주세요.");
+		}
+		
 		
 	}//end of printInputPay()
 	
@@ -599,12 +606,20 @@ public class MenuView {
 	/**
 	 * 예약취소
 	 * */
-	public static void printInputReserDelete() {
+	public static void printInputReserDelete(User user) {
 		
 		System.out.print("예약번호 : ");
 		int reserNo = Integer.parseInt(sc.nextLine());
 		
-		RsrvtController.reservationDelete(reserNo);
+		System.out.print("비밀번호: ");
+		String pwd = sc.nextLine();
+		
+		if(user.getPw().equals(pwd)) {
+			RsrvtController.reservationDelete(reserNo);
+		}else {
+			System.out.println("비밀번호가 틀렸습니다. 다시 시도해 주세요.");
+		}
+		
 		
 	}//end of method
 	
