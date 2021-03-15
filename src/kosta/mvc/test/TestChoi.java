@@ -4,13 +4,33 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
+import kosta.mvc.controller.ReviewController;
 import kosta.mvc.model.dao.RsrvtDAO;
 import kosta.mvc.model.dao.RsrvtDAOImpl;
 import kosta.mvc.model.dto.Reservation;
+import kosta.mvc.model.dto.Review;
 
 public class TestChoi {
 
 	public static void main(String[] args) {
+		
+		
+		int userNo = 7;
+
+		
+		int roomNo = 3;
+
+		
+		int score = 5;
+
+		
+		String reviewContent = "좋아요좋아요";
+		
+		
+		
+		Review review = new Review(0, userNo, roomNo, score, reviewContent, null);
+		
+		ReviewController.insertReview(review);
 	//	MenuView.menu();
 		/*
 		WishDAO wh=new WishDAOImpl();
@@ -66,7 +86,7 @@ public class TestChoi {
 
 		System.out.print("체크아웃 날짜 : ");
 		String checkoutDate = sc.nextLine();
-		*/
+		*//*
 		String checkinDate="2021-02-05";
 		String checkoutDate="2021-01-07";
 		
@@ -90,7 +110,7 @@ public class TestChoi {
 		}catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		
+		*/
 		
 		
 		
@@ -145,6 +165,8 @@ public class TestChoi {
 			// TODO: handle exception
 		}
 		*/
+		
+		
 	}
 
 }

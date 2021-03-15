@@ -126,4 +126,36 @@ public class PayDAOImpl implements PayDAO {
 		return payList;
 	}
 
+	@Override
+	public List<Pay> selectPayByUserNo(int userNo) throws SQLException {
+		Connection con=null;
+		PreparedStatement ps=null;
+		ResultSet rs = null;
+		List<Pay> payList = new ArrayList<>();
+		Pay pay = null;
+		String sql=proFile.getProperty("pay.selectUserNo"); 
+		
+		try {
+
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, userNo);
+			rs= ps.executeQuery();
+			
+			while(rs.next()) {
+				 int payNo = rs.getInt("pay_no");
+				 String payDate= rs.getString("pay_date");
+				 int reserNo  = rs.getInt("reser_No");
+				
+				pay = new Pay(payNo, payDate, reserNo);
+				payList.add(pay);
+			}
+			
+		}finally {
+			DbUtil.close(con, ps, rs);	
+		}
+
+		return payList;
+	}
+
 }

@@ -32,5 +32,11 @@ public interface PayDAO {
 		 * 결제리스트 전체
 		 * */
 		List<Pay> selectPayList() throws SQLException;
-
+		/**
+		 * 결제리스트 보기 (유저번호로)
+		 * @param userNo
+		 * @return
+		 * @throws SQLException
+		 */
+		List<Pay> selectPayByUserNo(int userNo)throws SQLException;
 }
