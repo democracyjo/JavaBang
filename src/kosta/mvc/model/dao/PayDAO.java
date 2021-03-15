@@ -22,10 +22,15 @@ public interface PayDAO {
 		int payDelete(int payNo) throws SQLException;
 		
 		/**
-		 * 결제리스트 전체 보기 
+		 * 결제리스트 전체 보기 (아이디로)
 		 * @param String userId
 		 * @return List<Pay> 
 		 * */
 		List<Pay> selectPayByUserId(String userId)throws SQLException;
+		
+		/**
+		 * 결제리스트 전체
+		 * */
+		List<Pay> selectPayList() throws SQLException;
 
 }
