@@ -9,6 +9,7 @@ import kosta.mvc.controller.ReviewController;
 import kosta.mvc.controller.RoomsController;
 import kosta.mvc.controller.UserController;
 import kosta.mvc.controller.WishController;
+import kosta.mvc.model.dto.Reservation;
 import kosta.mvc.model.dto.User;
 import kosta.mvc.session.Session;
 import kosta.mvc.session.SessionSet;
@@ -244,7 +245,7 @@ public class MenuView {
 		int menu = Integer.parseInt(sc.nextLine());
 		switch (menu) {
 		case 1:
-			//예약
+
 			break;
 		case 2:
 			//찜하기
@@ -321,6 +322,7 @@ public class MenuView {
 	}
 	// 1.예약날짜로 검색
 	public static void printResDate(boolean schWthRes) {
+		System.out.println("yyyy-mm-dd 타입으로 넣어주세요.");
 		System.out.print("체크인 날짜 : ");
 		int min = Integer.parseInt(sc.nextLine());
 		
