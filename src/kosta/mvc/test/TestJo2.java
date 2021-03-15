@@ -8,7 +8,7 @@ import kosta.mvc.model.dto.Reservation;
 public class TestJo2 {
 
 	public static void main(String[] args) {
-//		TestJo.menu();
+		TestJo.menu();
 		
 //		TestJo.printInputReser();
 //		int days =RsrvtDAOImpl.calDate(reser);
@@ -16,7 +16,7 @@ public class TestJo2 {
 		
 //		TestJo.printInputPay();
 		
-		WishController.selectWishByUserId("minjoo");
+//		WishController.selectWishByUserId("minjoo");
 		
 	}
 

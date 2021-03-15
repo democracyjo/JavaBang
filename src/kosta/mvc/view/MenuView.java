@@ -89,7 +89,7 @@ public class MenuView {
 	// 로그인시 메뉴
 	public static void printUserMenu(User user) {
 		while (true) {
-			System.out.println("\n-----" + user.getId() + " 로그인 중 -----");
+			System.out.println("\n----- " + user.getId() +" / 회원번호["+user.getUserNo()+ "] 로그인 중 -----");
 			System.out.println("┌──────────────┐");
 			System.out.println("  	 1. 검색								");
 			System.out.println("  	 2. 마이페이지							");
@@ -142,7 +142,7 @@ public class MenuView {
 
 //////////////////////////////// => 검색 페이지
 	private static void printSelectmenu(User user) {
-		System.out.println("\n-----" + user.getId() + " 로그인 중 -----");
+		System.out.println("\n----- " + user.getId() +" / 회원번호["+user.getUserNo()+ "] 로그인 중 -----");
 		System.out.println("┌──────────────┐");
 		System.out.println("  	 1. 전체검색								");
 		System.out.println("  	 2. 부분 검색					         	");
@@ -169,7 +169,7 @@ public class MenuView {
 	// 결과내 검색
 	private static void printSearchWthRes(User user) {
 		
-			System.out.println("\n-----" + user.getId() + " 로그인 중 -----");
+			System.out.println("\n----- " + user.getId() +" / 회원번호["+user.getUserNo()+ "] 로그인 중 -----");
 			System.out.println("------------결과 내 검색-------------");
 			System.out.println("┌────────────────────────┐");
 			System.out.println("  	 1. 방 선택								");
@@ -237,7 +237,7 @@ public class MenuView {
 
 	// 방선택
 	private static void selectRoom(User user) {
-		System.out.println("\n-----" + user.getId() + " 로그인 중 -----");
+		System.out.println("\n----- " + user.getId() +" / 회원번호["+user.getUserNo()+ "] 로그인 중 -----");
 		System.out.print("방번호 : ");
 		int roomNo = Integer.parseInt(sc.nextLine());
 		RoomsController.searchByRoomNo(roomNo);
@@ -247,7 +247,8 @@ public class MenuView {
 		System.out.println("  	 2. 찜하기			       	");
 		System.out.println("  	 3. 뒤로가기					         	");
 		System.out.println("└────────────────────────┘");
-
+		System.out.println("선택>>");
+		
 		int menu = Integer.parseInt(sc.nextLine());
 		switch (menu) {
 		case 1:
@@ -270,7 +271,7 @@ public class MenuView {
 	// 부분 검색
 	private static void printKeywordSelectmenu(User user) {
 		RoomsController.refresh();
-		System.out.println("\n-----" + user.getId() + " 로그인 중 -----");
+		System.out.println("\n----- " + user.getId() +" / 회원번호["+user.getUserNo()+ "] 로그인 중 -----");
 		
 		System.out.println("┌────────────────────────┐");
 		System.out.println("  	 1. 예약 날짜로 검색			       	");
@@ -420,7 +421,7 @@ public class MenuView {
 //////////////////////////////// => 마이 페이지
 	private static void printMyPage(User user) {
 		while (true) {
-			System.out.println("\n-----" + user.getId() + " 로그인 중 -----");
+			System.out.println("\n----- " + user.getId() +" / 회원번호["+user.getUserNo()+ "] 로그인 중 -----");
 			System.out.println("┌──────────────┐");
 			System.out.println("  	 1. 관심리스트								");
 			System.out.println("  	 2. 예약리스트							");
@@ -463,7 +464,7 @@ public class MenuView {
 	// 관심리스트
 	public static void printWishList(User user) {
 		while (true) {
-			System.out.println("\n-----" + user.getId() + " 로그인 중 -----");
+			System.out.println("\n----- " + user.getId() +" / 회원번호["+user.getUserNo()+ "] 로그인 중 -----");
 			System.out.println("┌──────────────┐");
 			System.out.println("  	 1. 예약								");
 			System.out.println("  	 2. 관심취소							");
@@ -492,7 +493,7 @@ public class MenuView {
 	// 예약리스트
 	public static void printRsrvtList(User user) {
 		while (true) {
-			System.out.println("\n-----" + user.getId() + " 로그인 중 -----");
+			System.out.println("\n----- " + user.getId() +" / 회원번호["+user.getUserNo()+ "] 로그인 중 -----");
 			System.out.println("┌──────────────┐");
 			System.out.println("  	 1. 결제								");
 			System.out.println("  	 2. 예약취소							");
@@ -520,7 +521,7 @@ public class MenuView {
 	// 리뷰관리
 		public static void printReview(User user) {
 			while (true) {
-				System.out.println("\n-----" + user.getId() + " 로그인 중 -----");
+				System.out.println("\n----- " + user.getId() +" / 회원번호["+user.getUserNo()+ "] 로그인 중 -----");
 				System.out.println("┌──────────────┐");
 				System.out.println("  	 1. 리뷰등록								");
 				System.out.println("  	 2. 리뷰수정							");
