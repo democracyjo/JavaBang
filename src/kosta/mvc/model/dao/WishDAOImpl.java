@@ -85,10 +85,10 @@ public class WishDAOImpl implements WishDAO {
 			rs= ps.executeQuery();
 			
 			while(rs.next()) {
-				int wishNo = rs.getInt(1);
-				int userNo = rs.getInt(2);
-				int roomNo = rs.getInt(3);
-				String wishDate = rs.getString(4);
+				int wishNo = rs.getInt("wish_no");
+				int userNo = rs.getInt("user_no");
+				int roomNo = rs.getInt("room_no");
+				String wishDate = rs.getString("wish_date");
 				
 				wish = new Wish(wishNo, userNo, roomNo, wishDate);
 				wishList.add(wish);
@@ -118,10 +118,10 @@ public class WishDAOImpl implements WishDAO {
 			rs= ps.executeQuery();
 			
 			while(rs.next()) {
-				int wishNo = rs.getInt(1);
-				int userNo = rs.getInt(2);
-				int roomNo = rs.getInt(3);
-				String wishDate = rs.getString(4);
+				int wishNo = rs.getInt("wish_no");
+				int userNo = rs.getInt("user_no");
+				int roomNo = rs.getInt("room_no");
+				String wishDate = rs.getString("wish_date");
 				
 				wish = new Wish(wishNo, userNo, roomNo, wishDate);
 				wishList.add(wish);

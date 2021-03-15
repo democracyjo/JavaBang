@@ -1,21 +1,23 @@
 package kosta.mvc.test;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import kosta.mvc.controller.RoomsController;
-import kosta.mvc.model.dao.RoomsDAO;
-import kosta.mvc.model.dao.RoomsDAOImpl;
-import kosta.mvc.model.dao.RsrvtDAO;
-import kosta.mvc.model.dao.RsrvtDAOImpl;
-import kosta.mvc.model.dto.Reservation;
-import kosta.mvc.model.dto.Room;
-import kosta.mvc.view.MenuView;
+import kosta.mvc.model.dao.WishDAO;
+import kosta.mvc.model.dao.WishDAOImpl;
+import kosta.mvc.model.dto.Wish;
 
 public class TestChoi {
 
 	public static void main(String[] args) {
-		TestDongso.menu();
+	//	MenuView.menu();
+		
+		WishDAO wh=new WishDAOImpl();
+		try {
+		List<Wish> list=wh.selectWishByUserId("minjoo");
+		System.out.println(list);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 		//MenuView.menu();
 		// TODO Auto-generated method stub
 		/*
