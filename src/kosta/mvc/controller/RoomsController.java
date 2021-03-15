@@ -16,6 +16,14 @@ public class RoomsController {
 	private static RoomsService roomService = new RoomsServiceImpl();
 	private static List<Room> roomList;
 	
+	public static void refresh() {
+		try {
+			List<Room> list = roomService.selectAll();
+			roomList=list;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
 	/**
 	 * 전체 보기
 	 */
@@ -116,8 +124,7 @@ public class RoomsController {
 	public static void searchByNumberBeds(int minNum, int maxNum, boolean searchWthRsl) {
 		try {
 			List<Room> list = roomService.searchByNumberBeds(minNum, maxNum);
-			System.out.println(roomList);
-			System.out.println(list);
+			
 			if(searchWthRsl) {
 				list.retainAll(roomList);
 			}

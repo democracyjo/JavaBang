@@ -36,7 +36,12 @@ public interface ReviewDAO {
 	 * 리뷰 수정하기
 	 */
 	int updateReview(Review review) throws SQLException;
-	
-
+	/**
+	 * 리뷰 평점구하기
+	 * @param roomNo
+	 * @return
+	 * @throws SQLException
+	 */
+	double getAvgP(int roomNo) throws SQLException;
 
 }
