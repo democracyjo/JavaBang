@@ -84,7 +84,7 @@ public class UserDAOImpl implements UserDAO {
 			ps.setString(1, dto.getId());
 			ps.setString(2, dto.getPw());
 			result = ps.executeUpdate();
-			
+			System.out.println(result + " »Æ¿Œ");
 		} finally {
 			DbUtil.close(con, ps);
 		}

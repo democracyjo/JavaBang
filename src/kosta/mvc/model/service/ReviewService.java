@@ -24,12 +24,15 @@ public interface ReviewService {
 	/**
 	 * ¸®ºä ¼öÁ¤
 	 */
-	void updateReview(Review review) throws SQLException;
+	void updateReview(Review review) throws SQLException;	
 	
 	/**
 	 * ¸®ºä »èÁ¦
 	 */
-	void deleteReview(int userNo) throws SQLException;
+	void deleteReview(int reviewNo) throws SQLException;
+	
+	
+	
 	
 
 

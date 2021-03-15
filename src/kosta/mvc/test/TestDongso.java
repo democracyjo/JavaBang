@@ -132,7 +132,7 @@ public class TestDongso {
 		System.out.print("비밀번호 : ");
 		String pw = sc.nextLine();
 
-		User dto = new User(user.getId(), pw);
+		User dto = new User(user.getId(), user.getPw());
 
 		UserController.deleteUser(dto);
 	}
@@ -156,8 +156,8 @@ public class TestDongso {
 			printKeywordSelectmenu(user);
 			break;
 		case 3:
-			printUserMenu(user);
-			break;
+			return;
+//			break;
 		default:
 			System.out.println("1에서 3사이의 숫자를 입력해주세요.");
 		}
@@ -165,8 +165,6 @@ public class TestDongso {
 
 	// 부분검색
 	private static void printKeywordSelectmenu(User user) {
-		SessionSet ss = SessionSet.getInstance();
-		System.out.println(ss.getSet());
 		System.out.println("\n-----" + user.getId() + " 로그인 중 -----");
 		System.out.println("┌──────────────┐");
 		System.out.println("  	 1. 방크기로 검색						");
@@ -294,8 +292,6 @@ public class TestDongso {
 //////////////////////////////// => 마이 페이지
 	private static void printMyPage(User user) {
 		while (true) {
-			SessionSet ss = SessionSet.getInstance();
-			System.out.println(ss.getSet());
 			System.out.println("\n-----" + user.getId() + " 로그인 중 -----");
 			System.out.println("┌──────────────┐");
 			System.out.println("  	 1. 관심리스트								");
@@ -330,8 +326,7 @@ public class TestDongso {
 				printMyPage(user);
 			case 5:
 				// 뒤로가기
-				printUserMenu(user);
-				break;
+				return;
 			default:
 				System.out.println("1에서 5사이의 숫자를 입력해주세요.");
 			}
@@ -410,6 +405,7 @@ public class TestDongso {
 			case 1:
 				// 리뷰등록
 //				WishController.selectWishByUserId();
+				ReviewController.selectReviewByUserNo(user.getUserNo());
 				break;
 			case 2:
 				// 리뷰수정
