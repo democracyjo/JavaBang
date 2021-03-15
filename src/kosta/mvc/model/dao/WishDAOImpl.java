@@ -75,7 +75,7 @@ public class WishDAOImpl implements WishDAO {
 		List<Wish> wishList = new ArrayList<>();
 		Wish wish = null;
 		String sql=proFile.getProperty("wish.select"); 
-//		wish.select=select * from WISH_LIST where user_Id=?
+//		wish.select=SELECT * FROM USER_DATA JOIN WISH_LIST USING(USER_NO) JOIN ROOM_DATA USING(ROOM_NO) WHERE USER_ID=?
 		
 		try {
 
@@ -99,6 +99,40 @@ public class WishDAOImpl implements WishDAO {
 		}
 
 		return wishList;
+	}
+
+	@Override
+	public List<Wish> selectWishList() throws SQLException {
+		Connection con=null;
+		PreparedStatement ps=null;
+		ResultSet rs = null;
+		List<Wish> wishList = new ArrayList<>();
+		Wish wish = null;
+		String sql=proFile.getProperty("wish.selectAll"); 
+//		wish.selectAll=select * from WISH_LIST
+		
+		try {
+
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			rs= ps.executeQuery();
+			
+			while(rs.next()) {
+				int wishNo = rs.getInt(1);
+				int userNo = rs.getInt(2);
+				int roomNo = rs.getInt(3);
+				String wishDate = rs.getString(4);
+				
+				wish = new Wish(wishNo, userNo, roomNo, wishDate);
+				wishList.add(wish);
+			}
+			
+		}finally {
+			DbUtil.close(con, ps, rs);	
+		}
+
+		return wishList;
+		
 	}
 
 }
