@@ -1,5 +1,6 @@
 package kosta.mvc.view;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -7,8 +8,14 @@ import java.util.Scanner;
 import kosta.mvc.controller.PayController;
 import kosta.mvc.controller.ReviewController;
 import kosta.mvc.controller.RoomsController;
+import kosta.mvc.controller.RsrvtController;
 import kosta.mvc.controller.UserController;
 import kosta.mvc.controller.WishController;
+import kosta.mvc.model.dao.RoomsDAO;
+import kosta.mvc.model.dao.RoomsDAOImpl;
+import kosta.mvc.model.dto.Pay;
+import kosta.mvc.model.dto.Reservation;
+import kosta.mvc.model.dto.Room;
 import kosta.mvc.model.dto.User;
 import kosta.mvc.session.Session;
 import kosta.mvc.session.SessionSet;
@@ -535,4 +542,55 @@ public class MenuView {
 			}
 		}
 	}
+	
+	
+	/*
+	 * 예약
+	 * reservation.insert=insert into RESERVATION_LIST values(RESERVATION_LIST_NO_SEQ.NEXTVAL, SYSDATE, ?, ?, ?, ?, ?, ? )
+	 * */
+	public static void printInputReser() {
+		System.out.print("회원번호 : ");
+		int userNo = Integer.parseInt(sc.nextLine()); //Reservation
+		
+		System.out.print("체크인 날짜 : ");
+		String checkinDate = sc.nextLine();
+		
+		System.out.print("체크아웃 날짜 : ");
+		String checkoutDate = sc.nextLine();
+		
+		System.out.print("숙박할 인원수 : ");
+		int totalpeopleNum = Integer.parseInt(sc.nextLine());
+		
+		System.out.print("예약할 방번호 : ");
+		int roomNo = Integer.parseInt(sc.nextLine());
+		
+		Reservation reser = new Reservation(0, null, userNo, checkinDate, checkoutDate, totalpeopleNum, 0, roomNo);
+		
+		
+		try {
+			RoomsDAO roomDAO = new RoomsDAOImpl();
+			Room room = roomDAO.searchByRoomNo(roomNo);
+			RsrvtController.insertReservation(reser, room);
+		} catch (SQLException e) {
+			FailView.errorMessage(e.getMessage());
+		}finally {
+			printInputReser();
+		}
+	}//end of printInputReser()
+	
+	
+	/**
+	 * 결제하기
+	 * */
+	public static void printInputPay() {
+		
+		System.out.print("예약번호 : ");
+		int reserNo = Integer.parseInt(sc.nextLine());
+		
+		Pay pay = new Pay(0, null, reserNo);
+		
+		PayController.insertPay(pay);
+		
+	}//end of printInputPay()
+	
 } // MenuView 클래스 끝.
