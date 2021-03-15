@@ -173,8 +173,7 @@ public class MenuView {
 		System.out.println("  	 5. 숙박인원으로 검색				    ");
 		System.out.println("  	 6. 침대수로 검색					    ");
 		System.out.println("  	 7. 조식여부로 검색			       	");
-		System.out.println("  	 8. 결과내 검색			       	");
-		System.out.println("  	 9. 뒤로가기					         	");
+		System.out.println("  	 8. 뒤로가기					         	");
 		System.out.println("└──────────────┘");
 		System.out.println("선택>>");
 
@@ -182,6 +181,7 @@ public class MenuView {
 		switch (menu) {
 		case 1:
 			printRoomSize();
+			
 			printKeywordSelectmenu(userId);
 			break;
 		case 2:
@@ -208,19 +208,15 @@ public class MenuView {
 			printBreakfastStat();
 			printKeywordSelectmenu(userId);
 			break;
-
 		case 8:
-			printsearchWthRsl();
-			printKeywordSelectmenu(userId);
-			break;
-		case 9:
 			// 뒤로가기
 			printSelectmenu(userId);
+			break;
 		default:
-			System.out.println("1에서 9사이의 숫자를 입력해주세요.");
-		}
+			System.out.println("1에서 8사이의 숫자를 입력해주세요.");
+		} // switch문 끝.
 	}
-
+	
 	// 1. 방크기로 검색
 	public static void printRoomSize() {
 		System.out.print("최소방 크기 : ");
@@ -292,12 +288,9 @@ public class MenuView {
 		boolean bfStat = Boolean.parseBoolean(sc.nextLine());
 		RoomsController.searchByBreakfastStat(bfStat, false);
 	}
-
-	// 8, 결과내 검색
-	public static void printsearchWthRsl() {
-		
-	}
-
+	
+	// 8. 
+	
 //////////////////////////////// => 마이 페이지
 	private static void printMyPage(String userId) {
 		while (true) {
