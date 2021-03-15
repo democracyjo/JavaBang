@@ -289,13 +289,13 @@ public class MenuView {
 	// 7. 조식여부로 검색
 	public static void printBreakfastStat() {
 		System.out.print("아침가능 여부(true 또는 false로 입력해주세요.) : ");
-//		boolean bfStat = sc.nextLine();
-//		System.out.println(bfStat);
-//		RoomsController.searchByBreakfastStat(bfStat, bfStat);
+		boolean bfStat = Boolean.parseBoolean(sc.nextLine());
+		RoomsController.searchByBreakfastStat(bfStat, false);
 	}
 
 	// 8, 결과내 검색
 	public static void printsearchWthRsl() {
+		
 	}
 
 //////////////////////////////// => 마이 페이지
