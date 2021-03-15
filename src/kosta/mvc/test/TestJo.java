@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.util.List;
 import java.util.Scanner;
 
+import kosta.mvc.controller.PayController;
 import kosta.mvc.controller.RoomsController;
 import kosta.mvc.controller.RsrvtController;
 import kosta.mvc.controller.UserController;
@@ -12,6 +13,7 @@ import kosta.mvc.model.dao.RoomsDAO;
 import kosta.mvc.model.dao.RoomsDAOImpl;
 import kosta.mvc.model.dao.RsrvtDAO;
 import kosta.mvc.model.dao.RsrvtDAOImpl;
+import kosta.mvc.model.dto.Pay;
 import kosta.mvc.model.dto.Reservation;
 import kosta.mvc.model.dto.Room;
 import kosta.mvc.model.dto.User;
@@ -231,5 +233,24 @@ public class TestJo {
 			}finally {
 				printInputReser();
 			}
-		}
-}
+		}//end of printInputReser()
+		
+		
+		/**
+		 * 결제하기
+		 * */
+		public static void printInputPay() {
+			
+			System.out.print("예약번호 : ");
+			int reserNo = Integer.parseInt(sc.nextLine());
+			
+			Pay pay = new Pay(0, null, reserNo);
+			
+			PayController.insertPay(pay);
+			
+		}//end of printInputReser()
+		
+		
+		
+		
+}//end of class

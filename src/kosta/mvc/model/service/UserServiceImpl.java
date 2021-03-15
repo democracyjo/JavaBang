@@ -1,6 +1,6 @@
 package kosta.mvc.model.service;
 
-import java.sql.SQLException; 
+import java.sql.SQLException;
 
 import kosta.mvc.exception.DuplicatedException;
 import kosta.mvc.exception.NotFoundException;
@@ -8,6 +8,7 @@ import kosta.mvc.model.dao.UserDAO;
 import kosta.mvc.model.dao.UserDAOImpl;
 import kosta.mvc.model.dto.User;
 import kosta.mvc.session.Session;
+import kosta.mvc.session.SessionSet;
 
 public class UserServiceImpl implements UserService{
 	private UserDAO userDAO = new UserDAOImpl();
@@ -38,7 +39,9 @@ public class UserServiceImpl implements UserService{
 		}
 		
 		// 로그인 된 정보 저장하기
-		Session session = new Session(userId);
+		Session session = new Session(userId);	
+		SessionSet sessionSet = SessionSet.getInstance();
+		sessionSet.add(session);
 	
 		return user;
 	}

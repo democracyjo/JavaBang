@@ -10,9 +10,15 @@ import kosta.mvc.view.MenuView;
 import kosta.mvc.view.SuccessView;
 
 public class RoomsController {
+	/**
+	 * 룸서비스를 불러오기 위한 변수, roomList는 결과내 검색을 구현하기 위한것
+	 */
 	private static RoomsService roomService = new RoomsServiceImpl();
 	private static List<Room> roomList;
-
+	
+	/**
+	 * 전체 보기
+	 */
 	public static void selectAll() {
 		try {
 			List<Room> list = roomService.selectAll();
@@ -32,6 +38,11 @@ public class RoomsController {
 		}
 	}
 */
+	/**
+	 * 방 종류의 리스트를 받아와서 검색. searchWthRsl은 true일때 결과내 검색
+	 * @param roomType
+	 * @param searchWthRsl
+	 */
 	public static void searchByRoomType(List<String> roomType,boolean searchWthRsl) {
 		try {
 			List<Room> list = roomService.searchByRoomType(roomType);
@@ -44,7 +55,12 @@ public class RoomsController {
 			System.out.println(e.getMessage());
 		}
 	}
-
+	/**
+	 * minSize~max사이즈 사이의 값 검색
+	 * @param minSize
+	 * @param maxSize
+	 * @param searchWthRsl
+	 */
 	public static void searchByRoomSize(double minSize, double maxSize, boolean searchWthRsl) {
 		try {
 			List<Room> list = roomService.searchByRoomSize(minSize, maxSize);
@@ -115,6 +131,19 @@ public class RoomsController {
 	public static void searchByBreakfastStat(boolean bfStat, boolean searchWthRsl) {
 		try {
 			List<Room> list = roomService.searchByBreakfastStat(bfStat);
+			if(searchWthRsl) {
+				list.retainAll(roomList);
+			}
+			SuccessView.printRoomList(list);
+			roomList=list;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	public static void searchByResDate(String checkinDate, String checkoutDate,boolean searchWthRsl ) {
+		try {
+			List<Room> list = roomService.searchByResDate(checkinDate, checkoutDate);
 			if(searchWthRsl) {
 				list.retainAll(roomList);
 			}

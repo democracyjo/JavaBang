@@ -19,7 +19,14 @@ public interface WishService {
 		 
 		 
 		 /**
-		  * 관심리스트 내역보기
+		  * 관심리스트 내역보기(해당아이디)
 		  * */
 		 List<Wish> selectWishByUserId(String userId)throws SQLException;
+		 
+		 /**
+		  * 관심리스트 전체 보기
+		  * */
+		 List<Wish> selectWishList() throws SQLException;
+		 
+		 
 }

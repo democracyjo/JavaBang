@@ -36,4 +36,14 @@ public class WishServiceImpl implements WishService {
 		return wishList;
 	}
 
+	@Override
+	public List<Wish> selectWishList() throws SQLException {
+		List<Wish> wishList = wishDAO.selectWishList();
+		if(wishList ==null || wishList.size()==0 ) { 
+			throw new SQLException("검색된 정보가 없습니다.");
+		}
+		return wishList;
+		
+	}
+
 }

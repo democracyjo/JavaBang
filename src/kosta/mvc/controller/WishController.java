@@ -41,6 +41,17 @@ public class WishController{
 		
 		}
 		
-	}
+	}//end of method
+	
+	public static void selectWishList() {
+		try {
+			List<Wish> wishList = wishService.selectWishList();
+			SuccessView.selectWishByUserIdPrint(wishList);
+		} catch (SQLException e) {
+			FailView.errorMessage(e.getMessage());
+			
+		}
+		
+	}//end of method
 
-}
+}//end of class

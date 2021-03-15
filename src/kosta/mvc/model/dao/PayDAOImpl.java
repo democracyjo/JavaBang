@@ -46,7 +46,6 @@ public class PayDAOImpl implements PayDAO {
 		List<Pay> payList = new ArrayList<>();
 		Pay pay = null;
 		String sql=proFile.getProperty("pay.select"); 
-//		pay.select=select * from PAY_LIST where user_Id=?
 		
 		try {
 
@@ -93,6 +92,38 @@ public class PayDAOImpl implements PayDAO {
 		}
 
 		return result;
+	}
+
+	@Override
+	public List<Pay> selectPayList() throws SQLException {
+		
+		Connection con=null;
+		PreparedStatement ps=null;
+		ResultSet rs = null;
+		List<Pay> payList = new ArrayList<>();
+		Pay pay = null;
+		String sql=proFile.getProperty("pay.selectAll"); 
+		
+		try {
+
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			rs= ps.executeQuery();
+			
+			while(rs.next()) {
+				 int payNo = rs.getInt(1);
+				 String payDate= rs.getString(2);
+				 int reserNo  = rs.getInt(3);
+				
+				pay = new Pay(payNo, payDate, reserNo);
+				payList.add(pay);
+			}
+			
+		}finally {
+			DbUtil.close(con, ps, rs);	
+		}
+
+		return payList;
 	}
 
 }

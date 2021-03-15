@@ -25,10 +25,12 @@ public interface WishDAO {
 		
 		
 		/**
-		 * 관심리스트 전체 보기 
+		 * 관심리스트 전체 보기 (아이디로)
 		 * @param String userId
 		 * @return List<Wish>  
 		 * */
 		List<Wish> selectWishByUserId(String userId)throws SQLException;
+		
+		List<Wish> selectWishList()throws SQLException;
 
 }
