@@ -16,7 +16,7 @@ public class TestJo2 {
 		
 //		TestJo.printInputPay();
 		
-		WishController.selectWishByUserId(minjoo);
+		WishController.selectWishByUserId("minjoo");
 		
 	}
 

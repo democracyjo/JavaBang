@@ -19,7 +19,7 @@ public class TestDongso {
 	private static Scanner sc = new Scanner(System.in);
 
 	public static void menu() {
-		while (true) {			
+		while (true) {
 			MenuView.printMenu();
 			int menu = Integer.parseInt(sc.nextLine());
 			switch (menu) {
@@ -217,25 +217,25 @@ public class TestDongso {
 			System.out.println("1에서 8사이의 숫자를 입력해주세요.");
 		} // switch문 끝.
 	}
-	
+
 	// 1. 방크기로 검색
 	public static void printRoomSize() {
 		System.out.print("최소방 크기 : ");
 		int min = Integer.parseInt(sc.nextLine());
-		
+
 		System.out.print("최대방 크기 : ");
 		int max = Integer.parseInt(sc.nextLine());
-		
+
 		RoomsController.searchByRoomSize(min, max, false);
 	}
 
 	// 2. 방종류로 검색
 	public static void printRoomTye() {
 		List<String> typeList = new ArrayList<>();
-		
+
 		System.out.print("검색할 방타입 개수 : ");
 		int cnt = Integer.parseInt(sc.nextLine());
-		for(int i = 1; i <= cnt; i++) {
+		for (int i = 1; i <= cnt; i++) {
 			System.out.print(i + "번째 방타입 : ");
 			typeList.add(sc.nextLine());
 		}
@@ -246,18 +246,18 @@ public class TestDongso {
 	public static void printRoomPrice() {
 		System.out.print("방 최소 가격 : ");
 		int minPrice = Integer.parseInt(sc.nextLine());
-		
+
 		System.out.print("방 최대 가격 : ");
 		int maxPrice = Integer.parseInt(sc.nextLine());
-		
+
 		RoomsController.searchByRoomPrice(minPrice, maxPrice, false);
 	}
-	
+
 	// 4. 방층으로 검색
 	public static void printFloor() {
 		System.out.print("방 층수 : ");
 		int floor = Integer.parseInt(sc.nextLine());
-		
+
 		RoomsController.searchByFloor(floor, false);
 	}
 
@@ -265,21 +265,21 @@ public class TestDongso {
 	public static void printNumberPeople() {
 		System.out.print("최소인원 : ");
 		int minNum = Integer.parseInt(sc.nextLine());
-		
+
 		System.out.print("최대인원 : ");
 		int maxNum = Integer.parseInt(sc.nextLine());
-		
+
 		RoomsController.searchByNumberPeople(minNum, maxNum, false);
 	}
-	
+
 	// 6. 침대수로 검색
 	public static void printNumberBeds() {
 		System.out.print("최소 침대수 : ");
 		int nimNum = Integer.parseInt(sc.nextLine());
-		
+
 		System.out.print("최대 침대수 : ");
 		int maxNum = Integer.parseInt(sc.nextLine());
-	
+
 		RoomsController.searchByNumberBeds(nimNum, maxNum, false);
 	}
 
@@ -289,161 +289,151 @@ public class TestDongso {
 		boolean bfStat = Boolean.parseBoolean(sc.nextLine());
 		RoomsController.searchByBreakfastStat(bfStat, false);
 	}
-	
+
 //////////////////////////////// => 마이 페이지
 	private static void printMyPage(User user) {
-		while (true) {
-			System.out.println("\n-----" + user.getId() + " 로그인 중 -----");
-			System.out.println("┌──────────────┐");
-			System.out.println("  	 1. 관심리스트								");
-			System.out.println("  	 2. 예약리스트							");
-			System.out.println("  	 3. 결제리스트						    ");
-			System.out.println("  	 4. 리뷰관리						    ");
-			System.out.println("  	 5. 뒤로가기						    ");
-			System.out.println("└──────────────┘");
-			System.out.print("선택>>");
-			int menu = Integer.parseInt(sc.nextLine());
-			switch (menu) {
-			case 1:
-				// 관심리스트
-				WishController.selectWishByUserId(user.getId());
-				printWishList(user);
-				break;
-			case 2:
-				// 예약리스트
-				RsrvtController.selectRsrvtByUserId(user.getId());
-				printRsrvtList(user);
-				printMyPage(user);
-				break;
-			case 3:
-				// 결제리스트
-				PayController.selectPayByUserId(user.getId());
-				printMyPage(user);
-				break;
-			case 4:
-				// 리뷰관리
-//				ReviewController.selectReviewByUserNo(userNo);
-				printReview(user);
-				printMyPage(user);
-			case 5:
-				// 뒤로가기
-				return;
-			default:
-				System.out.println("1에서 5사이의 숫자를 입력해주세요.");
-			}
+		System.out.println("\n-----" + user.getId() + " 로그인 중 -----");
+		System.out.println("┌──────────────┐");
+		System.out.println("  	 1. 관심리스트								");
+		System.out.println("  	 2. 예약리스트							");
+		System.out.println("  	 3. 결제리스트						    ");
+		System.out.println("  	 4. 리뷰관리						    ");
+		System.out.println("  	 5. 뒤로가기						    ");
+		System.out.println("└──────────────┘");
+		System.out.print("선택>>");
+		int menu = Integer.parseInt(sc.nextLine());
+		switch (menu) {
+		case 1:
+			// 관심리스트
+			WishController.selectWishByUserId(user.getId());
+			printWishList(user);
+			printMyPage(user);
+			break;
+		case 2:
+			// 예약리스트
+			RsrvtController.selectRsrvtByUserId(user.getId());
+			printRsrvtList(user);
+			printMyPage(user);
+			break;
+		case 3:
+			// 결제리스트
+			PayController.selectPayByUserId(user.getId());
+			printMyPage(user);
+			break;
+		case 4:
+			// 리뷰관리
+			ReviewController.selectReviewByUserNo(user.getUserNo());
+			printReview(user);
+			printMyPage(user);
+		case 5:
+			// 뒤로가기
+			return;
+		default:
+			System.out.println("1에서 5사이의 숫자를 입력해주세요.");
 		}
 	}
-	
+
 	// 관심리스트
 	public static void printWishList(User user) {
-		while (true) {
-			System.out.println("\n-----" + user.getId() + " 로그인 중 -----");
-			System.out.println("┌──────────────┐");
-			System.out.println("  	 1. 예약								");
-			System.out.println("  	 2. 관심취소							");
-			System.out.println("  	 3. 뒤로가기						    ");
-			System.out.println("└──────────────┘");
-			System.out.print("선택>>");
-			int menu = Integer.parseInt(sc.nextLine());
-			switch (menu) {
-			case 1:
-				// 예약
-				WishController.selectWishByUserId(user.getId());
-				break;
-			case 2:
-				// 관심취소
-			case 3:
-				// 뒤로가기
-				printMyPage(user);
-				break;
-			default:
-				System.out.println("1에서 3사이의 숫자를 입력해주세요.");
-			}
+		System.out.println("\n-----" + user.getId() + " 로그인 중 -----");
+		System.out.println("┌──────────────┐");
+		System.out.println("  	 1. 예약								");
+		System.out.println("  	 2. 관심취소							");
+		System.out.println("  	 3. 뒤로가기						    ");
+		System.out.println("└──────────────┘");
+		System.out.print("선택>>");
+		int menu = Integer.parseInt(sc.nextLine());
+		switch (menu) {
+		case 1:
+			// 예약
+			WishController.selectWishByUserId(user.getId());
+			break;
+		case 2:
+			// 관심취소
+		case 3:
+			// 뒤로가기
+			printMyPage(user);
+			break;
+		default:
+			System.out.println("1에서 3사이의 숫자를 입력해주세요.");
 		}
 	}
 
 	// 예약리스트
 	public static void printRsrvtList(User user) {
-		while (true) {
-			System.out.println("\n-----" + user.getId() + " 로그인 중 -----");
-			System.out.println("┌──────────────┐");
-			System.out.println("  	 1. 결제								");
-			System.out.println("  	 2. 예약취소							");
-			System.out.println("  	 3. 뒤로가기						    ");
-			System.out.println("└──────────────┘");
-			System.out.print("선택>>");
-			int menu = Integer.parseInt(sc.nextLine());
-			switch (menu) {
-			case 1:
-				// 결제
-				WishController.selectWishByUserId(user.getId());
-				break;
-			case 2:
-				// 예약취소
-			case 3:
-				// 뒤로가기
-				printMyPage(user);
-				break;
-			default:
-				System.out.println("1에서 3사이의 숫자를 입력해주세요.");
-			}
+		System.out.println("\n-----" + user.getId() + " 로그인 중 -----");
+		System.out.println("┌──────────────┐");
+		System.out.println("  	 1. 결제								");
+		System.out.println("  	 2. 예약취소							");
+		System.out.println("  	 3. 뒤로가기						    ");
+		System.out.println("└──────────────┘");
+		System.out.print("선택>>");
+		int menu = Integer.parseInt(sc.nextLine());
+		switch (menu) {
+		case 1:
+			// 결제
+			WishController.selectWishByUserId(user.getId());
+			break;
+		case 2:
+			// 예약취소
+		case 3:
+			// 뒤로가기, return 변경
+			printMyPage(user);
+			break;
+		default:
+			System.out.println("1에서 3사이의 숫자를 입력해주세요.");
 		}
 	}
-	
+
 	// 리뷰관리
 	public static void printReview(User user) {
-		while (true) {
-			System.out.println("\n-----" + user.getId() + " 로그인 중 -----");
-			System.out.println("┌──────────────┐");
-			System.out.println("  	 1. 리뷰등록								");
-			System.out.println("  	 2. 리뷰수정							");
-			System.out.println("  	 3. 리뷰삭제					    ");
-			System.out.println("  	 4. 뒤로가기						    ");
-			System.out.println("└──────────────┘");
-			System.out.print("선택>>");
-			int menu = Integer.parseInt(sc.nextLine());
-			
-			ReviewController.selectReviewByUserNo(user.getUserNo());
-			
-			switch (menu) {
-			case 1:
-				// 리뷰등록
-				System.out.print("방에대한 내용를 남겨주세요 : ");
-				String reviewContent = sc.nextLine();
-				
-				System.out.print("방에대한 점수를 남겨주세요 : ");
-				int score = Integer.parseInt(sc.nextLine());
-				
-				System.out.print("방번호를 입력해주세요 : ");
-				int roomNumber = Integer.parseInt(sc.nextLine());
-				
-				Review review = new Review(0, user.getUserNo(), roomNumber, score, reviewContent, null);
-				ReviewController.insertReview(review);
-				break;
-			case 2:
-				// 리뷰수정
-				System.out.print("리뷰번호를 입력해주세요 : ");
-				int reviewNo = Integer.parseInt(sc.nextLine());
-				
-				System.out.print("수정할 리뷰 내용을 입력해주세요 : ");
-				String updateContent = sc.nextLine();
-				
-				review = new Review(reviewNo, updateContent);
-				ReviewController.updateReview(review);
-			case 3:
-				// 리뷰삭제
-				System.out.print("삭제할 리뷰 번호를 입력해주세요 : ");
-				reviewNo = sc.nextInt();
-				
-				ReviewController.deleteReview(reviewNo);
-				break;
-			case 4:
-				// 뒤로가기
-				printMyPage(user);
-				break;
-			default:
-				System.out.println("1에서 4사이의 숫자를 입력해주세요.");
-			}
+		System.out.println("\n-----" + user.getId() + " 로그인 중 -----");
+		System.out.println("┌──────────────┐");
+		System.out.println("  	 1. 리뷰등록								");
+		System.out.println("  	 2. 리뷰수정							");
+		System.out.println("  	 3. 리뷰삭제					    ");
+		System.out.println("  	 4. 뒤로가기						    ");
+		System.out.println("└──────────────┘");
+		System.out.print("선택>>");
+
+		int menu = Integer.parseInt(sc.nextLine());
+		switch (menu) {
+		case 1:
+			// 리뷰등록
+			System.out.print("방에대한 내용를 남겨주세요 : ");
+			String reviewContent = sc.nextLine();
+
+			System.out.print("방에대한 점수를 남겨주세요 : ");
+			int score = Integer.parseInt(sc.nextLine());
+
+			System.out.print("방번호를 입력해주세요 : ");
+			int roomNumber = Integer.parseInt(sc.nextLine());
+
+			Review review = new Review(0, user.getUserNo(), roomNumber, score, reviewContent, null);
+			ReviewController.insertReview(review);
+			break;
+		case 2:
+			// 리뷰수정
+			System.out.print("리뷰번호를 입력해주세요 : ");
+			int reviewNo = Integer.parseInt(sc.nextLine());
+
+			System.out.print("수정할 리뷰 내용을 입력해주세요 : ");
+			String updateContent = sc.nextLine();
+
+			review = new Review(reviewNo, updateContent);
+			ReviewController.updateReview(review);
+		case 3:
+			// 리뷰삭제
+			System.out.print("삭제할 리뷰 번호를 입력해주세요 : ");
+			reviewNo = sc.nextInt();
+
+			ReviewController.deleteReview(reviewNo);
+			break;
+		case 4:
+			printMyPage(user);
+			break;
+		default:
+			System.out.println("1에서 4사이의 숫자를 입력해주세요.");
 		}
 	}
 }
