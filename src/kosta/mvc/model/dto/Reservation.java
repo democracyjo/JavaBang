@@ -102,14 +102,14 @@ public class Reservation {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("예약번호 : "+reserNo+" | ");
-		builder.append("예약일 : "+reserDate+" | ");
-		builder.append("UserNo : "+userNo+" | ");
-		builder.append("체크인 날짜 : "+checkinDate+" | ");
-		builder.append("체크아웃 날짜 : "+checkoutDate+" | ");
-		builder.append("총인원 : "+totalpeopleNum+" | ");
-		builder.append("총금액"+totalPrice+" | ");
-		builder.append("방번호 : "+roomNo);
+		builder.append(reserNo+" | ");
+		builder.append(reserDate+" | ");
+		builder.append(userNo+" | ");
+		builder.append(checkinDate+" | ");
+		builder.append(checkoutDate+" | ");
+		builder.append(totalpeopleNum+" | ");
+		builder.append(totalPrice+" | ");
+		builder.append(roomNo);
 		return builder.toString();
 	}
 

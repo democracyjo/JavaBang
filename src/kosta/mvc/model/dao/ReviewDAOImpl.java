@@ -160,47 +160,5 @@ public class ReviewDAOImpl implements ReviewDAO{
 		
 	}
 
-
-	/**
-	 * 리뷰 평점 구하기
-	 */
-	@Override
-	public double getAvgP(int roomNo) throws SQLException {
-		Connection con=null;
-		PreparedStatement ps=null;
-		ResultSet rs=null;
-		List<Review> list = new ArrayList<Review>();
-		String sql=proFile.getProperty("review.selectByRoomNo");
-		try {
-			con = DbUtil.getConnection();
-			ps = con.prepareStatement(sql);
-			ps.setInt(1, roomNo);
-			rs = ps.executeQuery();
-			while(rs.next()) {
-				int reviewNo = rs.getInt("review_no");
-				int userNo = rs.getInt("user_no");
-				roomNo = rs.getInt("room_no");
-				int score = rs.getInt("score");
-				String reviewContent = rs.getString("review_content");
-				String reviewDate = rs.getString("review_date");
-			
-				Review review = new Review(reviewNo, userNo, roomNo, score, reviewContent, reviewDate);
-				
-				list.add(review);
-			}
-		}finally {
-			DbUtil.close(con, ps, rs);
-		}
-		
-		
-		
-		double sum=0;
-		for(int i=0; i<list.size(); i++) {
-			sum+=list.get(i).getScore();
-		}
-		double avg=sum/((double)list.size());
-		return avg;
-	}
-
 	
 }
