@@ -331,12 +331,12 @@ public class MenuView {
 	public static void printResDate(boolean schWthRes) {
 		System.out.println("yyyy-mm-dd 타입으로 넣어주세요.");
 		System.out.print("체크인 날짜 : ");
-		int min = Integer.parseInt(sc.nextLine());
+		String checkin = sc.nextLine();
 
 		System.out.print("체크아웃 날짜 : ");
-		int max = Integer.parseInt(sc.nextLine());
+		String checkout = sc.nextLine();
 
-		RoomsController.searchByRoomSize(min, max, schWthRes);
+		RoomsController.searchByResDate(checkin, checkout, schWthRes);
 
 	}
 

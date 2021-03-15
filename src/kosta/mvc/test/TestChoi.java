@@ -1,23 +1,25 @@
 package kosta.mvc.test;
 
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Scanner;
 
-import kosta.mvc.model.dao.WishDAO;
-import kosta.mvc.model.dao.WishDAOImpl;
-import kosta.mvc.model.dto.Wish;
+import kosta.mvc.model.dao.RsrvtDAO;
+import kosta.mvc.model.dao.RsrvtDAOImpl;
+import kosta.mvc.model.dto.Reservation;
 
 public class TestChoi {
 
 	public static void main(String[] args) {
 	//	MenuView.menu();
-		
+		/*
 		WishDAO wh=new WishDAOImpl();
 		try {
 		List<Wish> list=wh.selectWishByUserId("minjoo");
 		System.out.println(list);
 		}catch (Exception e) {
 			e.printStackTrace();
-		}
+		}*/
 		//MenuView.menu();
 		// TODO Auto-generated method stub
 		/*
@@ -57,22 +59,40 @@ public class TestChoi {
 		rc.searchByNumberBeds(5,6,true);
 		*/
 		/*
+		Scanner sc=new Scanner(System.in);
 		System.out.println("예약날짜로 찾기");
-		String checkinDate="2021-01-05";
-		String checkoutDate="2021-01-11";
-		Reservation rv = new Reservation(1, null, 0, checkinDate, checkoutDate, 0, 0, 1);
+		System.out.print("체크인 날짜 : ");
+		String checkinDate = sc.nextLine();
+
+		System.out.print("체크아웃 날짜 : ");
+		String checkoutDate = sc.nextLine();
+		*/
+		String checkinDate="2021-02-05";
+		String checkoutDate="2021-01-07";
+		
+		Reservation rv = new Reservation(0, null, 0, checkinDate, checkoutDate, 0, 0, 3);
 		RsrvtDAO rsDAO = new RsrvtDAOImpl();
 		try {
-			System.out.println(rsDAO.selectRsrvtByRoomNo(1));
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+			Date day1=null;
+			Date day2=null;
+			Date day3=null;
+			Date day4=null;
+			day1=format.parse(checkinDate);
+			System.out.println("day1은?");
+			System.out.println(day1);
+			System.out.println(rsDAO.selectRsrvtByRoomNo(3));
 			System.out.println(rv.getCheckinDate());
 			System.out.println(rv.getCheckoutDate());
 			
-		boolean b=RsrvtDAOImpl.isDuplicatedReser(rsDAO.selectRsrvtByRoomNo(1), rv);
+		boolean b=RsrvtDAOImpl.isDuplicatedReser(rsDAO.selectRsrvtByRoomNo(3), rv);
 		System.out.println(b);
 		}catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		*/
+		
+		
+		
 		
 		
 		

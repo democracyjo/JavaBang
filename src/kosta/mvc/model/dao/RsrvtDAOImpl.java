@@ -156,7 +156,7 @@ public class RsrvtDAOImpl implements RsrvtDAO {
 		String date2 = reser.getCheckinDate();//체크인날짜
 		int days=0;
 		try{ 
-			SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 			Date FirstDate = format.parse(date1);
 			Date SecondDate = format.parse(date2);
 
@@ -183,7 +183,7 @@ public class RsrvtDAOImpl implements RsrvtDAO {
 		
 		for(Reservation reserv :reserList) {
 			if(reser.getRoomNo()==reserv.getRoomNo()) {
-				SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
+				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 				Date day1=null;
 				Date day2=null;
 				Date day3=null;

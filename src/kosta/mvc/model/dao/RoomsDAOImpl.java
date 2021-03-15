@@ -425,6 +425,8 @@ public class RoomsDAOImpl implements RoomsDAO {
 						prcadPrsn);
 				
 				Reservation rv = new Reservation(0, null, 0, checkinDate, checkoutDate, 0, 0, roomNo);
+				System.out.println(rm);
+				System.out.println(RsrvtDAOImpl.isDuplicatedReser(rsDAO.selectRsrvtByRoomNo(roomNo), rv));
 				if(RsrvtDAOImpl.isDuplicatedReser(rsDAO.selectRsrvtByRoomNo(roomNo), rv)){
 					continue;
 				}
