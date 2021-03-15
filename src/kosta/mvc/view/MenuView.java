@@ -333,7 +333,7 @@ public class MenuView {
 			}
 		}
 	}
-
+	
 	// 관심리스트
 	public static void printWishList(String userId) {
 		while (true) {
@@ -422,6 +422,4 @@ public class MenuView {
 			}
 		}
 	}
-	
-	
 } // MenuView 클래스 끝.
