@@ -97,7 +97,7 @@ public class MenuView {
 			switch (menu) {
 			case 1:
 				// 검색페이지
-				printKeywordSelectmenu(userId);
+				printSelectmenu(userId);
 				break;
 			case 2:
 				// 마이페이지
