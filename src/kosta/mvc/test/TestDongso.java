@@ -408,20 +408,34 @@ public class TestDongso {
 			switch (menu) {
 			case 1:
 				// 리뷰등록
-				System.out.print("방에대한 리뷰를 남겨주세요 : ");
+				System.out.print("방에대한 내용를 남겨주세요 : ");
 				String reviewContent = sc.nextLine();
 				
 				System.out.print("방에대한 점수를 남겨주세요 : ");
 				int score = Integer.parseInt(sc.nextLine());
 				
-//				Review review = new Review(0, user.getUserNo(), 0, score, reviewContent, null);
-//				ReviewController.insertReview(review);
+				System.out.print("방번호를 입력해주세요 : ");
+				int roomNumber = Integer.parseInt(sc.nextLine());
+				
+				Review review = new Review(0, user.getUserNo(), roomNumber, score, reviewContent, null);
+				ReviewController.insertReview(review);
 				break;
 			case 2:
 				// 리뷰수정
+				System.out.print("리뷰번호를 입력해주세요 : ");
+				int reviewNo = Integer.parseInt(sc.nextLine());
+				
+				System.out.print("수정할 리뷰 내용을 입력해주세요 : ");
+				String updateContent = sc.nextLine();
+				
+				review = new Review(reviewNo, updateContent);
+				ReviewController.updateReview(review);
 			case 3:
 				// 리뷰삭제
-//				printMyPage(userId);
+				System.out.print("삭제할 리뷰 번호를 입력해주세요 : ");
+				reviewNo = sc.nextInt();
+				
+				ReviewController.deleteReview(reviewNo);
 				break;
 			case 4:
 				// 뒤로가기
