@@ -590,8 +590,6 @@ public class MenuView {
 	 * */
 	public static void printInputReser(User user) {
 		
-		int userNo = user.getUserNo(); //Reservation
-		
 		System.out.print("체크인 날짜 : ");
 		String checkinDate = sc.nextLine();
 
@@ -604,7 +602,7 @@ public class MenuView {
 		System.out.print("예약할 방번호 : ");
 		int roomNo = Integer.parseInt(sc.nextLine());
 
-		Reservation reser = new Reservation(0, null, userNo, checkinDate, checkoutDate, totalpeopleNum, 0, roomNo);
+		Reservation reser = new Reservation(0, null, user.getUserNo(), checkinDate, checkoutDate, totalpeopleNum, 0, roomNo);
 
 		RoomsController.searchByRoomNo(roomNo);
 		RsrvtController.insertReservation(reser, roomNo);
