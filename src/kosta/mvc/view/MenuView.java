@@ -90,9 +90,9 @@ public class MenuView {
 
 //////////////////////////////// => 검색 페이지
 	// 로그인시 메뉴
-	public static void printUserMenu(String userId) {
+	public static void printUserMenu(User user) {
 		while (true) {
-			System.out.println("\n-----" + userId + " 로그인 중 -----");
+			System.out.println("\n-----" + user.getId() + " 로그인 중 -----");
 			System.out.println("┌──────────────┐");
 			System.out.println("  	 1. 검색								");
 			System.out.println("  	 2. 마이페이지							");
@@ -104,19 +104,19 @@ public class MenuView {
 			switch (menu) {
 			case 1:
 				// 검색페이지
-				printSelectmenu(userId);
+				printSelectmenu(user);
 				break;
 			case 2:
 				// 마이페이지
-				printMyPage(userId);
+				printMyPage(user);
 				break;
 			case 3:
 				// 로그아웃
-				logout(userId);
+				logout(user);
 				return;
 			case 4:
 				// 회원탈퇴
-				printDelete(userId);
+				printDelete(user);
 				return;
 			default:
 				System.out.println("1에서 4사이의 숫자를 입력해주세요.");
@@ -125,27 +125,27 @@ public class MenuView {
 	}
 
 	// 로그아웃
-	public static void logout(String userId) {
-		Session session = new Session(userId);
+	public static void logout(User user) {
+		Session session = new Session(user.getId());
 
 		SessionSet ss = SessionSet.getInstance();
 		ss.remove(session);
 	}
 
 	// 회원탈퇴
-	public static void printDelete(String userId) {
-		System.out.println(userId + "님 비밀번호를 다시 입력해주세요.");
+	public static void printDelete(User user) {
+		System.out.println(user.getId() + "님 비밀번호를 다시 입력해주세요.");
 		System.out.print("비밀번호 : ");
 		String pw = sc.nextLine();
 
-		User dto = new User(userId, pw);
+		User dto = new User(user.getId(), pw);
 
 		UserController.deleteUser(dto);
 	}
 
 //////////////////////////////// => 검색 페이지
-	private static void printSelectmenu(String userId) {
-		System.out.println("\n-----" + userId + " 로그인 중 -----");
+	private static void printSelectmenu(User user) {
+		System.out.println("\n-----" + user.getId() + " 로그인 중 -----");
 		System.out.println("┌──────────────┐");
 		System.out.println("  	 1. 전체검색								");
 		System.out.println("  	 2. 부분 검색					         	");
@@ -157,20 +157,20 @@ public class MenuView {
 		switch (menu) {
 		case 1:
 			RoomsController.selectAll();
-			printSelectmenu(userId);
+			printSelectmenu(user);
 		case 2:
-			printKeywordSelectmenu(userId);
+			printKeywordSelectmenu(user);
 			break;
 		case 3:
-			printUserMenu(userId);
+			printUserMenu(user);
 			break;
 		default:
 			System.out.println("1에서 3사이의 숫자를 입력해주세요.");
 		}
 	}
 	//결과내 검색
-	private static void printSearchWthRes(String userId) {
-		System.out.println("\n-----" + userId + " 로그인 중 -----");
+	private static void printSearchWthRes(User user) {
+		System.out.println("\n-----" + user.getId() + " 로그인 중 -----");
 		System.out.println("------------결과 내 검색-------------");
 		System.out.println("┌────────────────────────┐");
 		System.out.println("     1. 방 선택								");
@@ -189,55 +189,55 @@ public class MenuView {
 		int menu = Integer.parseInt(sc.nextLine());
 		switch (menu) {
 		case 1:
-			selectRoom(userId);
+			selectRoom(user);
 			
-			printSearchWthRes(userId);
+			printSearchWthRes(user);
 			break;
 		case 2:
 			printResDate(true);
 			
-			printSearchWthRes(userId);
+			printSearchWthRes(user);
 			break;
 		case 3:
 			printRoomSize(true);
 			
-			printSearchWthRes(userId);
+			printSearchWthRes(user);
 			break;
 		case 4:
 			printRoomTye(true);
-			printSearchWthRes(userId);
+			printSearchWthRes(user);
 			break;
 		case 5:
 			printRoomPrice(true);
-			printSearchWthRes(userId);
+			printSearchWthRes(user);
 			break;
 		case 6:
 			printFloor(true);
-			printSearchWthRes(userId);
+			printSearchWthRes(user);
 			break;
 		case 7:
 			printNumberPeople(true);
-			printSearchWthRes(userId);
+			printSearchWthRes(user);
 			break;
 		case 8:
 			printNumberBeds(true);
-			printSearchWthRes(userId);
+			printSearchWthRes(user);
 			break;
 		case 9:
 			printBreakfastStat(true);
-			printSearchWthRes(userId);
+			printSearchWthRes(user);
 			break;
 		case 10:
 			// 뒤로가기
-			printSelectmenu(userId);
+			printSelectmenu(user);
 			break;
 		default:
 			System.out.println("1에서 10사이의 숫자를 입력해주세요.");
 		} // switch문 끝.
 	}
 	//방선택
-	private static void selectRoom(String userId) {
-		System.out.println("\n-----" + userId + " 로그인 중 -----");
+	private static void selectRoom(User user) {
+		System.out.println("\n-----" + user.getId() + " 로그인 중 -----");
 		System.out.print("방번호 : ");
 		int roomNo = Integer.parseInt(sc.nextLine());
 		RoomsController.searchByRoomNo(roomNo);
@@ -259,15 +259,15 @@ public class MenuView {
 		
 		case 3:
 			// 뒤로가기
-			printKeywordSelectmenu(userId);
+			printKeywordSelectmenu(user);
 			break;
 		default:
 			System.out.println("1에서 3사이의 숫자를 입력해주세요.");
 		} // switch문 끝.
 	}
 	// 부분 검색
-	private static void printKeywordSelectmenu(String userId) {
-		System.out.println("\n-----" + userId + " 로그인 중 -----");
+	private static void printKeywordSelectmenu(User user) {
+		System.out.println("\n-----" + user.getId() + " 로그인 중 -----");
 		System.out.println("┌────────────────────────┐");
 		System.out.println("  	 1. 예약 날짜로 검색			       	");
 		System.out.println("  	 2. 방크기로 검색						");
@@ -287,40 +287,40 @@ public class MenuView {
 		case 1:
 			printResDate(false);
 			
-			printSearchWthRes(userId);
+			printSearchWthRes(user);
 			break;
 		case 2:
 			printRoomSize(false);
 			
-			printSearchWthRes(userId);
+			printSearchWthRes(user);
 			break;
 		case 3:
 			printRoomTye(false);
-			printSearchWthRes(userId);
+			printSearchWthRes(user);
 			break;
 		case 4:
 			printRoomPrice(false);
-			printSearchWthRes(userId);
+			printSearchWthRes(user);
 			break;
 		case 5:
 			printFloor(false);
-			printSearchWthRes(userId);
+			printSearchWthRes(user);
 			break;
 		case 6:
 			printNumberPeople(false);
-			printSearchWthRes(userId);
+			printSearchWthRes(user);
 			break;
 		case 7:
 			printNumberBeds(false);
-			printSearchWthRes(userId);
+			printSearchWthRes(user);
 			break;
 		case 8:
 			printBreakfastStat(false);
-			printSearchWthRes(userId);
+			printSearchWthRes(user);
 			break;
 		case 9:
 			// 뒤로가기
-			printSelectmenu(userId);
+			printSelectmenu(user);
 			break;
 		default:
 			System.out.println("1에서 9사이의 숫자를 입력해주세요.");
@@ -412,9 +412,9 @@ public class MenuView {
 	// 8. 
 	
 //////////////////////////////// => 마이 페이지
-	private static void printMyPage(String userId) {
+	private static void printMyPage(User user) {
 		while (true) {
-			System.out.println("\n-----" + userId + " 로그인 중 -----");
+			System.out.println("\n-----" + user.getId() + " 로그인 중 -----");
 			System.out.println("┌──────────────┐");
 			System.out.println("  	 1. 관심리스트								");
 			System.out.println("  	 2. 예약리스트							");
@@ -427,26 +427,26 @@ public class MenuView {
 			switch (menu) {
 			case 1:
 				// 관심리스트
-				WishController.selectWishByUserId(userId);
-				printWishList(userId);
+				WishController.selectWishByUserId(user.getId());
+				printWishList(user);
 				break;
 			case 2:
 				// 예약리스트
-				printRsrvtList(userId);
-				printMyPage(userId);
+				printRsrvtList(user);
+				printMyPage(user);
 				break;
 			case 3:
 				// 결제리스트
-				PayController.selectPayByUserId(userId);
-				printMyPage(userId);
+				PayController.selectPayByUserId(user.getId());
+				printMyPage(user);
 				break;
 			case 4:
 				// 리뷰관리
-				printReview(userId);
-				printMyPage(userId);
+				printReview(user);
+				printMyPage(user);
 			case 5:
 				// 뒤로가기
-				printUserMenu(userId);
+				printUserMenu(user);
 				break;
 			default:
 				System.out.println("1에서 5사이의 숫자를 입력해주세요.");
@@ -455,9 +455,9 @@ public class MenuView {
 	}
 	
 	// 관심리스트
-	public static void printWishList(String userId) {
+	public static void printWishList(User user) {
 		while (true) {
-			System.out.println("\n-----" + userId + " 로그인 중 -----");
+			System.out.println("\n-----" + user.getId() + " 로그인 중 -----");
 			System.out.println("┌──────────────┐");
 			System.out.println("  	 1. 예약								");
 			System.out.println("  	 2. 관심취소							");
@@ -468,13 +468,13 @@ public class MenuView {
 			switch (menu) {
 			case 1:
 				// 예약
-				WishController.selectWishByUserId(userId);
+				WishController.selectWishByUserId(user.getId());
 				break;
 			case 2:
 				// 관심취소
 			case 3:
 				// 뒤로가기
-				printMyPage(userId);
+				printMyPage(user);
 				break;
 			default:
 				System.out.println("1에서 3사이의 숫자를 입력해주세요.");
@@ -483,9 +483,9 @@ public class MenuView {
 	}
 
 	// 예약리스트
-	public static void printRsrvtList(String userId) {
+	public static void printRsrvtList(User user) {
 		while (true) {
-			System.out.println("\n-----" + userId + " 로그인 중 -----");
+			System.out.println("\n-----" + user.getId() + " 로그인 중 -----");
 			System.out.println("┌──────────────┐");
 			System.out.println("  	 1. 결제								");
 			System.out.println("  	 2. 예약취소							");
@@ -496,13 +496,13 @@ public class MenuView {
 			switch (menu) {
 			case 1:
 				// 결제
-				WishController.selectWishByUserId(userId);
+				WishController.selectWishByUserId(user.getId());
 				break;
 			case 2:
 				// 예약취소
 			case 3:
 				// 뒤로가기
-				printMyPage(userId);
+				printMyPage(user);
 				break;
 			default:
 				System.out.println("1에서 3사이의 숫자를 입력해주세요.");
@@ -511,9 +511,9 @@ public class MenuView {
 	}
 	
 	// 리뷰관리
-	public static void printReview(String userId) {
+	public static void printReview(User user) {
 		while (true) {
-			System.out.println("\n-----" + userId + " 로그인 중 -----");
+			System.out.println("\n-----" + user.getId() + " 로그인 중 -----");
 			System.out.println("┌──────────────┐");
 			System.out.println("  	 1. 리뷰등록								");
 			System.out.println("  	 2. 리뷰수정							");
@@ -525,17 +525,17 @@ public class MenuView {
 			switch (menu) {
 			case 1:
 				// 리뷰등록
-				WishController.selectWishByUserId(userId);
+				WishController.selectWishByUserId(user.getId());
 				break;
 			case 2:
 				// 리뷰수정
 			case 3:
 				// 리뷰삭제
-				printMyPage(userId);
+//				printMyPage(userId);
 				break;
 			case 4:
 				// 뒤로가기
-				printMyPage(userId);
+//				printMyPage(userId);
 				break;
 			default:
 				System.out.println("1에서 4사이의 숫자를 입력해주세요.");
