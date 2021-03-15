@@ -479,8 +479,7 @@ public class MenuView {
 				printInputWishDelete();
 			case 3:
 				// 뒤로가기
-				printMyPage(user);
-				break;
+				return;
 			default:
 				System.out.println("1에서 3사이의 숫자를 입력해주세요.");
 			}
