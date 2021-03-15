@@ -13,6 +13,7 @@ import kosta.mvc.controller.WishController;
 import kosta.mvc.model.dto.Pay;
 import kosta.mvc.model.dto.Reservation;
 import kosta.mvc.model.dto.User;
+import kosta.mvc.model.dto.Wish;
 import kosta.mvc.session.Session;
 import kosta.mvc.session.SessionSet;
 
@@ -428,6 +429,7 @@ public class MenuView {
 				break;
 			case 2:
 				// 예약리스트
+				RsrvtController.selectRsrvtByUserId(user.getId());
 				printRsrvtList(user);
 				printMyPage(user);
 				break;
@@ -463,10 +465,11 @@ public class MenuView {
 			switch (menu) {
 			case 1:
 				// 예약
-				WishController.selectWishByUserId(user.getId());
+				printInputReser();
 				break;
 			case 2:
 				// 관심취소
+				printInputWishDelete();
 			case 3:
 				// 뒤로가기
 				printMyPage(user);
@@ -563,7 +566,6 @@ public class MenuView {
 		
 		RoomsController.searchByRoomNo(roomNo);
 		RsrvtController.insertReservation(reser, roomNo);
-		printInputReser();
 		
 	}//end of printInputReser()
 	
@@ -579,6 +581,18 @@ public class MenuView {
 		Pay pay = new Pay(0, null, reserNo);
 		
 		PayController.insertPay(pay);
+		
+	}//end of printInputPay()
+	
+	/**
+	 * 관심취소
+	 * */
+	public static void printInputWishDelete() {
+		
+		System.out.print("예약번호 : ");
+		int wishNo = Integer.parseInt(sc.nextLine());
+		
+		WishController.wishDelete(wishNo);
 		
 	}//end of printInputPay()
 	
