@@ -10,10 +10,12 @@ import kosta.mvc.model.dao.RsrvtDAO;
 import kosta.mvc.model.dao.RsrvtDAOImpl;
 import kosta.mvc.model.dto.Reservation;
 import kosta.mvc.model.dto.Room;
+import kosta.mvc.view.MenuView;
 
 public class TestChoi {
 
 	public static void main(String[] args) {
+		MenuView.menu();
 		// TODO Auto-generated method stub
 		/*
 		List<Room> list=null;
@@ -50,7 +52,7 @@ public class TestChoi {
 		System.out.println("결과내 검색");
 		System.out.println("침대수로 찾기");
 		rc.searchByNumberBeds(5,6,true);
-		*/
+		
 		System.out.println("예약날짜로 찾기");
 		String checkinDate="2021/01/05";
 		String checkoutDate="2021/01/11";
@@ -66,6 +68,8 @@ public class TestChoi {
 		}catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
+		*/
+		
 	//	rc.searchByResDate("2021/01/05", "2021/01/11", false);
 		/*
 		try {
