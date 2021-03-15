@@ -3,6 +3,7 @@ package kosta.mvc.controller;
 import java.sql.SQLException;
 import java.util.List;
 
+import kosta.mvc.model.dto.User;
 import kosta.mvc.model.dto.Wish;
 import kosta.mvc.model.service.WishService;
 import kosta.mvc.model.service.WishServiceImpl;
@@ -15,6 +16,15 @@ public class WishController{
 	public static void insertWish(Wish wish)  {
 		try {
 			wishService.insertWish(wish);
+			SuccessView.messagePrint("관심리스트에 등록되었습니다.");
+		} catch (SQLException e) {
+			FailView.errorMessage(e.getMessage());
+		}
+		
+	}
+	public static void insertWish(User user, int roomNo)  {
+		try {
+			wishService.insertWish(new Wish(0, user.getUserNo(), roomNo, null));
 			SuccessView.messagePrint("관심리스트에 등록되었습니다.");
 		} catch (SQLException e) {
 			FailView.errorMessage(e.getMessage());

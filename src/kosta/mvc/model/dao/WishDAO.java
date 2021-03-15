@@ -14,7 +14,7 @@ public interface WishDAO {
 	   * @return int 
 	   * */
 		int wishInsert(Wish wish)throws SQLException;
-		
+
 		/**
 		   * 관심리스트 삭제하기
 		   * : WISH_LIST 테이블에서 delete

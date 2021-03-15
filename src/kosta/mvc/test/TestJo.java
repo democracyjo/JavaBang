@@ -232,7 +232,7 @@ public class TestJo {
 			System.out.println("1에서 10사이의 숫자를 입력해주세요.");
 		} // switch문 끝.
 	}
-	//방선택
+	//방선택★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
 	private static void selectRoom(User user) {
 		System.out.println("\n-----" + user.getId() + " 로그인 중 -----");
 		System.out.print("방번호 : ");
@@ -249,9 +249,11 @@ public class TestJo {
 		switch (menu) {
 		case 1:
 			//예약
+			printInputReser();
 			break;
 		case 2:
 			//찜하기
+			WishController.insertWish();
 			break;
 		
 		case 3:

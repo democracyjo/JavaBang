@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import kosta.mvc.model.dto.User;
 import kosta.mvc.model.dto.Wish;
 import kosta.mvc.util.DbUtil;
 
@@ -134,5 +135,4 @@ public class WishDAOImpl implements WishDAO {
 		return wishList;
 		
 	}
-
 }
