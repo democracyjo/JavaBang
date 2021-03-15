@@ -494,7 +494,7 @@ public class MenuView {
 			switch (menu) {
 			case 1:
 				// 결제
-				WishController.selectWishByUserId(user.getId());
+				printInputPay();
 				break;
 			case 2:
 				// 예약취소
@@ -594,6 +594,18 @@ public class MenuView {
 		
 		WishController.wishDelete(wishNo);
 		
-	}//end of printInputPay()
+	}//end of method
+	
+	/**
+	 * 예약취소
+	 * */
+	public static void printInputReserDelete() {
+		
+		System.out.print("예약번호 : ");
+		int reserNo = Integer.parseInt(sc.nextLine());
+		
+		RsrvtController.reservationDelete(reserNo);
+		
+	}//end of method
 	
 } // MenuView 클래스 끝.

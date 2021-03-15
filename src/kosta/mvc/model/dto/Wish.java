@@ -46,10 +46,10 @@ public class Wish {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append(wishNo+" | ");
-		builder.append(userNo+" | ");
-		builder.append(roomNo+" | ");
-		builder.append(wishDate);
+		builder.append("관심번호 : "+wishNo+" | ");
+		builder.append("UserNo : "+userNo+" | ");
+		builder.append("방번호 : "+roomNo+" | ");
+		builder.append("등록일 : "+wishDate);
 		return builder.toString();
 	}
 	

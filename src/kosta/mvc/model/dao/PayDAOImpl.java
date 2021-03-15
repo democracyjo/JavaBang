@@ -55,9 +55,9 @@ public class PayDAOImpl implements PayDAO {
 			rs= ps.executeQuery();
 			
 			while(rs.next()) {
-				 int payNo = rs.getInt(1);
-				 String payDate= rs.getString(2);
-				 int reserNo  = rs.getInt(3);
+				 int payNo = rs.getInt(3);
+				 String payDate= rs.getString(4);
+				 int reserNo  = rs.getInt(2);
 				
 				pay = new Pay(payNo, payDate, reserNo);
 				payList.add(pay);
