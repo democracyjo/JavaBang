@@ -1,15 +1,12 @@
 package kosta.mvc.test;
 
-import java.sql.SQLException;
 import java.util.Scanner;
 
-import com.sun.tools.javac.util.List;
 
 import kosta.mvc.controller.ReviewController;
 import kosta.mvc.model.dao.ReviewDAO;
 import kosta.mvc.model.dao.ReviewDAOImpl;
 import kosta.mvc.model.dto.Review;
-import kosta.mvc.view.FailView;
 
 
 public class TestCha {
@@ -65,18 +62,9 @@ public class TestCha {
 		Review review = new Review(0, userNo, roomNo, score, reviewContent, null);
 		
 		ReviewController.insertReview(review);
-		
-//		try {
-//			Review review = reviewDAO.selectReviewByUserNo(userNo);
-//			ReviewController.insertReview(review);
-//		}catch(SQLException e) {
-//			FailView.errorMessage(e.getMessage());
-//		}finally {
-//			writeReview();
-//		}
 	}
-	
-	private static void modifyReview() {
+
+		private static void modifyReview() {
 				
 		System.out.println("수정할 리뷰 번호 : ");
 		int reviewNo = Integer.parseInt(sc.nextLine());
