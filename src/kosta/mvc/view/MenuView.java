@@ -158,8 +158,7 @@ public class MenuView {
 			printKeywordSelectmenu(user);
 			break;
 		case 3:
-			printUserMenu(user);
-			break;
+			return;
 		default:
 			System.out.println("1에서 3사이의 숫자를 입력해주세요.");
 		}
@@ -442,8 +441,7 @@ public class MenuView {
 				printMyPage(user);
 			case 5:
 				// 뒤로가기
-				printUserMenu(user);
-				break;
+				return;
 			default:
 				System.out.println("1에서 5사이의 숫자를 입력해주세요.");
 			}

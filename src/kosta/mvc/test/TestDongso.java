@@ -107,7 +107,6 @@ public class TestDongso {
 			case 3:
 				// 로그아웃
 				logout(user);
-				printMenu();
 				return;
 			case 4:
 				// 회원탈퇴
@@ -133,7 +132,7 @@ public class TestDongso {
 		System.out.print("비밀번호 : ");
 		String pw = sc.nextLine();
 
-		User dto = new User(user.getId(), pw);
+		User dto = new User(user.getId(), user.getPw());
 
 		UserController.deleteUser(dto);
 	}
@@ -157,8 +156,8 @@ public class TestDongso {
 			printKeywordSelectmenu(user);
 			break;
 		case 3:
-			printUserMenu(user);
-			break;
+			return;
+//			break;
 		default:
 			System.out.println("1에서 3사이의 숫자를 입력해주세요.");
 		}
@@ -327,8 +326,7 @@ public class TestDongso {
 				printMyPage(user);
 			case 5:
 				// 뒤로가기
-				printUserMenu(user);
-				break;
+				return;
 			default:
 				System.out.println("1에서 5사이의 숫자를 입력해주세요.");
 			}
