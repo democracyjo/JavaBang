@@ -13,10 +13,11 @@ import kosta.mvc.model.dto.Room;
 
 public class RsrvtServiceImpl implements RsrvtService {
 	private RsrvtDAO reserDAO  = new RsrvtDAOImpl();
-	private RoomsDAO roomDAO = new RoomsDAOImpl();
+	private RoomsDAO roomDAO= new RoomsDAOImpl();
 	@Override
-	public void insertReservation(Reservation rsrvt, Room room) throws SQLException, ParseException {
-		List<Reservation> reserList = reserDAO.selectRsrvtByRoomNo(room.getRoomNo());
+	public void insertReservation(Reservation rsrvt, int roomNo) throws SQLException, ParseException {
+		List<Reservation> reserList = reserDAO.selectRsrvtByRoomNo(roomNo);
+		Room room = roomDAO.searchByRoomNo(roomNo);
 		boolean state = RsrvtDAOImpl.isDuplicatedReser(reserList, rsrvt);
 		if(state) {
 			throw new ParseException("이미 예약된 날짜입니다. 다시 시도해 주세요", 0);

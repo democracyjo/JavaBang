@@ -565,16 +565,10 @@ public class MenuView {
 		
 		Reservation reser = new Reservation(0, null, userNo, checkinDate, checkoutDate, totalpeopleNum, 0, roomNo);
 		
+		RoomsController.searchByRoomNo(roomNo);
+		RsrvtController.insertReservation(reser, roomNo);
+		printInputReser();
 		
-		try {
-			RoomsDAO roomDAO = new RoomsDAOImpl();
-			Room room = roomDAO.searchByRoomNo(roomNo);
-			RsrvtController.insertReservation(reser, room);
-		} catch (SQLException e) {
-			FailView.errorMessage(e.getMessage());
-		}finally {
-			printInputReser();
-		}
 	}//end of printInputReser()
 	
 	

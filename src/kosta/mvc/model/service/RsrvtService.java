@@ -12,7 +12,7 @@ public interface RsrvtService {
 	    * 예약 리스트에 추가하기
 	 * @throws ParseException 
 	    * */
-		 void insertReservation(Reservation rsrvt, Room room) throws SQLException, ParseException;
+		 void insertReservation(Reservation rsrvt, int roomNo) throws SQLException, ParseException;
 		 
 		 
 		 /**
