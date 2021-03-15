@@ -18,7 +18,7 @@ public interface ReviewController {
 	public static void selectReviewByRoomNo(int roomNo) {
 		try {
 			List<Review> review = reviewService.selectReviewByRoomNo(roomNo);
-			SuccessView.selectReviewByRoomNoPrint(review);
+			SuccessView.selectReviewPrint(review);
 		}catch(SQLException e) {
 			FailView.errorMessage(e.getMessage());
 		}
@@ -30,7 +30,7 @@ public interface ReviewController {
 	public static void selectReviewByUserNo(int userNo) {
 		try {
 			List<Review> review = reviewService.selectReviewByUserNo(userNo);
-			SuccessView.selectReviewByUserNoPrint(review);
+			SuccessView.selectReviewPrint(review);
 		}catch(SQLException e) {
 			FailView.errorMessage(e.getMessage());
 		}
@@ -55,7 +55,7 @@ public interface ReviewController {
 		try {
 			reviewService.updateReview(review);
 			SuccessView.messagePrint("리뷰가 수정되었습니다.");
-		}catch(SQLException e) {
+		}catch(Exception e) {
 			FailView.errorMessage(e.getMessage());
 		}
 	}
@@ -63,11 +63,11 @@ public interface ReviewController {
 	/**
 	 * 리뷰 삭제하기
 	 */
-	public static void deleteReview(int userNo) {
+	public static void deleteReview(int reviewNo) {
 		try {
-			reviewService.deleteReview(userNo);
+			reviewService.deleteReview(reviewNo);
 			SuccessView.messagePrint("리뷰가 삭제되었습니다.");
-		}catch(SQLException e) {
+		}catch(Exception e) {
 			FailView.errorMessage(e.getMessage());
 		}
 	}

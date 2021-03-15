@@ -6,7 +6,7 @@ import kosta.mvc.model.dto.User;
 
 public class TestDongso {
 	static Scanner sc = new Scanner(System.in);
-/*
+
 	public static void main(String[] args) {
 		while (true) {
 			printMenu();
@@ -14,7 +14,7 @@ public class TestDongso {
 			switch (menu) {
 			case 1:
 				// ·Î±×ÀÎ
-				printLogin();
+				//printLogin();
 				break;
 
 			case 2:
@@ -59,7 +59,7 @@ public class TestDongso {
 			
 		} // switch¹® ³¡.
 	}
-*/	
+	
 
 	// È¸¿ø°¡ÀÔ ºä
 	public static void printJoin() {
@@ -84,7 +84,7 @@ public class TestDongso {
 		UserController.inputUser(dto);
 	} // printJoin() ¸Þ¼Òµå ³¡.
 	
-	/*
+	
 	// È¸¿øÅ»Åð ºä
 	public static void printDelete(String userId) {
 		System.out.println("************È¸¿øÅ»Åð************");
@@ -96,5 +96,5 @@ public class TestDongso {
 		
 		UserController.deleteUser(dto);
 	} // printDelete() ¸Þ¼Òµå ³¡.
-	*/
+	
 }

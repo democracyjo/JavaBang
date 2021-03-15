@@ -129,6 +129,7 @@ public class ReviewDAOImpl implements ReviewDAO{
 			ps.setInt(2, review.getReviewNo());
 		
 			result=ps.executeUpdate();
+		
 		}finally {
 			DbUtil.close(con, ps);
 		}
@@ -141,7 +142,7 @@ public class ReviewDAOImpl implements ReviewDAO{
 	 * 리뷰 삭제하기
 	 */
 	@Override
-	public int deleteReview(int userNo) throws SQLException {
+	public int deleteReview(int reviewNo) throws SQLException {
 		Connection con=null;
 		PreparedStatement ps=null;
 		int result=0;
@@ -149,7 +150,7 @@ public class ReviewDAOImpl implements ReviewDAO{
 		try {
 			con=DbUtil.getConnection();
 			ps=con.prepareStatement(sql);
-			ps.setInt(1, userNo);
+			ps.setInt(1, reviewNo);
 			
 			result = ps.executeUpdate();
 			
