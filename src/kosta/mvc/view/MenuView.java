@@ -253,7 +253,7 @@ public class MenuView {
 		switch (menu) {
 		case 1:
 			//예약
-			printInputReser();
+			printInputReser(user);
 			break;
 		case 2:
 			// 찜하기
@@ -476,7 +476,7 @@ public class MenuView {
 			switch (menu) {
 			case 1:
 				// 예약
-				printInputReser();
+				printInputReser(user);
 				break;
 			case 2:
 				// 관심취소
@@ -588,9 +588,9 @@ public class MenuView {
 	 * 예약
 	 * reservation.insert=insert into RESERVATION_LIST values(RESERVATION_LIST_NO_SEQ.NEXTVAL, SYSDATE, ?, ?, ?, ?, ?, ? )
 	 * */
-	public static void printInputReser() {
-		System.out.print("회원번호 : ");
-		int userNo = Integer.parseInt(sc.nextLine()); //Reservation
+	public static void printInputReser(User user) {
+		
+		int userNo = user.getUserNo(); //Reservation
 		
 		System.out.print("체크인 날짜 : ");
 		String checkinDate = sc.nextLine();
