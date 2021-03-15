@@ -3,9 +3,10 @@ package kosta.mvc.test;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
 import kosta.mvc.controller.PayController;
+import kosta.mvc.controller.ReviewController;
 import kosta.mvc.controller.RoomsController;
+import kosta.mvc.controller.RsrvtController;
 import kosta.mvc.controller.UserController;
 import kosta.mvc.controller.WishController;
 import kosta.mvc.model.dto.User;
@@ -18,6 +19,9 @@ public class TestDongso {
 
 	public static void menu() {
 		while (true) {
+			SessionSet ss = SessionSet.getInstance();
+			System.out.println(ss.getSet());
+			
 			MenuView.printMenu();
 			int menu = Integer.parseInt(sc.nextLine());
 			switch (menu) {
@@ -85,6 +89,8 @@ public class TestDongso {
 	// 로그인시 메뉴
 	public static void printUserMenu(String userId) {
 		while (true) {
+			SessionSet ss = SessionSet.getInstance();
+			System.out.println(ss.getSet() + " 확인");
 			System.out.println("\n-----" + userId + " 로그인 중 -----");
 			System.out.println("┌──────────────┐");
 			System.out.println("  	 1. 검색								");
@@ -138,6 +144,8 @@ public class TestDongso {
 
 //////////////////////////////// => 검색 페이지
 	private static void printSelectmenu(String userId) {
+		SessionSet ss = SessionSet.getInstance();
+		System.out.println(ss.getSet());
 		System.out.println("\n-----" + userId + " 로그인 중 -----");
 		System.out.println("┌──────────────┐");
 		System.out.println("  	 1. 전체검색								");
@@ -164,6 +172,8 @@ public class TestDongso {
 
 	// 부분검색
 	private static void printKeywordSelectmenu(String userId) {
+		SessionSet ss = SessionSet.getInstance();
+		System.out.println(ss.getSet());
 		System.out.println("\n-----" + userId + " 로그인 중 -----");
 		System.out.println("┌──────────────┐");
 		System.out.println("  	 1. 방크기로 검색						");
@@ -294,6 +304,8 @@ public class TestDongso {
 //////////////////////////////// => 마이 페이지
 	private static void printMyPage(String userId) {
 		while (true) {
+			SessionSet ss = SessionSet.getInstance();
+			System.out.println(ss.getSet());
 			System.out.println("\n-----" + userId + " 로그인 중 -----");
 			System.out.println("┌──────────────┐");
 			System.out.println("  	 1. 관심리스트								");
@@ -312,6 +324,7 @@ public class TestDongso {
 				break;
 			case 2:
 				// 예약리스트
+				RsrvtController.selectRsrvtByUserId(userId);
 				printRsrvtList(userId);
 				printMyPage(userId);
 				break;
@@ -322,6 +335,7 @@ public class TestDongso {
 				break;
 			case 4:
 				// 리뷰관리
+//				ReviewController.selectReviewByUserNo(userNo);
 				printReview(userId);
 				printMyPage(userId);
 			case 5:
@@ -337,6 +351,8 @@ public class TestDongso {
 	// 관심리스트
 	public static void printWishList(String userId) {
 		while (true) {
+			SessionSet ss = SessionSet.getInstance();
+			System.out.println(ss.getSet());
 			System.out.println("\n-----" + userId + " 로그인 중 -----");
 			System.out.println("┌──────────────┐");
 			System.out.println("  	 1. 예약								");
@@ -365,6 +381,8 @@ public class TestDongso {
 	// 예약리스트
 	public static void printRsrvtList(String userId) {
 		while (true) {
+			SessionSet ss = SessionSet.getInstance();
+			System.out.println(ss.getSet());
 			System.out.println("\n-----" + userId + " 로그인 중 -----");
 			System.out.println("┌──────────────┐");
 			System.out.println("  	 1. 결제								");
@@ -393,6 +411,8 @@ public class TestDongso {
 	// 리뷰관리
 	public static void printReview(String userId) {
 		while (true) {
+			SessionSet ss = SessionSet.getInstance();
+			System.out.println(ss.getSet());
 			System.out.println("\n-----" + userId + " 로그인 중 -----");
 			System.out.println("┌──────────────┐");
 			System.out.println("  	 1. 리뷰등록								");
@@ -422,5 +442,4 @@ public class TestDongso {
 			}
 		}
 	}
-		
 }

@@ -23,7 +23,6 @@ public class UserController {
 			FailView.errorMessage(e.getMessage());
 		} catch (DuplicatedException e) {
 			FailView.errorMessage(e.getMessage());
-			TestDongso.printJoin();
 		}
 	}
 		
@@ -45,7 +44,7 @@ public class UserController {
 	 */
 	public static void login(String userId, String userPwd) {	
 		try {
-			userService.login(userId, userPwd);
+			User user =  userService.login(userId, userPwd);
 			MenuView.printUserMenu(userId);
 			//MenuView.menu();
 		}catch (Exception e) {
