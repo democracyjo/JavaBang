@@ -28,7 +28,7 @@ public class RoomsController {
 			System.out.println(e.getMessage());
 		}
 	}
-
+	//방번호로 검색
 	public static void searchByRoomNo(int roomNo) {
 		try {
 			Room rm = roomService.searchByRoomNo(roomNo);
