@@ -102,7 +102,6 @@ public class ReviewDAOImpl implements ReviewDAO{
 			ps.setInt(2, review.getRoomNo());
 			ps.setInt(3, review.getScore());
 			ps.setString(4, review.getReviewContent());
-			ps.setString(5, review.getReviewDate());
 			
 			result = ps.executeUpdate();
 			

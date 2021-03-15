@@ -60,8 +60,6 @@ public class TestCha {
 		System.out.print("내용 : ");
 		String reviewContent = sc.nextLine();
 		
-		System.out.print("등록일 : ");
-		String reviewDate ;
 		
 		
 		Review review = new Review(0, userNo, roomNo, score, reviewContent, null);
