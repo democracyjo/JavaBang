@@ -125,6 +125,9 @@ public class Room {
 		this.breakfastStatus = breakfastStatus;
 	}
 	
+	public String getRoomTypeSt() {
+		return roomTypeSt;
+	}
 
 
 	@Override

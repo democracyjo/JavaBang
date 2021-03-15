@@ -160,41 +160,16 @@ public class RoomsController {
 			System.out.println(e.getMessage());
 		}
 	}
-	/*
-	public static void selectAllWthRsl() {
-
+	
+	public static void printRoomTypeList(boolean searchWthRsl) {
+		try {
+			List<Room> list = roomService.selectAll();
+			if(searchWthRsl) {
+				list.retainAll(roomList);
+			}
+			SuccessView.printRoomTypeList(list);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
-
-	public static void searchByRoomNoWthRsl(int roomNo) {
-
-	}
-
-	public static void searchByRoomTypeWthRsl(List<String> roomType) {
-
-	}
-
-	public static void searchByRoomSizeWthRsl(int minSize, int maxSize) {
-
-	}
-
-	public static void searchByRoomPriceWthRsl(int minPrice, int maxPrice) {
-
-	}
-
-	public static void searchByFloorWthRsl(int floor) {
-
-	}
-
-	public static void searchByNumberPeopleWthRsl(int minNum, int maxNum) {
-
-	}
-
-	public static void searchByNumberBedsWthRsl(int minNum, int maxNum) {
-
-	}
-
-	public static void searchByBreakfastStatWthRsl(boolean bfStat) {
-
-	}
-	*/
 }
