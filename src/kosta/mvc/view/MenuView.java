@@ -441,17 +441,18 @@ public class MenuView {
 				// 예약리스트
 				RsrvtController.selectRsrvtByUserId(user.getId());
 				printRsrvtList(user);
-				printMyPage(user);
+				
 				break;
 			case 3:
 				// 결제리스트
 				PayController.selectPayByUserId(user.getId());
-				printMyPage(user);
+				
 				break;
 			case 4:
 				// 리뷰관리
 				printReview(user);
-				printMyPage(user);
+				
+				break;
 			case 5:
 				// 뒤로가기
 				return;
@@ -480,6 +481,7 @@ public class MenuView {
 			case 2:
 				// 관심취소
 				printInputWishDelete();
+				break;
 			case 3:
 				// 뒤로가기
 				
@@ -509,6 +511,7 @@ public class MenuView {
 			case 2:
 				// 예약취소
 				printInputReserDelete(user);
+				break;
 			case 3:
 				// 뒤로가기
 				return;
