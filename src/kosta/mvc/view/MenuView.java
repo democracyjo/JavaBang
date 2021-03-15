@@ -97,7 +97,7 @@ public class MenuView {
 			switch (menu) {
 			case 1:
 				// 검색페이지
-				printKeywordSelectmenu(userId);
+				printSelectmenu(userId);
 				break;
 			case 2:
 				// 마이페이지
@@ -187,7 +187,7 @@ public class MenuView {
 			printSearchWthRes(userId);
 			break;
 		case 2:
-			printRoomSize(true);
+			printResDate(true);
 			
 			printSearchWthRes(userId);
 			break;
@@ -225,7 +225,7 @@ public class MenuView {
 			printSelectmenu(userId);
 			break;
 		default:
-			System.out.println("1에서 9사이의 숫자를 입력해주세요.");
+			System.out.println("1에서 10사이의 숫자를 입력해주세요.");
 		} // switch문 끝.
 	}
 	//방선택
@@ -278,7 +278,7 @@ public class MenuView {
 		int menu = Integer.parseInt(sc.nextLine());
 		switch (menu) {
 		case 1:
-			printRoomSize(false);
+			printResDate(false);
 			
 			printSearchWthRes(userId);
 			break;
