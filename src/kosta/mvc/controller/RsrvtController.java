@@ -4,20 +4,18 @@ import java.sql.SQLException;
 import java.util.List;
 
 import kosta.mvc.model.dto.Reservation;
-import kosta.mvc.model.dto.Room;
 import kosta.mvc.model.service.RsrvtService;
 import kosta.mvc.model.service.RsrvtServiceImpl;
 import kosta.mvc.view.FailView;
-import kosta.mvc.view.MenuView;
 import kosta.mvc.view.SuccessView;
 
 public class RsrvtController{
 	private static RsrvtService reserService = new RsrvtServiceImpl();
 	
 
-	public static void insertReservation(Reservation rsrvt,  Room room) {
+	public static void insertReservation(Reservation rsrvt,  int roomNo) {
 		try {
-			reserService.insertReservation(rsrvt, room);
+			reserService.insertReservation(rsrvt, roomNo);
 			SuccessView.messagePrint("예약되었습니다.");
 		} catch (Exception e) {
 			FailView.errorMessage(e.getMessage());
