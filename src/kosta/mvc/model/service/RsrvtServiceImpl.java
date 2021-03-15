@@ -19,7 +19,7 @@ public class RsrvtServiceImpl implements RsrvtService {
 		List<Reservation> reserList = reserDAO.selectRsrvtByRoomNo(room.getRoomNo());
 		boolean state = RsrvtDAOImpl.isDuplicatedReser(reserList, rsrvt);
 		if(state) {
-			throw new ParseException(null, 0);
+			throw new ParseException("이미 예약된 날짜입니다. 다시 시도해 주세요", 0);
 		}
 
 		int res = reserDAO.reservationInsert(rsrvt, room);

@@ -1,14 +1,13 @@
 package kosta.mvc.test;
 
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.util.List;
 import java.util.Scanner;
 
 import kosta.mvc.controller.PayController;
 import kosta.mvc.controller.RoomsController;
 import kosta.mvc.controller.RsrvtController;
 import kosta.mvc.controller.UserController;
+import kosta.mvc.controller.WishController;
 import kosta.mvc.model.dao.RoomsDAO;
 import kosta.mvc.model.dao.RoomsDAOImpl;
 import kosta.mvc.model.dao.RsrvtDAO;
@@ -176,7 +175,33 @@ public class TestJo {
 			
 		}
 
-
+		// 예약리스트
+		public static void printRsrvtList(String userId) {
+			while (true) {
+				System.out.println("\n-----" + userId + " 로그인 중 -----");
+				System.out.println("┌──────────────┐");
+				System.out.println("  	 1. 결제								");
+				System.out.println("  	 2. 예약취소							");
+				System.out.println("  	 3. 뒤로가기						    ");
+				System.out.println("└──────────────┘");
+				System.out.print("선택>>");
+				int menu = Integer.parseInt(sc.nextLine());
+				switch (menu) {
+				case 1:
+					// 결제
+					WishController.selectWishByUserId(userId);
+					break;
+				case 2:
+					// 예약취소
+				case 3:
+					// 뒤로가기
+					printMyPage(userId);
+					break;
+				default:
+					System.out.println("1에서 3사이의 숫자를 입력해주세요.");
+				}
+			}
+		}
 
 		
 		/**

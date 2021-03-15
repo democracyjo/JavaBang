@@ -28,16 +28,16 @@ public class RoomsController {
 			System.out.println(e.getMessage());
 		}
 	}
-/*  없어도 될듯.
+
 	public static void searchByRoomNo(int roomNo) {
 		try {
-			Room room = roomService.searchByRoomNo();
-			
+			Room rm = roomService.searchByRoomNo(roomNo);
+			SuccessView.printMessage(rm.toString());
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 	}
-*/
+
 	/**
 	 * 방 종류의 리스트를 받아와서 검색. searchWthRsl은 true일때 결과내 검색
 	 * @param roomType

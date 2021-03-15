@@ -1,5 +1,6 @@
 package kosta.mvc.view;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -7,8 +8,14 @@ import java.util.Scanner;
 import kosta.mvc.controller.PayController;
 import kosta.mvc.controller.ReviewController;
 import kosta.mvc.controller.RoomsController;
+import kosta.mvc.controller.RsrvtController;
 import kosta.mvc.controller.UserController;
 import kosta.mvc.controller.WishController;
+import kosta.mvc.model.dao.RoomsDAO;
+import kosta.mvc.model.dao.RoomsDAOImpl;
+import kosta.mvc.model.dto.Pay;
+import kosta.mvc.model.dto.Reservation;
+import kosta.mvc.model.dto.Room;
 import kosta.mvc.model.dto.User;
 import kosta.mvc.session.Session;
 import kosta.mvc.session.SessionSet;
@@ -161,75 +168,188 @@ public class MenuView {
 			System.out.println("1에서 3사이의 숫자를 입력해주세요.");
 		}
 	}
-
-	// 부분검색
-	private static void printKeywordSelectmenu(String userId) {
+	//결과내 검색
+	private static void printSearchWthRes(String userId) {
 		System.out.println("\n-----" + userId + " 로그인 중 -----");
-		System.out.println("┌──────────────┐");
-		System.out.println("  	 1. 방크기로 검색						");
-		System.out.println("  	 2. 방종류로 검색						");
-		System.out.println("  	 3. 방가격으로 검색					   	");
-		System.out.println("  	 4. 방층으로 검색							");
-		System.out.println("  	 5. 숙박인원으로 검색				    ");
-		System.out.println("  	 6. 침대수로 검색					    ");
-		System.out.println("  	 7. 조식여부로 검색			       	");
-		System.out.println("  	 8. 뒤로가기					         	");
-		System.out.println("└──────────────┘");
+		System.out.println("------------결과 내 검색-------------");
+		System.out.println("┌────────────────────────┐");
+		System.out.println("     1. 방 선택								");
+		System.out.println("  	 2. 예약 날짜로 검색			       	");
+		System.out.println("  	 3. 방크기로 검색						");
+		System.out.println("  	 4. 방종류로 검색						");
+		System.out.println("  	 5. 방가격으로 검색					   	");
+		System.out.println("  	 6. 방층으로 검색				    	");
+		System.out.println("  	 7. 숙박인원으로 검색				    ");
+		System.out.println("  	 8. 침대수로 검색					    ");
+		System.out.println("  	 9. 조식여부로 검색			         	");
+		System.out.println("  	 10. 뒤로가기							");
+		System.out.println("└────────────────────────┘");
 		System.out.println("선택>>");
 
 		int menu = Integer.parseInt(sc.nextLine());
 		switch (menu) {
 		case 1:
-			printRoomSize();
+			selectRoom(userId);
 			
-			printKeywordSelectmenu(userId);
+			printSearchWthRes(userId);
 			break;
 		case 2:
-			printRoomTye();
-			printKeywordSelectmenu(userId);
+			printResDate(true);
+			
+			printSearchWthRes(userId);
 			break;
 		case 3:
-			printRoomPrice();
-			printKeywordSelectmenu(userId);
+			printRoomSize(true);
+			
+			printSearchWthRes(userId);
 			break;
 		case 4:
-			printFloor();
-			printKeywordSelectmenu(userId);
+			printRoomTye(true);
+			printSearchWthRes(userId);
 			break;
 		case 5:
-			printNumberPeople();
-			printKeywordSelectmenu(userId);
+			printRoomPrice(true);
+			printSearchWthRes(userId);
 			break;
 		case 6:
-			printNumberBeds();
-			printKeywordSelectmenu(userId);
+			printFloor(true);
+			printSearchWthRes(userId);
 			break;
 		case 7:
-			printBreakfastStat();
-			printKeywordSelectmenu(userId);
+			printNumberPeople(true);
+			printSearchWthRes(userId);
 			break;
 		case 8:
+			printNumberBeds(true);
+			printSearchWthRes(userId);
+			break;
+		case 9:
+			printBreakfastStat(true);
+			printSearchWthRes(userId);
+			break;
+		case 10:
 			// 뒤로가기
 			printSelectmenu(userId);
 			break;
 		default:
-			System.out.println("1에서 8사이의 숫자를 입력해주세요.");
+			System.out.println("1에서 10사이의 숫자를 입력해주세요.");
 		} // switch문 끝.
 	}
-	
-	// 1. 방크기로 검색
-	public static void printRoomSize() {
+	//방선택
+	private static void selectRoom(String userId) {
+		System.out.println("\n-----" + userId + " 로그인 중 -----");
+		System.out.print("방번호 : ");
+		int roomNo = Integer.parseInt(sc.nextLine());
+		RoomsController.searchByRoomNo(roomNo);
+		ReviewController.selectReviewByRoomNo(roomNo);
+		System.out.println("┌────────────────────────┐");
+		System.out.println("  	 1. 예약하기			       	");
+		System.out.println("  	 2. 찜하기			       	");
+		System.out.println("  	 3. 뒤로가기					         	");
+		System.out.println("└────────────────────────┘");
+		
+		int menu = Integer.parseInt(sc.nextLine());
+		switch (menu) {
+		case 1:
+			//예약
+			break;
+		case 2:
+			//찜하기
+			break;
+		
+		case 3:
+			// 뒤로가기
+			printKeywordSelectmenu(userId);
+			break;
+		default:
+			System.out.println("1에서 3사이의 숫자를 입력해주세요.");
+		} // switch문 끝.
+	}
+	// 부분 검색
+	private static void printKeywordSelectmenu(String userId) {
+		System.out.println("\n-----" + userId + " 로그인 중 -----");
+		System.out.println("┌────────────────────────┐");
+		System.out.println("  	 1. 예약 날짜로 검색			       	");
+		System.out.println("  	 2. 방크기로 검색						");
+		System.out.println("  	 3. 방종류로 검색						");
+		System.out.println("  	 4. 방가격으로 검색					   	");
+		System.out.println("  	 5. 방층으로 검색							");
+		System.out.println("  	 6. 숙박인원으로 검색				    ");
+		System.out.println("  	 7. 침대수로 검색					    ");
+		System.out.println("  	 8. 조식여부로 검색			       	");
+		
+		System.out.println("  	 9. 뒤로가기					         	");
+		System.out.println("└────────────────────────┘");
+		System.out.println("선택>>");
+
+		int menu = Integer.parseInt(sc.nextLine());
+		switch (menu) {
+		case 1:
+			printResDate(false);
+			
+			printSearchWthRes(userId);
+			break;
+		case 2:
+			printRoomSize(false);
+			
+			printSearchWthRes(userId);
+			break;
+		case 3:
+			printRoomTye(false);
+			printSearchWthRes(userId);
+			break;
+		case 4:
+			printRoomPrice(false);
+			printSearchWthRes(userId);
+			break;
+		case 5:
+			printFloor(false);
+			printSearchWthRes(userId);
+			break;
+		case 6:
+			printNumberPeople(false);
+			printSearchWthRes(userId);
+			break;
+		case 7:
+			printNumberBeds(false);
+			printSearchWthRes(userId);
+			break;
+		case 8:
+			printBreakfastStat(false);
+			printSearchWthRes(userId);
+			break;
+		case 9:
+			// 뒤로가기
+			printSelectmenu(userId);
+			break;
+		default:
+			System.out.println("1에서 9사이의 숫자를 입력해주세요.");
+		} // switch문 끝.
+	}
+	// 1.예약날짜로 검색
+	public static void printResDate(boolean schWthRes) {
+		System.out.print("체크인 날짜 : ");
+		int min = Integer.parseInt(sc.nextLine());
+		
+		System.out.print("체크아웃 날짜 : ");
+		int max = Integer.parseInt(sc.nextLine());
+		
+		RoomsController.searchByRoomSize(min, max, schWthRes);
+
+	}
+	// 2. 방크기로 검색
+	public static void printRoomSize(boolean schWthRes) {
 		System.out.print("최소방 크기 : ");
 		int min = Integer.parseInt(sc.nextLine());
 		
 		System.out.print("최대방 크기 : ");
 		int max = Integer.parseInt(sc.nextLine());
 		
-		RoomsController.searchByRoomSize(min, max, false);
+		RoomsController.searchByRoomSize(min, max, schWthRes);
 	}
 
-	// 2. 방종류로 검색
-	public static void printRoomTye() {
+	// 3. 방종류로 검색
+	public static void printRoomTye(boolean schWthRes) {
 		List<String> typeList = new ArrayList<>();
 		
 		System.out.print("검색할 방타입 개수 : ");
@@ -238,55 +358,55 @@ public class MenuView {
 			System.out.print(i + "번째 방타입 : ");
 			typeList.add(sc.nextLine());
 		}
-		RoomsController.searchByRoomType(typeList, false);
+		RoomsController.searchByRoomType(typeList, schWthRes);
 	}
 
-	// 3, 방가격으로 검색
-	public static void printRoomPrice() {
+	// 4, 방가격으로 검색
+	public static void printRoomPrice(boolean schWthRes) {
 		System.out.print("방 최소 가격 : ");
 		int minPrice = Integer.parseInt(sc.nextLine());
 		
 		System.out.print("방 최대 가격 : ");
 		int maxPrice = Integer.parseInt(sc.nextLine());
 		
-		RoomsController.searchByRoomPrice(minPrice, maxPrice, false);
+		RoomsController.searchByRoomPrice(minPrice, maxPrice, schWthRes);
 	}
 	
-	// 4. 방층으로 검색
-	public static void printFloor() {
+	// 5. 방층으로 검색
+	public static void printFloor(boolean schWthRes) {
 		System.out.print("방 층수 : ");
 		int floor = Integer.parseInt(sc.nextLine());
 		
-		RoomsController.searchByFloor(floor, false);
+		RoomsController.searchByFloor(floor, schWthRes);
 	}
 
-	// 5. 숙박인원으로 검색
-	public static void printNumberPeople() {
+	// 6. 숙박인원으로 검색
+	public static void printNumberPeople(boolean schWthRes) {
 		System.out.print("최소인원 : ");
 		int minNum = Integer.parseInt(sc.nextLine());
 		
 		System.out.print("최대인원 : ");
 		int maxNum = Integer.parseInt(sc.nextLine());
 		
-		RoomsController.searchByNumberPeople(minNum, maxNum, false);
+		RoomsController.searchByNumberPeople(minNum, maxNum, schWthRes);
 	}
 	
-	// 6. 침대수로 검색
-	public static void printNumberBeds() {
+	// 7. 침대수로 검색
+	public static void printNumberBeds(boolean schWthRes) {
 		System.out.print("최소 침대수 : ");
 		int nimNum = Integer.parseInt(sc.nextLine());
 		
 		System.out.print("최대 침대수 : ");
 		int maxNum = Integer.parseInt(sc.nextLine());
 	
-		RoomsController.searchByNumberBeds(nimNum, maxNum, false);
+		RoomsController.searchByNumberBeds(nimNum, maxNum, schWthRes);
 	}
 
-	// 7. 조식여부로 검색
-	public static void printBreakfastStat() {
+	// 8. 조식여부로 검색
+	public static void printBreakfastStat(boolean schWthRes) {
 		System.out.print("아침가능 여부(true 또는 false로 입력해주세요.) : ");
 		boolean bfStat = Boolean.parseBoolean(sc.nextLine());
-		RoomsController.searchByBreakfastStat(bfStat, false);
+		RoomsController.searchByBreakfastStat(bfStat, schWthRes);
 	}
 	
 	// 8. 
@@ -422,4 +542,55 @@ public class MenuView {
 			}
 		}
 	}
+	
+	
+	/*
+	 * 예약
+	 * reservation.insert=insert into RESERVATION_LIST values(RESERVATION_LIST_NO_SEQ.NEXTVAL, SYSDATE, ?, ?, ?, ?, ?, ? )
+	 * */
+	public static void printInputReser() {
+		System.out.print("회원번호 : ");
+		int userNo = Integer.parseInt(sc.nextLine()); //Reservation
+		
+		System.out.print("체크인 날짜 : ");
+		String checkinDate = sc.nextLine();
+		
+		System.out.print("체크아웃 날짜 : ");
+		String checkoutDate = sc.nextLine();
+		
+		System.out.print("숙박할 인원수 : ");
+		int totalpeopleNum = Integer.parseInt(sc.nextLine());
+		
+		System.out.print("예약할 방번호 : ");
+		int roomNo = Integer.parseInt(sc.nextLine());
+		
+		Reservation reser = new Reservation(0, null, userNo, checkinDate, checkoutDate, totalpeopleNum, 0, roomNo);
+		
+		
+		try {
+			RoomsDAO roomDAO = new RoomsDAOImpl();
+			Room room = roomDAO.searchByRoomNo(roomNo);
+			RsrvtController.insertReservation(reser, room);
+		} catch (SQLException e) {
+			FailView.errorMessage(e.getMessage());
+		}finally {
+			printInputReser();
+		}
+	}//end of printInputReser()
+	
+	
+	/**
+	 * 결제하기
+	 * */
+	public static void printInputPay() {
+		
+		System.out.print("예약번호 : ");
+		int reserNo = Integer.parseInt(sc.nextLine());
+		
+		Pay pay = new Pay(0, null, reserNo);
+		
+		PayController.insertPay(pay);
+		
+	}//end of printInputPay()
+	
 } // MenuView 클래스 끝.
