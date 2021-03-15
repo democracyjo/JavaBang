@@ -25,7 +25,7 @@ public class WishController{
 	public static void wishDelete(int wishNo) {
 		try {
 			wishService.wishDelete(wishNo);
-			SuccessView.messagePrint("관심리스트의"+wishNo+"번이 삭제되었습니다.");
+			SuccessView.messagePrint("관심리스트의 "+wishNo+"번이 삭제되었습니다.");
 		} catch (SQLException e) {
 			FailView.errorMessage(e.getMessage());
 		}

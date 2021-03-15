@@ -99,9 +99,9 @@ public class RsrvtDAOImpl implements RsrvtDAO {
 			
 			while(rs.next()) {
 				
-				int reserListNo = rs.getInt(1);
-				String date = rs.getString(2);
-				int userNo = rs.getInt(3);
+				int reserListNo = rs.getInt(2);
+				String date = rs.getString(3);
+				int userNo = rs.getInt(1);
 				String checkinDate = rs.getString(4);
 				String checkoutDate = rs.getString(5);
 				int totalPplNum = rs.getInt(6);

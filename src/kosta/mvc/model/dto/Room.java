@@ -17,7 +17,7 @@ public class Room {
 	private boolean breakfastStatus; // 조식 가능 여부
 	private int prcadPrsn; // 추가인원당 가격
 	private String roomTypeSt; // 방 타입 string
-
+	private double avgScore; //평균 평점
 	public Room() {
 	}
 
@@ -109,6 +109,14 @@ public class Room {
 		this.prcadPrsn = prcadPrsn;
 	}
 
+	public double getAvgScore() {
+		return avgScore;
+	}
+
+	public void setAvgScore(double avgScore) {
+		this.avgScore = avgScore;
+	}
+
 	public boolean isBreakfastStatus() {
 		return breakfastStatus;
 	}
@@ -142,8 +150,10 @@ public class Room {
 		} else {
 			builder.append("불가");
 		}
-		builder.append(", 추가 인원 당 가격");
+		builder.append(", 추가 인원 당 가격 : ");
 		builder.append(prcadPrsn);
+		builder.append(", 평균 평점 : ");
+		builder.append(avgScore);
 
 		return builder.toString();
 	}
