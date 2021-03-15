@@ -15,6 +15,7 @@ import kosta.mvc.view.MenuView;
 public class TestChoi {
 
 	public static void main(String[] args) {
+		TestDongso.menu();
 		//MenuView.menu();
 		// TODO Auto-generated method stub
 		/*
@@ -53,6 +54,7 @@ public class TestChoi {
 		System.out.println("침대수로 찾기");
 		rc.searchByNumberBeds(5,6,true);
 		*/
+		/*
 		System.out.println("예약날짜로 찾기");
 		String checkinDate="2021-01-05";
 		String checkoutDate="2021-01-11";
@@ -68,6 +70,7 @@ public class TestChoi {
 		}catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
+		*/
 		
 		
 		

@@ -13,7 +13,6 @@ import kosta.mvc.controller.UserController;
 import kosta.mvc.controller.WishController;
 import kosta.mvc.model.dto.Pay;
 import kosta.mvc.model.dto.Reservation;
-import kosta.mvc.model.dto.Room;
 import kosta.mvc.model.dto.User;
 import kosta.mvc.session.Session;
 import kosta.mvc.session.SessionSet;
@@ -160,8 +159,7 @@ public class MenuView {
 			printKeywordSelectmenu(userId);
 			break;
 		case 3:
-			printUserMenu(userId);
-			break;
+			return;
 		default:
 			System.out.println("1에서 3사이의 숫자를 입력해주세요.");
 		}
