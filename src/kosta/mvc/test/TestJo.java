@@ -195,7 +195,7 @@ public class TestJo {
 					// 예약취소
 				case 3:
 					// 뒤로가기
-					printMyPage(userId);
+//					printMyPage(userId);
 					break;
 				default:
 					System.out.println("1에서 3사이의 숫자를 입력해주세요.");

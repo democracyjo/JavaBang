@@ -35,7 +35,7 @@ public class UserController {
 			SuccessView.printMessage("그 동안 JavaBang HOTEL을 이용해 주셔서 감사합니다.\n");
 		} catch (Exception e) {
 			FailView.errorMessage(e.getMessage());
-			MenuView.printUserMenu(dto.getId());
+			TestDongso.printUserMenu(dto);
 		}
 	}
 	
@@ -45,7 +45,7 @@ public class UserController {
 	public static void login(String userId, String userPwd) {	
 		try {
 			User user =  userService.login(userId, userPwd);
-			MenuView.printUserMenu(userId);
+			TestDongso.printUserMenu(user);
 			//MenuView.menu();
 		}catch (Exception e) {
 			FailView.errorMessage(e.getMessage());
