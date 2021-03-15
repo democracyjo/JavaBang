@@ -18,8 +18,6 @@ public class Room {
 	private int prcadPrsn; // 추가인원당 가격
 	private String roomTypeSt; // 방 타입 string
 
-	private List<Review> reviewList = new ArrayList<>();
-
 	public Room() {
 	}
 
@@ -120,13 +118,6 @@ public class Room {
 	}
 	
 
-	public List<Review> getReviewList() {
-		return reviewList;
-	}
-
-	public void setReviewList(List<Review> reviewList) {
-		this.reviewList = reviewList;
-	}
 
 	@Override
 	public String toString() {
