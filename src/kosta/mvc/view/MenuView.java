@@ -251,10 +251,12 @@ public class MenuView {
 		int menu = Integer.parseInt(sc.nextLine());
 		switch (menu) {
 		case 1:
-
+			//예약
+			printInputReser();
 			break;
 		case 2:
 			// 찜하기
+			WishController.insertWish(user, roomNo);
 			break;
 
 		case 3:
