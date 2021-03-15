@@ -508,8 +508,7 @@ public class MenuView {
 				printInputReserDelete(user);
 			case 3:
 				// 뒤로가기
-				printMyPage(user);
-				break;
+				return;
 			default:
 				System.out.println("1에서 3사이의 숫자를 입력해주세요.");
 			}
@@ -569,8 +568,7 @@ public class MenuView {
 					
 				case 4:
 					//뒤로가기
-					printMyPage(user);
-					break;
+					return;
 					
 					default : 
 					System.out.println("1에서 4사이의 숫자를 입력해주세요.");
