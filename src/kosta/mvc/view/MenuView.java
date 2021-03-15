@@ -225,7 +225,7 @@ public class MenuView {
 			printSelectmenu(userId);
 			break;
 		default:
-			System.out.println("1에서 9사이의 숫자를 입력해주세요.");
+			System.out.println("1에서 10사이의 숫자를 입력해주세요.");
 		} // switch문 끝.
 	}
 	//방선택
