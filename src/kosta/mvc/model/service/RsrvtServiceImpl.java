@@ -74,11 +74,12 @@ public class RsrvtServiceImpl implements RsrvtService {
 	public boolean hasReserNo(User user, int reserNo) throws SQLException {
 		List<Reservation> list = reserDAO.selectRsrvtByUserId(user.getId());
 		for(Reservation reser :list) {
-			if(reser.getReserNo()!=reserNo) {
-				throw new SQLException("해당하는 예약번호는 존재하지 않습니다. 다시 시도해 주세요.");
+			if(reser.getReserNo()==reserNo) {
+				return true;
 			}
 		}		
-		return true;
+		throw new SQLException("해당하는 예약번호는 존재하지 않습니다. 다시 시도해 주세요.");
+
 	}
 
 }
