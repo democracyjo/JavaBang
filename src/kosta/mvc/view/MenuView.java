@@ -18,6 +18,13 @@ import kosta.mvc.session.Session;
 import kosta.mvc.session.SessionSet;
 
 public class MenuView {
+	public static final int ROOM_SIZE = 1;
+	public static final int ROOM_TYPE = 2;
+	public static final int ROOM_PRICE = 3;
+	public static final int ROOM_FLOOR = 4;
+	public static final int ROOM_APPNO = 5;
+	public static final int ROOM_BED_NO = 6;
+	public static final int ROOM_BREAK = 7;
 	private static Scanner sc = new Scanner(System.in);
 
 	public static void menu() {
@@ -348,6 +355,7 @@ public class MenuView {
 
 	// 2. 방크기로 검색
 	public static void printRoomSize(boolean schWthRes) {
+		System.out.println("방크기 : "+RoomsController.getMin(ROOM_SIZE)+"~"+RoomsController.getMax(ROOM_SIZE));
 		System.out.print("최소방 크기 : ");
 		int min = Integer.parseInt(sc.nextLine());
 
@@ -372,6 +380,8 @@ public class MenuView {
 
 	// 4, 방가격으로 검색
 	public static void printRoomPrice(boolean schWthRes) {
+		System.out.println("방 가격 : "+RoomsController.getMin(ROOM_PRICE)+"~"+RoomsController.getMax(ROOM_PRICE));
+
 		System.out.print("방 최소 가격 : ");
 		int minPrice = Integer.parseInt(sc.nextLine());
 
@@ -383,14 +393,21 @@ public class MenuView {
 
 	// 5. 방층으로 검색
 	public static void printFloor(boolean schWthRes) {
-		System.out.print("방 층수 : ");
-		int floor = Integer.parseInt(sc.nextLine());
+		System.out.println("방 층수 : "+RoomsController.getMin(ROOM_FLOOR)+"~"+RoomsController.getMax(ROOM_FLOOR));
 
-		RoomsController.searchByFloor(floor, schWthRes);
+		System.out.print("최소 층 : ");
+		int minFloor = Integer.parseInt(sc.nextLine());
+
+		System.out.print("최대 층 : ");
+		int maxFloor = Integer.parseInt(sc.nextLine());
+
+		RoomsController.searchByFloor(minFloor,maxFloor, schWthRes);
 	}
-
+		
 	// 6. 숙박인원으로 검색
 	public static void printNumberPeople(boolean schWthRes) {
+		System.out.println("방 인원 : "+RoomsController.getMin(ROOM_APPNO)+"~"+RoomsController.getMax(ROOM_APPNO));
+
 		System.out.print("최소인원 : ");
 		int minNum = Integer.parseInt(sc.nextLine());
 
@@ -402,6 +419,8 @@ public class MenuView {
 
 	// 7. 침대수로 검색
 	public static void printNumberBeds(boolean schWthRes) {
+		System.out.println("침대 수 : "+RoomsController.getMin(ROOM_BED_NO)+"~"+RoomsController.getMax(ROOM_BED_NO));
+
 		System.out.print("최소 침대수 : ");
 		int nimNum = Integer.parseInt(sc.nextLine());
 

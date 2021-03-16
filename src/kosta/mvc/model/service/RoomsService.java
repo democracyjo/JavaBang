@@ -36,7 +36,7 @@ public interface RoomsService {
 	 * @param floor
 	 * @return
 	 */
-	public List<Room> searchByFloor(int floor)throws Exception;
+	public List<Room> searchByFloor(int minFloor,int maxFloor)throws Exception;
 	/**
 	 * 각 방의 적정인원수가 min~max사이인것을 구한다.
 	 * @param numberPeople

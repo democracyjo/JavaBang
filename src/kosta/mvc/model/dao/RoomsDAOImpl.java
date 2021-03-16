@@ -212,7 +212,7 @@ public class RoomsDAOImpl implements RoomsDAO {
 	}
 
 	@Override
-	public List<Room> searchByFloor(int floor) throws SQLException {
+	public List<Room> searchByFloor(int minFloor,int maxFloor) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -222,7 +222,8 @@ public class RoomsDAOImpl implements RoomsDAO {
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
-			ps.setInt(1, floor);
+			ps.setInt(1, minFloor);
+			ps.setInt(2, maxFloor);
 			rs = ps.executeQuery();
 
 			while (rs.next()) {
@@ -230,7 +231,7 @@ public class RoomsDAOImpl implements RoomsDAO {
 				int roomType = rs.getInt(2); // 방 종류
 				double roomSize = rs.getDouble(3); // 방크기
 				int price = rs.getInt(4); // 방가격
-				// 층수
+				int floor=rs.getInt(5);// 층수
 				int aprprNmbP = rs.getInt(6);
 				int numberBeds = rs.getInt(7);
 				boolean breakfastStatus = rs.getString(8).toUpperCase().equals("TRUE");
