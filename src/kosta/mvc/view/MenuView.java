@@ -403,7 +403,8 @@ public class MenuView {
 
 		RoomsController.searchByFloor(minFloor,maxFloor, schWthRes);
 	}
-
+	
+	
 	// 6. 숙박인원으로 검색
 	public static void printNumberPeople(boolean schWthRes) {
 		System.out.println("방 인원 : "+RoomsController.getMin(ROOM_APPNO)+"~"+RoomsController.getMax(ROOM_APPNO));
