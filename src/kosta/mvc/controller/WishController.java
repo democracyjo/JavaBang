@@ -36,9 +36,16 @@ public class WishController{
 	}
 	public static void insertWish(User user, int roomNo)  {
 		try {
-					
-			wishService.insertWish(new Wish(0, user.getUserNo(), roomNo, null));
-			SuccessView.messagePrint("관심리스트에 등록되었습니다.");
+			Wish wish = new Wish(0, user.getUserNo(), roomNo, null);
+			List<Wish> wishList = wishDAO.selectWishList();
+			for(Wish wish2 :wishList) {
+				if(wish.getRoomNo()==wish2.getRoomNo()) {
+					System.out.println("이미 관심리스트에 추가된 방번호입니다. ");
+					return;
+				}
+				wishService.insertWish(wish);
+				SuccessView.messagePrint("관심리스트에 등록되었습니다.");
+			}
 		} catch (SQLException e) {
 			FailView.errorMessage(e.getMessage());
 		}
