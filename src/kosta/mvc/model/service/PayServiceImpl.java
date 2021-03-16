@@ -14,6 +14,7 @@ public class PayServiceImpl implements PayService {
 	
 	@Override
 	public void insertPay(Pay pay) throws SQLException {
+		
 		List<Pay> payList = payDAO.selectPayList();
 		for(Pay pay2 : payList) {
 			if(pay.getReserNo() == pay2.getReserNo()) {

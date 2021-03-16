@@ -641,10 +641,10 @@ public class MenuView {
 	 * 결제하기
 	 */
 	public static void printInputPay(User user) {
-		while (true) {
+		for (int i=0; i<3; i++) {
 			System.out.print("예약번호 : ");
 			int reserNo = Integer.parseInt(sc.nextLine());
-
+			
 			if (RsrvtController.hasReserNo(user, reserNo)) {
 				System.out.print("비밀번호: ");
 				String pwd = sc.nextLine();
