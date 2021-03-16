@@ -24,4 +24,7 @@ public interface RsrvtService {
 		  * 예약리스트 내역보기
 		  * */
 		 List<Reservation> selectRsrvtByUserId(String userId)throws SQLException;
+
+
+		public boolean diffOfDate(String begin, String end) throws SQLException;
 }
