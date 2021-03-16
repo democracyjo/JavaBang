@@ -71,8 +71,8 @@ public class RoomsServiceImpl implements RoomsService{
 			throw new NotFoundException("검색 한 방이 없습니다");
 		}
 	}
-	public List<Room> searchByFloor(int floor) throws Exception{
-		List<Room> list= roomDAO.searchByFloor(floor);
+	public List<Room> searchByFloor(int minFloor, int maxFloor) throws Exception{
+		List<Room> list= roomDAO.searchByFloor(minFloor,maxFloor);
 		if(list!=null) {
 			for(Room rm : list) {
 				rm.setAvgScore(rs.getAvgP(rm.getRoomNo()));

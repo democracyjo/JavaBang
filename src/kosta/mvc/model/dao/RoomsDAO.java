@@ -19,7 +19,7 @@ public interface RoomsDAO {
 
 	public List<Room> searchByRoomPrice(int minPrice, int maxPrice)throws SQLException;
 
-	public List<Room> searchByFloor(int floor)throws SQLException;
+	public List<Room> searchByFloor(int minFloor, int maxFloor)throws SQLException;
 
 	public List<Room> searchByNumberPeople(int minNum, int maxNum)throws SQLException;
 
