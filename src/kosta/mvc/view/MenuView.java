@@ -359,7 +359,7 @@ public class MenuView {
 
 	// 2. 방크기로 검색
 	public static void printRoomSize(boolean schWthRes) {
-		System.out.println("방크기 : "+RoomsController.getMin(ROOM_SIZE)+"~"+RoomsController.getMax(ROOM_SIZE));
+		System.out.println("방크기 : " + RoomsController.getMin(ROOM_SIZE) + "~" + RoomsController.getMax(ROOM_SIZE));
 		System.out.print("최소방 크기 : ");
 		int min = Integer.parseInt(sc.nextLine());
 
@@ -384,7 +384,7 @@ public class MenuView {
 
 	// 4, 방가격으로 검색
 	public static void printRoomPrice(boolean schWthRes) {
-		System.out.println("방 가격 : "+RoomsController.getMin(ROOM_PRICE)+"~"+RoomsController.getMax(ROOM_PRICE));
+		System.out.println("방 가격 : " + RoomsController.getMin(ROOM_PRICE) + "~" + RoomsController.getMax(ROOM_PRICE));
 
 		System.out.print("방 최소 가격 : ");
 		int minPrice = Integer.parseInt(sc.nextLine());
@@ -397,7 +397,7 @@ public class MenuView {
 
 	// 5. 방층으로 검색
 	public static void printFloor(boolean schWthRes) {
-		System.out.println("방 층수 : "+RoomsController.getMin(ROOM_FLOOR)+"~"+RoomsController.getMax(ROOM_FLOOR));
+		System.out.println("방 층수 : " + RoomsController.getMin(ROOM_FLOOR) + "~" + RoomsController.getMax(ROOM_FLOOR));
 
 		System.out.print("최소 층 : ");
 		int minFloor = Integer.parseInt(sc.nextLine());
@@ -405,12 +405,12 @@ public class MenuView {
 		System.out.print("최대 층 : ");
 		int maxFloor = Integer.parseInt(sc.nextLine());
 
-		RoomsController.searchByFloor(minFloor,maxFloor, schWthRes);
+		RoomsController.searchByFloor(minFloor, maxFloor, schWthRes);
 	}
-		
+
 	// 6. 숙박인원으로 검색
 	public static void printNumberPeople(boolean schWthRes) {
-		System.out.println("방 인원 : "+RoomsController.getMin(ROOM_APPNO)+"~"+RoomsController.getMax(ROOM_APPNO));
+		System.out.println("방 인원 : " + RoomsController.getMin(ROOM_APPNO) + "~" + RoomsController.getMax(ROOM_APPNO));
 
 		System.out.print("최소인원 : ");
 		int minNum = Integer.parseInt(sc.nextLine());
@@ -423,7 +423,7 @@ public class MenuView {
 
 	// 7. 침대수로 검색
 	public static void printNumberBeds(boolean schWthRes) {
-		System.out.println("침대 수 : "+RoomsController.getMin(ROOM_BED_NO)+"~"+RoomsController.getMax(ROOM_BED_NO));
+		System.out.println("침대 수 : " + RoomsController.getMin(ROOM_BED_NO) + "~" + RoomsController.getMax(ROOM_BED_NO));
 
 		System.out.print("최소 침대수 : ");
 		int nimNum = Integer.parseInt(sc.nextLine());
@@ -613,29 +613,27 @@ public class MenuView {
 	 * values(RESERVATION_LIST_NO_SEQ.NEXTVAL, SYSDATE, ?, ?, ?, ?, ?, ? )
 	 */
 	public static void printInputReser(User user) {
-		RsrvtService rs=new RsrvtServiceImpl(); 
+		RsrvtService rs = new RsrvtServiceImpl();
 		System.out.print("체크인 날짜 : ");
 		String checkinDate = sc.nextLine();
 
 		System.out.print("체크아웃 날짜 : ");
 		String checkoutDate = sc.nextLine();
 		try {
-			if(!rs.diffOfDate(checkinDate, checkoutDate)) {
-				throw new SQLException("체크 인 날짜가 체크 아웃 날짜보다 빨라야합니다.");
-			}
-		
-		System.out.print("숙박할 인원수 : ");
-		int totalpeopleNum = Integer.parseInt(sc.nextLine());
+			rs.diffOfDate(checkinDate, checkoutDate);
 
-		System.out.print("예약할 방번호 : ");
-		int roomNo = Integer.parseInt(sc.nextLine());
+			System.out.print("숙박할 인원수 : ");
+			int totalpeopleNum = Integer.parseInt(sc.nextLine());
 
-		Reservation reser = new Reservation(0, null, user.getUserNo(), checkinDate, checkoutDate, totalpeopleNum, 0,
-				roomNo);
+			System.out.print("예약할 방번호 : ");
+			int roomNo = Integer.parseInt(sc.nextLine());
 
-		RoomsController.searchByRoomNo(roomNo);
-		RsrvtController.insertReservation(reser, roomNo);
-		}catch (Exception e) {
+			Reservation reser = new Reservation(0, null, user.getUserNo(), checkinDate, checkoutDate, totalpeopleNum, 0,
+					roomNo);
+
+			RoomsController.searchByRoomNo(roomNo);
+			RsrvtController.insertReservation(reser, roomNo);
+		} catch (Exception e) {
 			FailView.errorMessage(e.getMessage());
 		}
 	}// end of printInputReser()

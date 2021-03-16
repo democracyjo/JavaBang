@@ -162,9 +162,8 @@ public class RoomsController {
 	public static void searchByResDate(String checkinDate, String checkoutDate, boolean searchWthRsl) {
 		try {
 			RsrvtService rs=new RsrvtServiceImpl();
-			if(!rs.diffOfDate(checkinDate, checkoutDate)) {
-				throw new SQLException("체크인 날짜가 체크아웃 날짜보다 빨라야 합니다.");
-			}
+			rs.diffOfDate(checkinDate, checkoutDate);
+				
 			List<Room> list = roomService.searchByResDate(checkinDate, checkoutDate);
 			if (searchWthRsl) {
 				list.retainAll(roomList);
