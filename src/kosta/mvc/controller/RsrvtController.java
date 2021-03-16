@@ -57,12 +57,14 @@ public class RsrvtController{
 		try {
 			if(reserService.hasReserNo(user, reserNo)) {
 				System.out.println("예약번호 확인되었습니다.");
+				return true;
 			}
 		} catch (SQLException e) {
 			FailView.errorMessage(e.getMessage());
 		
 		}
-		return true;
+		return false;
+		
 	}
 
 }
