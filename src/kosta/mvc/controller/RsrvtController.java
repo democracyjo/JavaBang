@@ -41,13 +41,15 @@ public class RsrvtController{
 		}
 	}
 
-	public static void selectRsrvtByUserId(String userId) {
+	public static List<Reservation> selectRsrvtByUserId(String userId) {
+		List<Reservation> reserList=null;
 		try {
-			List<Reservation> reserList = reserService.selectRsrvtByUserId(userId);
+			reserList = reserService.selectRsrvtByUserId(userId);
 			SuccessView.selectRsrvtByUserId(reserList);
 		} catch (SQLException e) {
 			FailView.errorMessage(e.getMessage());
 		}
+		return reserList;
 	}
 
 }
