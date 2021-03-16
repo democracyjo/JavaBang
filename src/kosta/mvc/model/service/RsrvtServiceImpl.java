@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import kosta.mvc.exception.AddException;
 import kosta.mvc.model.dao.RoomsDAO;
 import kosta.mvc.model.dao.RoomsDAOImpl;
 import kosta.mvc.model.dao.RsrvtDAO;
@@ -64,7 +65,7 @@ public class RsrvtServiceImpl implements RsrvtService {
 			} else {
 				return true;
 			}
-		} catch (Exception e) {
+		} catch (ParseException e) {
 			throw new SQLException("yyyy-MM-dd 형식에 맞게 입력해주세요.");
 		}
 	}
