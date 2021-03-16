@@ -157,8 +157,11 @@ public class Room {
 		builder.append(", 추가 인원 당 가격 : ");
 		builder.append(prcadPrsn);
 		builder.append(", 평균 평점 : ");
+		if(avgScore==0) {
+			builder.append("없음");
+		}else {
 		builder.append(avgScore);
-
+		}
 		return builder.toString();
 	}
 	@Override
