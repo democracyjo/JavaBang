@@ -99,14 +99,14 @@ public class RsrvtDAOImpl implements RsrvtDAO {
 			
 			while(rs.next()) {
 				
-				int reserListNo = rs.getInt(2);
-				String date = rs.getString(3);
-				int userNo = rs.getInt(1);
-				String checkinDate = rs.getString(4);
-				String checkoutDate = rs.getString(5);
-				int totalPplNum = rs.getInt(6);
-				int totalPrice = rs.getInt(7);
-				int roomNo = rs.getInt(8);
+				int reserListNo = rs.getInt("reser_no");
+				String date = rs.getString("reser_date");
+				int userNo = rs.getInt("user_no");
+				String checkinDate = rs.getString("checkin_date");
+				String checkoutDate = rs.getString("checkout_date");
+				int totalPplNum = rs.getInt("total_people_num");
+				int totalPrice = rs.getInt("total_price");
+				int roomNo = rs.getInt("room_no");
 				
 				
 				rsrvt = new Reservation(reserListNo, date, userNo, checkinDate, checkoutDate, totalPplNum, totalPrice, roomNo);
@@ -228,14 +228,14 @@ public class RsrvtDAOImpl implements RsrvtDAO {
 			rs= ps.executeQuery();
 			
 			while(rs.next()) {
-				int reserListNo = rs.getInt(1);
-				String date = rs.getString(2);
-				int userNo = rs.getInt(3);
-				String checkinDate = rs.getString(4);
-				String checkoutDate = rs.getString(5);
-				int totalPplNum = rs.getInt(6);
-				int totalPrice = rs.getInt(7);
-				int roomNo = rs.getInt(8);
+				int reserListNo = rs.getInt("reser_no");
+				String date = rs.getString("reser_date");
+				int userNo = rs.getInt("user_no");
+				String checkinDate = rs.getString("checkin_date");
+				String checkoutDate = rs.getString("checkout_date");
+				int totalPplNum = rs.getInt("total_people_num");
+				int totalPrice = rs.getInt("total_price");
+				int roomNo = rs.getInt("room_no");
 				
 				
 				rsrvt = new Reservation(reserListNo, date, userNo, checkinDate, checkoutDate, totalPplNum, totalPrice, roomNo);
@@ -269,15 +269,14 @@ public class RsrvtDAOImpl implements RsrvtDAO {
 			
 			while(rs.next()) {
 				
-				int reserListNo = rs.getInt(1);
-				String date = rs.getString(2);
-				int userNo = rs.getInt(3);
-				String checkinDate = rs.getString(4);
-				String checkoutDate = rs.getString(5);
-				int totalPplNum = rs.getInt(6);
-				int totalPrice = rs.getInt(7);
-			//	int roomNo = rs.getInt(8);
-				
+				int reserListNo = rs.getInt("reser_no");
+				String date = rs.getString("reser_date");
+				int userNo = rs.getInt("user_no");
+				String checkinDate = rs.getString("checkin_date");
+				String checkoutDate = rs.getString("checkout_date");
+				int totalPplNum = rs.getInt("total_people_num");
+				int totalPrice = rs.getInt("total_price");
+//				int roomNo = rs.getInt("room_no");
 				
 				rsrvt = new Reservation(reserListNo, date, userNo, checkinDate, checkoutDate, totalPplNum, totalPrice, roomNo);
 				reserList.add(rsrvt);
