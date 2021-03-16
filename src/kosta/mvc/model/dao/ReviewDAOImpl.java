@@ -124,7 +124,8 @@ public class ReviewDAOImpl implements ReviewDAO {
 					ps.setString(4, review.getReviewContent());
 
 					result = ps.executeUpdate();
-
+					RoomsDAO rm=new RoomsDAOImpl();
+					rm.upDateAvgScroe(review.getRoomNo());
 				} finally {
 					DbUtil.close(con, ps);
 				}
@@ -176,7 +177,9 @@ public class ReviewDAOImpl implements ReviewDAO {
 			ps.setInt(1, reviewNo);
 
 			result = ps.executeUpdate();
-
+			RoomsDAO rm=new RoomsDAOImpl();
+			rm.updateAvgByRevNo(reviewNo);
+	
 		} finally {
 			DbUtil.close(con, ps);
 		}

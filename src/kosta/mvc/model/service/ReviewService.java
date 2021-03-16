@@ -31,7 +31,7 @@ public interface ReviewService {
 	 */
 	void deleteReview(int reviewNo) throws SQLException;
 	
-	double getAvgP(int roomNo) throws SQLException;
+//	double getAvgP(int roomNo) throws SQLException;
 	
 	
 
