@@ -20,6 +20,7 @@ public class RoomsController {
 	private static List<Room> roomList;
 
 	public static void refresh() {
+		SuccessView.messagePrint("로딩 중입니다.");
 		try {
 			List<Room> list = roomService.selectAll();
 			roomList = list;
