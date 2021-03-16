@@ -6,7 +6,9 @@ import java.util.List;
 import kosta.mvc.model.dto.Room;
 import kosta.mvc.model.service.RoomsService;
 import kosta.mvc.model.service.RoomsServiceImpl;
-import kosta.mvc.view.MenuView;
+import kosta.mvc.model.service.RsrvtService;
+import kosta.mvc.model.service.RsrvtServiceImpl;
+import kosta.mvc.view.FailView;
 import kosta.mvc.view.SuccessView;
 
 public class RoomsController {
@@ -16,7 +18,7 @@ public class RoomsController {
 	 * 룸서비스를 불러오기 위한 변수, roomList는 결과내 검색을 구현하기 위한것
 	 */
 	private static RoomsService roomService = new RoomsServiceImpl();
-
+	
 	private static List<Room> roomList;
 
 	public static void refresh() {
@@ -140,7 +142,7 @@ public class RoomsController {
 			SuccessView.printRoomList(list);
 			roomList = list;
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			FailView.errorMessage(e.getMessage());
 		}
 	}
 
@@ -153,12 +155,16 @@ public class RoomsController {
 			SuccessView.printRoomList(list);
 			roomList = list;
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			FailView.errorMessage(e.getMessage());
 		}
 	}
 
 	public static void searchByResDate(String checkinDate, String checkoutDate, boolean searchWthRsl) {
 		try {
+			RsrvtService rs=new RsrvtServiceImpl();
+			if(!rs.diffOfDate(checkinDate, checkoutDate)) {
+				throw new SQLException("체크인 날짜가 체크아웃 날짜보다 빨라야 합니다.");
+			}
 			List<Room> list = roomService.searchByResDate(checkinDate, checkoutDate);
 			if (searchWthRsl) {
 				list.retainAll(roomList);
@@ -166,7 +172,8 @@ public class RoomsController {
 			SuccessView.printRoomList(list);
 			roomList = list;
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			FailView.errorMessage(e.getMessage());
+
 		}
 	}
 
@@ -178,7 +185,7 @@ public class RoomsController {
 			}
 			SuccessView.printRoomTypeList(list);
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			FailView.errorMessage(e.getMessage());
 		}
 	}
 

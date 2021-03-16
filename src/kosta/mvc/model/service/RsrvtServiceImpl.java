@@ -2,6 +2,8 @@ package kosta.mvc.model.service;
 
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import kosta.mvc.model.dao.RoomsDAO;
@@ -46,6 +48,25 @@ public class RsrvtServiceImpl implements RsrvtService {
 			}
 		return reserList;
 	}
+	
 
+	@Override
+	public boolean diffOfDate(String begin, String end) throws SQLException {
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		try {
+			Date stDt = format.parse(begin);
+			Date edDt = format.parse(end);
+
+			long diff = edDt.getTime() - stDt.getTime();
+			long diffDays = diff / (24 * 60 * 60 * 1000);
+			if (diffDays <= 0) {
+				return false;
+			} else {
+				return true;
+			}
+		} catch (Exception e) {
+			throw new SQLException("yyyy-MM-dd 형식에 맞게 입력해주세요.");
+		}
+	}
 
 }

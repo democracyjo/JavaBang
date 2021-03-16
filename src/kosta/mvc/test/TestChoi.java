@@ -1,5 +1,6 @@
 package kosta.mvc.test;
 
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
@@ -9,12 +10,37 @@ import kosta.mvc.model.dao.RsrvtDAO;
 import kosta.mvc.model.dao.RsrvtDAOImpl;
 import kosta.mvc.model.dto.Reservation;
 import kosta.mvc.model.dto.Review;
+import kosta.mvc.view.SuccessView;
 
 public class TestChoi {
+	public static boolean diffOfDate(String begin, String end) throws Exception {
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		try {
+			Date stDt = format.parse(begin);
+			Date edDt = format.parse(end);
+
+			long diff = edDt.getTime() - stDt.getTime();
+			long diffDays = diff / (24 * 60 * 60 * 1000);
+			if (diffDays <= 0) {
+				return false;
+			} else {
+				return true;
+			}
+		} catch (Exception e) {
+			throw new SQLException("yyyy-MM-dd 형식에 맞게 입력해주세요.");
+		}
+	}
 
 	public static void main(String[] args) {
 		
-		
+		String checkin="2020-01-03";
+		String checkout="2020-01-02";
+		try {
+		System.out.println(diffOfDate(checkin, checkout));
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		/*
 		int userNo = 7;
 
 		
@@ -30,6 +56,7 @@ public class TestChoi {
 		Review review = new Review(0, userNo, roomNo, score, reviewContent, null);
 		
 		ReviewController.insertReview(review);
+		*/
 	//	MenuView.menu();
 		/*
 		WishDAO wh=new WishDAOImpl();
