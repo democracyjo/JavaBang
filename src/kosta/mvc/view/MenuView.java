@@ -645,6 +645,7 @@ public class MenuView {
 
 		System.out.print("예약번호 : ");
 		int reserNo = Integer.parseInt(sc.nextLine());
+		
 
 		if(RsrvtController.hasReserNo(user, reserNo)) {
 			System.out.print("비밀번호: ");

@@ -60,7 +60,7 @@ public class RsrvtController{
 			}
 		} catch (SQLException e) {
 			FailView.errorMessage(e.getMessage());
-		
+			return false;
 		}
 		return true;
 	}
