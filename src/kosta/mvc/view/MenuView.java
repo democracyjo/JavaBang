@@ -1,5 +1,6 @@
 package kosta.mvc.view;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -14,6 +15,9 @@ import kosta.mvc.model.dto.Pay;
 import kosta.mvc.model.dto.Reservation;
 import kosta.mvc.model.dto.Review;
 import kosta.mvc.model.dto.User;
+import kosta.mvc.model.service.RoomsService;
+import kosta.mvc.model.service.RsrvtService;
+import kosta.mvc.model.service.RsrvtServiceImpl;
 import kosta.mvc.session.Session;
 import kosta.mvc.session.SessionSet;
 
@@ -609,13 +613,17 @@ public class MenuView {
 	 * values(RESERVATION_LIST_NO_SEQ.NEXTVAL, SYSDATE, ?, ?, ?, ?, ?, ? )
 	 */
 	public static void printInputReser(User user) {
-
+		RsrvtService rs=new RsrvtServiceImpl(); 
 		System.out.print("체크인 날짜 : ");
 		String checkinDate = sc.nextLine();
 
 		System.out.print("체크아웃 날짜 : ");
 		String checkoutDate = sc.nextLine();
-
+		try {
+			if(!rs.diffOfDate(checkinDate, checkoutDate)) {
+				throw new SQLException("체크 인 날짜가 체크 아웃 날짜보다 빨라야합니다.");
+			}
+		
 		System.out.print("숙박할 인원수 : ");
 		int totalpeopleNum = Integer.parseInt(sc.nextLine());
 
@@ -627,7 +635,9 @@ public class MenuView {
 
 		RoomsController.searchByRoomNo(roomNo);
 		RsrvtController.insertReservation(reser, roomNo);
-
+		}catch (Exception e) {
+			FailView.errorMessage(e.getMessage());
+		}
 	}// end of printInputReser()
 
 	/**
