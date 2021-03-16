@@ -5,7 +5,7 @@ import java.text.ParseException;
 import java.util.List;
 
 import kosta.mvc.model.dto.Reservation;
-import kosta.mvc.model.dto.Room;
+import kosta.mvc.model.dto.User;
 
 public interface RsrvtService {
 	   /**
@@ -26,5 +26,14 @@ public interface RsrvtService {
 		 List<Reservation> selectRsrvtByUserId(String userId)throws SQLException;
 
 
+		 /**
+		  * 체크인/아웃 유효성체크
+		  * */
 		public boolean diffOfDate(String begin, String end) throws SQLException;
+		
+		/**
+		 * 예약번호 체크
+		 * */
+		boolean hasReserNo(User user, int reserNo) throws SQLException;
 }
+
