@@ -645,17 +645,19 @@ public class MenuView {
 
 		System.out.print("예약번호 : ");
 		int reserNo = Integer.parseInt(sc.nextLine());
-		RsrvtController.hasReserNo(user, reserNo);
 
-		System.out.print("비밀번호: ");
-		String pwd = sc.nextLine();
-
-		if (user.getPw().equals(pwd)) {
-			Pay pay = new Pay(0, null, reserNo);
-			PayController.insertPay(pay);
-		} else {
-			System.out.println("비밀번호가 틀렸습니다. 다시 시도해 주세요.");
+		if(RsrvtController.hasReserNo(user, reserNo)) {
+			System.out.print("비밀번호: ");
+			String pwd = sc.nextLine();
+			
+			if (user.getPw().equals(pwd)) {
+				Pay pay = new Pay(0, null, reserNo);
+				PayController.insertPay(pay);
+			} else {
+				System.out.println("비밀번호가 틀렸습니다. 다시 시도해 주세요.");
+			}
 		}
+		
 
 	}// end of printInputPay()
 

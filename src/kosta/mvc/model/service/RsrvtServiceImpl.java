@@ -77,7 +77,7 @@ public class RsrvtServiceImpl implements RsrvtService {
 			if(reser.getReserNo()!=reserNo) {
 				throw new SQLException("해당하는 예약번호는 존재하지 않습니다. 다시 시도해 주세요.");
 			}
-		}
+		}		
 		return true;
 	}
 
