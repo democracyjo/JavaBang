@@ -53,7 +53,7 @@ public class RsrvtController{
 		return reserList;
 	}
 	
-	public static void hasReserNo(User user, int reserNo) {
+	public static boolean hasReserNo(User user, int reserNo) {
 		try {
 			if(reserService.hasReserNo(user, reserNo)) {
 				System.out.println("예약번호 확인되었습니다.");
@@ -62,6 +62,7 @@ public class RsrvtController{
 			FailView.errorMessage(e.getMessage());
 		
 		}
+		return true;
 	}
 
 }
