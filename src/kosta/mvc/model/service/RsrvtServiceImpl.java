@@ -12,6 +12,7 @@ import kosta.mvc.model.dao.RsrvtDAO;
 import kosta.mvc.model.dao.RsrvtDAOImpl;
 import kosta.mvc.model.dto.Reservation;
 import kosta.mvc.model.dto.Room;
+import kosta.mvc.model.dto.User;
 
 public class RsrvtServiceImpl implements RsrvtService {
 	private RsrvtDAO reserDAO  = new RsrvtDAOImpl();
@@ -64,9 +65,20 @@ public class RsrvtServiceImpl implements RsrvtService {
 			} else {
 				return true;
 			}
-		} catch (Exception e) {
+		} catch (ParseException e) {
 			throw new SQLException("yyyy-MM-dd 형식에 맞게 입력해주세요.");
 		}
+	}
+
+	@Override
+	public boolean hasReserNo(User user, int reserNo) throws SQLException {
+		List<Reservation> list = reserDAO.selectRsrvtByUserId(user.getId());
+		for(Reservation reser :list) {
+			if(reser.getReserNo()!=reserNo) {
+				throw new SQLException("해당하는 예약번호는 존재하지 않습니다. 다시 시도해 주세요.");
+			}
+		}
+		return true;
 	}
 
 }

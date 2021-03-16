@@ -644,6 +644,7 @@ public class MenuView {
 
 		System.out.print("예약번호 : ");
 		int reserNo = Integer.parseInt(sc.nextLine());
+		RsrvtController.hasReserNo(user, reserNo);
 
 		System.out.print("비밀번호: ");
 		String pwd = sc.nextLine();
@@ -662,7 +663,7 @@ public class MenuView {
 	 */
 	public static void printInputWishDelete() {
 
-		System.out.print("예약번호 : ");
+		System.out.print("관심번호 : ");
 		int wishNo = Integer.parseInt(sc.nextLine());
 
 		WishController.wishDelete(wishNo);

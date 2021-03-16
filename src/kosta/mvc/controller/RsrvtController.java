@@ -7,6 +7,7 @@ import kosta.mvc.model.dao.PayDAO;
 import kosta.mvc.model.dao.PayDAOImpl;
 import kosta.mvc.model.dto.Pay;
 import kosta.mvc.model.dto.Reservation;
+import kosta.mvc.model.dto.User;
 import kosta.mvc.model.service.RsrvtService;
 import kosta.mvc.model.service.RsrvtServiceImpl;
 import kosta.mvc.view.FailView;
@@ -41,12 +42,25 @@ public class RsrvtController{
 		}
 	}
 
-	public static void selectRsrvtByUserId(String userId) {
+	public static List<Reservation> selectRsrvtByUserId(String userId) {
+		List<Reservation> reserList=null;
 		try {
-			List<Reservation> reserList = reserService.selectRsrvtByUserId(userId);
+			reserList = reserService.selectRsrvtByUserId(userId);
 			SuccessView.selectRsrvtByUserId(reserList);
 		} catch (SQLException e) {
 			FailView.errorMessage(e.getMessage());
+		}
+		return reserList;
+	}
+	
+	public static void hasReserNo(User user, int reserNo) {
+		try {
+			if(reserService.hasReserNo(user, reserNo)) {
+				System.out.println("예약번호 확인되었습니다.");
+			}
+		} catch (SQLException e) {
+			FailView.errorMessage(e.getMessage());
+		
 		}
 	}
 
