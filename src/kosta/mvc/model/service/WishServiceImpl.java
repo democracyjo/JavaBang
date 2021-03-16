@@ -5,6 +5,8 @@ import java.util.List;
 
 import kosta.mvc.model.dao.WishDAO;
 import kosta.mvc.model.dao.WishDAOImpl;
+import kosta.mvc.model.dto.Reservation;
+import kosta.mvc.model.dto.User;
 import kosta.mvc.model.dto.Wish;
 
 public class WishServiceImpl implements WishService {
@@ -44,6 +46,18 @@ public class WishServiceImpl implements WishService {
 		}
 		return wishList;
 		
+	}
+	
+	@Override
+	public boolean hasRoomNo(User user, int roomNo) throws SQLException {
+		List<Wish> list = wishDAO.selectWishByUserId(user.getId());
+		for(Wish wish :list) {
+			if(wish.getRoomNo()==roomNo) {
+				throw new SQLException("이미 관심리스트에 등록된 방번호입니다.");
+			}
+		}		
+		return false;
+
 	}
 
 }
