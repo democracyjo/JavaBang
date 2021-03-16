@@ -63,10 +63,10 @@ public class SuccessView {
 		System.out.println();
 	}
 
-	public static void printRoomTypeList(List<Room> list) {
+	public static void printRoomTypeList(List<String> list) {
 		System.out.println("========= 방종류 리스트["+list.size()+"]=========");
-		for(Room rm:list) {
-			System.out.println(rm.getRoomTypeSt());
+		for(String rm:list) {
+			System.out.println(rm);
 		}
 		
 	}

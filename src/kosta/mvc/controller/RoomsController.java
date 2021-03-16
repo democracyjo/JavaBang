@@ -1,6 +1,7 @@
 package kosta.mvc.controller;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import kosta.mvc.model.dto.Room;
@@ -178,9 +179,13 @@ public class RoomsController {
 
 	public static void printRoomTypeList(boolean searchWthRsl) {
 		try {
-			List<Room> list = roomService.selectAll();
-			if (searchWthRsl) {
-				list.retainAll(roomList);
+			
+			List<String> list=new ArrayList<String>();
+			for(Room rm :roomList) {
+				if(!list.contains(rm.getRoomTypeSt())) {
+					
+					list.add(rm.getRoomTypeSt());
+				}
 			}
 			SuccessView.printRoomTypeList(list);
 		} catch (Exception e) {
