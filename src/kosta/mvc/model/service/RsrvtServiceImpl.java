@@ -60,7 +60,7 @@ public class RsrvtServiceImpl implements RsrvtService {
 			long diff = edDt.getTime() - stDt.getTime();
 			long diffDays = diff / (24 * 60 * 60 * 1000);
 			if (diffDays <= 0) {
-				return false;
+				throw new SQLException("체크 인 날짜가 체크 아웃 날짜보다 빨라야합니다.");
 			} else {
 				return true;
 			}
