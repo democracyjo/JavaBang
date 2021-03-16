@@ -14,7 +14,6 @@ import kosta.mvc.model.dto.Pay;
 import kosta.mvc.model.dto.Reservation;
 import kosta.mvc.model.dto.Review;
 import kosta.mvc.model.dto.User;
-import kosta.mvc.model.service.RoomsService;
 import kosta.mvc.model.service.RsrvtService;
 import kosta.mvc.model.service.RsrvtServiceImpl;
 import kosta.mvc.session.Session;
@@ -613,6 +612,7 @@ public class MenuView {
 	 */
 	public static void printInputReser(User user) {
 		RsrvtService rs = new RsrvtServiceImpl();
+		System.out.println("YYYY-MM-DD 형식에 맞게 입력해주세요.");
 		System.out.print("체크인 날짜 : ");
 		String checkinDate = sc.nextLine();
 
