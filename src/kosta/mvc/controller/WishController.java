@@ -18,7 +18,6 @@ public class WishController{
 	
 	public static void insertWish(Wish wish)  {
 		try {
-			
 			List<Wish> wishList = wishDAO.selectWishList();
 			for(Wish wish2 :wishList) {
 				if(wish.getRoomNo()==wish2.getRoomNo()) {
@@ -35,16 +34,11 @@ public class WishController{
 	}
 	public static void insertWish(User user, int roomNo)  {
 		try {
-			List<Wish> wishList = wishDAO.selectWishList();
-			Wish wish = new Wish(0, user.getUserNo(), roomNo, null);
-			for(Wish wish2 :wishList) {
-				if(wish.getRoomNo()==wish2.getRoomNo()) {
-					System.out.println("이미 관심리스트에 추가된 방번호입니다. ");
-					return;
-				}
+			if(!wishService.hasRoomNo(user, roomNo)) {
+				Wish wish =  new Wish(0, user.getUserNo(), roomNo, null);
+				wishService.insertWish(wish);
+				SuccessView.messagePrint("관심리스트에 등록되었습니다.");
 			}
-			wishService.insertWish(wish);
-			SuccessView.messagePrint("관심리스트에 등록되었습니다.");
 		} catch (SQLException e) {
 			FailView.errorMessage(e.getMessage());
 		}
@@ -82,5 +76,6 @@ public class WishController{
 		}
 		
 	}//end of method
+
 
 }//end of class

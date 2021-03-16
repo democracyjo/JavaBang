@@ -3,6 +3,7 @@ package kosta.mvc.model.service;
 import java.sql.SQLException;
 import java.util.List;
 
+import kosta.mvc.model.dto.User;
 import kosta.mvc.model.dto.Wish;
 
 public interface WishService {
@@ -28,5 +29,9 @@ public interface WishService {
 		  * */
 		 List<Wish> selectWishList() throws SQLException;
 		 
+		 /**
+		  * 관심등록된 방번호 체크
+		  * */
+		 public boolean hasRoomNo(User user, int roomNo) throws SQLException;
 		 
 }

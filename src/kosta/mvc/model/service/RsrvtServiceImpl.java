@@ -36,7 +36,7 @@ public class RsrvtServiceImpl implements RsrvtService {
 	public void reservationDelete(int reserNo) throws SQLException {
 		int res = reserDAO.reservationDelete(reserNo);
 		if(res == 0) {
-			throw new SQLException(reserNo+"예약 삭제 실패하였습니다.");
+			throw new SQLException("입력하신 예약번호["+reserNo+"]가 존재하지 않습니다.\n예약번호 확인 후 다시 시도해 주세요.");
 		}
 	}
 
