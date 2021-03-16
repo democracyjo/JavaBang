@@ -22,7 +22,7 @@ public class Room {
 	}
 
 	public Room(int roomNo, int roomType, double size, int price, int floor, int aprprNmbP, int numberBeds,
-			boolean breakfastStatus, int prcadPrsn) {
+			boolean breakfastStatus, int prcadPrsn, double avgScore) {
 		super();
 		this.roomNo = roomNo;
 		this.roomType = roomType;
@@ -38,6 +38,7 @@ public class Room {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		this.avgScore=avgScore;
 	}
 
 	public int getAprprNmbP() {

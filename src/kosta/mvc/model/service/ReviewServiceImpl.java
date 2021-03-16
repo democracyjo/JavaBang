@@ -54,10 +54,11 @@ public class ReviewServiceImpl implements ReviewService{
 		}
 		
 	}
-
+/*
 	@Override
 	public double getAvgP(int roomNo) throws SQLException {
 		return reviewDAO.getAvgP(roomNo);
 	}
+	*/
 	
 }

@@ -43,9 +43,10 @@ public class RoomsDAOImpl implements RoomsDAO {
 				int numberBeds = rs.getInt(7);
 				boolean breakfastStatus = rs.getString(8).toUpperCase().equals("TRUE");
 				int prcadPrsn = rs.getInt(9);
+				double avgScore=rs.getDouble(10);
 
 				Room rm = new Room(roomNo, roomType, roomSize, price, floor, aprprNmbP, numberBeds, breakfastStatus,
-						prcadPrsn);
+						prcadPrsn, avgScore);
 			
 				list.add(rm);
 
@@ -81,9 +82,10 @@ public class RoomsDAOImpl implements RoomsDAO {
 				int numberBeds = rs.getInt(7);
 				boolean breakfastStatus = rs.getString(8).toUpperCase().equals("TRUE");
 				int prcadPrsn = rs.getInt(9);
+				double avgScore=rs.getDouble(10);
 
 				rm = new Room(roomNo, roomType, roomSize, price, floor, aprprNmbP, numberBeds, breakfastStatus,
-						prcadPrsn);
+						prcadPrsn, avgScore);
 				
 				// 추가인원당 가격
 			}
@@ -118,9 +120,10 @@ public class RoomsDAOImpl implements RoomsDAO {
 					int numberBeds = rs.getInt(7);
 					boolean breakfastStatus = rs.getString(8).toUpperCase().equals("TRUE");
 					int prcadPrsn = rs.getInt(9);
+					double avgScore=rs.getDouble(10);
 
 					Room rm = new Room(roomNo, roomTypeNo, roomSize, price, floor, aprprNmbP, numberBeds,
-							breakfastStatus, prcadPrsn);
+							breakfastStatus, prcadPrsn,avgScore);
 				
 					list.add(rm);
 
@@ -158,9 +161,10 @@ public class RoomsDAOImpl implements RoomsDAO {
 				int numberBeds = rs.getInt(7);
 				boolean breakfastStatus = rs.getString(8).toUpperCase().equals("TRUE");
 				int prcadPrsn = rs.getInt(9);
+				double avgScore=rs.getDouble(10);
 
 				Room rm = new Room(roomNo, roomType, roomSize, price, floor, aprprNmbP, numberBeds, breakfastStatus,
-						prcadPrsn);
+						prcadPrsn,avgScore);
 				
 				list.add(rm);
 
@@ -197,9 +201,10 @@ public class RoomsDAOImpl implements RoomsDAO {
 				int numberBeds = rs.getInt(7);
 				boolean breakfastStatus = rs.getString(8).toUpperCase().equals("TRUE");
 				int prcadPrsn = rs.getInt(9);
+				double avgScore=rs.getDouble(10);
 
 				Room rm = new Room(roomNo, roomType, roomSize, price, floor, aprprNmbP, numberBeds, breakfastStatus,
-						prcadPrsn);
+						prcadPrsn,avgScore);
 				
 				list.add(rm);
 
@@ -236,9 +241,10 @@ public class RoomsDAOImpl implements RoomsDAO {
 				int numberBeds = rs.getInt(7);
 				boolean breakfastStatus = rs.getString(8).toUpperCase().equals("TRUE");
 				int prcadPrsn = rs.getInt(9);
-
+				double avgScore=rs.getDouble(10);
+				
 				Room rm = new Room(roomNo, roomType, roomSize, price, floor, aprprNmbP, numberBeds, breakfastStatus,
-						prcadPrsn);
+						prcadPrsn,avgScore);
 			
 				list.add(rm);
 
@@ -275,9 +281,10 @@ public class RoomsDAOImpl implements RoomsDAO {
 				int numberBeds = rs.getInt(7);
 				boolean breakfastStatus = rs.getString(8).toUpperCase().equals("TRUE");
 				int prcadPrsn = rs.getInt(9);
+				double avgScore=rs.getDouble(10);
 
 				Room rm = new Room(roomNo, roomType, roomSize, price, floor, aprprNmbP, numberBeds, breakfastStatus,
-						prcadPrsn);
+						prcadPrsn,avgScore);
 				
 				list.add(rm);
 
@@ -314,9 +321,9 @@ public class RoomsDAOImpl implements RoomsDAO {
 				int numberBeds = rs.getInt(7);
 				boolean breakfastStatus = rs.getString(8).toUpperCase().equals("TRUE");
 				int prcadPrsn = rs.getInt(9);
-
+				double avgScore=rs.getDouble(10);
 				Room rm = new Room(roomNo, roomType, roomSize, price, floor, aprprNmbP, numberBeds, breakfastStatus,
-						prcadPrsn);
+						prcadPrsn,avgScore);
 				
 				list.add(rm);
 
@@ -356,9 +363,9 @@ public class RoomsDAOImpl implements RoomsDAO {
 				int numberBeds = rs.getInt(7);
 				boolean breakfastStatus = rs.getString(8).toUpperCase().equals("TRUE");
 				int prcadPrsn = rs.getInt(9);
-
+				double avgScore=rs.getDouble(10);
 				Room rm = new Room(roomNo, roomType, roomSize, price, floor, aprprNmbP, numberBeds, breakfastStatus,
-						prcadPrsn);
+						prcadPrsn, avgScore);
 								list.add(rm);
 
 				// 추가인원당 가격
@@ -394,7 +401,7 @@ public class RoomsDAOImpl implements RoomsDAO {
 		}
 		return roomType;
 	}
-
+	
 	@Override
 	public List<Room> searchByResDate(String checkinDate, String checkoutDate) throws SQLException {
 		
@@ -421,9 +428,10 @@ public class RoomsDAOImpl implements RoomsDAO {
 				int numberBeds = rs.getInt(7);
 				boolean breakfastStatus = rs.getString(8).toUpperCase().equals("TRUE");
 				int prcadPrsn = rs.getInt(9);
+				double avgScore=rs.getDouble(10);
 
 				Room rm = new Room(roomNo, roomType, roomSize, price, floor, aprprNmbP, numberBeds, breakfastStatus,
-						prcadPrsn);
+						prcadPrsn, avgScore);
 				
 				Reservation rv = new Reservation(0, null, 0, checkinDate, checkoutDate, 0, 0, roomNo);
 				
@@ -441,5 +449,48 @@ public class RoomsDAOImpl implements RoomsDAO {
 		}
 		return list;
 	}
+
+	@Override
+	public void upDateAvgScroe(int roomNo) throws SQLException {
+		// TODO Auto-generated method stub
+		Connection con=null;
+		PreparedStatement ps=null;
+		
+		String sql = proFile.getProperty("room.updateAvgScore");
+		
+		try {
+			con=DbUtil.getConnection();
+			ps=con.prepareStatement(sql);
+			
+			ps.setInt(1, roomNo);
+			ps.setInt(2, roomNo);
+			ps.executeUpdate();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void updateAvgByRevNo(int reviewNo) throws SQLException {
+		// TODO Auto-generated method stub
+		Connection con = null;
+		PreparedStatement ps = null;
+
+		String sql = proFile.getProperty("room.updateAvgByRevNo");
+
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, reviewNo);
+			ps.setInt(2, reviewNo);
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
 
 }
