@@ -122,12 +122,13 @@ public class ReviewDAOImpl implements ReviewDAO {
 					ps.setInt(2, review.getRoomNo());
 					ps.setInt(3, review.getScore());
 					ps.setString(4, review.getReviewContent());
-
 					result = ps.executeUpdate();
-					RoomsDAO rm=new RoomsDAOImpl();
-					rm.upDateAvgScroe(review.getRoomNo());
+					
 				} finally {
 					DbUtil.close(con, ps);
+					
+					RoomsDAO rm=new RoomsDAOImpl();
+					rm.upDateAvgScroe(review.getRoomNo());
 				}
 				return result;
 			}else {
@@ -167,6 +168,9 @@ public class ReviewDAOImpl implements ReviewDAO {
 	 */
 	@Override
 	public int deleteReview(int reviewNo) throws SQLException {
+		RoomsDAO rm=new RoomsDAOImpl();
+		rm.updateAvgByRevNo(reviewNo);
+		
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
@@ -177,15 +181,16 @@ public class ReviewDAOImpl implements ReviewDAO {
 			ps.setInt(1, reviewNo);
 
 			result = ps.executeUpdate();
-			RoomsDAO rm=new RoomsDAOImpl();
-			rm.updateAvgByRevNo(reviewNo);
+			
 	
 		} finally {
 			DbUtil.close(con, ps);
+			
 		}
 		return result;
 
 	}
+	
 
 	/**
 	 * 리뷰 평점 구하기

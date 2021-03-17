@@ -467,6 +467,8 @@ public class RoomsDAOImpl implements RoomsDAO {
 			ps.executeUpdate();
 		}catch (Exception e) {
 			e.printStackTrace();
+		}finally {
+			DbUtil.close(con, ps);
 		}
 	}
 
@@ -484,9 +486,12 @@ public class RoomsDAOImpl implements RoomsDAO {
 			
 			ps.setInt(1, reviewNo);
 			ps.setInt(2, reviewNo);
+			ps.setInt(3, reviewNo);
 			ps.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally {
+			DbUtil.close(con, ps);
 		}
 	}
 	
