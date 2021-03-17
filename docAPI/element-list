@@ -1,0 +1,9 @@
+kosta.mvc.controller
+kosta.mvc.exception
+kosta.mvc.model.dao
+kosta.mvc.model.dto
+kosta.mvc.model.service
+kosta.mvc.session
+kosta.mvc.test
+kosta.mvc.util
+kosta.mvc.view
