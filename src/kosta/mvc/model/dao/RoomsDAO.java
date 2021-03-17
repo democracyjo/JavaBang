@@ -8,7 +8,7 @@ import kosta.mvc.model.dto.Room;
 
 
 public interface RoomsDAO {
-	/**
+		/**
 	 * 전체 룸 리스트를 가져온다.
 	 * @return
 	 * @throws SQLException
