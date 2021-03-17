@@ -50,7 +50,9 @@ public class MenuView {
 		}
 	}
 
-	// 메인메뉴
+	/**
+	 * 로그인전 메인메뉴 프린트
+	 */
 	public static void printMenu() {
 		System.out.println("=== JavaBang HOTEL ===");
 		System.out.println("┌──────────────┐");
@@ -61,7 +63,9 @@ public class MenuView {
 		System.out.print("선택>>");
 	}
 
-	// 로그인
+	/**
+	 * 로그인 
+	 */
 	public static void login() {
 		System.out.print("아이디 : ");
 		String userId = sc.nextLine();
@@ -72,7 +76,9 @@ public class MenuView {
 		UserController.login(userId, userPwd);
 	}
 
-	// 회원가입
+	/**
+	 * 회원가입
+	 */
 	public static void inputUser() {
 		System.out.print("아이디 : ");
 		String id = sc.nextLine();
@@ -94,8 +100,10 @@ public class MenuView {
 		UserController.inputUser(dto);
 	}
 
-//////////////////////////////// => 검색 페이지
-	// 로그인시 메뉴
+/**
+ * 로그인시 메뉴
+ * @param user
+ */
 	public static void printUserMenu(User user) {
 		while (true) {
 			System.out.println("\n----- " + user.getId() + " / 회원번호[" + user.getUserNo() + "] 로그인 중 -----");
@@ -130,7 +138,10 @@ public class MenuView {
 		}
 	}
 
-	// 로그아웃
+	/**
+	 * 로그아웃
+	 * @param user
+	 */
 	public static void logout(User user) {
 		Session session = new Session(user.getId());
 
@@ -138,7 +149,10 @@ public class MenuView {
 		ss.remove(session);
 	}
 
-	// 회원탈퇴
+	/**
+	 * 회원탈퇴
+	 * @param user
+	 */
 	public static void printDelete(User user) {
 		System.out.println(user.getId() + "님 비밀번호를 다시 입력해주세요.");
 		System.out.print("비밀번호 : ");
@@ -148,8 +162,10 @@ public class MenuView {
 
 		UserController.deleteUser(dto);
 	}
-
-//////////////////////////////// => 검색 페이지
+	/**
+	 * 검색페이지 출력
+	 * @param user
+	 */
 	private static void printSelectmenu(User user) {
 		while (true) {
 			System.out.println("\n----- " + user.getId() + " / 회원번호[" + user.getUserNo() + "] 로그인 중 -----");
@@ -177,7 +193,10 @@ public class MenuView {
 		}
 	}
 
-	// 결과내 검색
+	/**
+	 * 결과 내 검색
+	 * @param user
+	 */
 	private static void printSearchWthRes(User user) {
 
 		System.out.println("\n----- " + user.getId() + " / 회원번호[" + user.getUserNo() + "] 로그인 중 -----");
@@ -246,7 +265,10 @@ public class MenuView {
 
 	}
 
-	// 방선택
+	/**
+	 * 방선택
+	 * @param user
+	 */
 	private static void selectRoom(User user) {
 		System.out.println("\n----- " + user.getId() + " / 회원번호[" + user.getUserNo() + "] 로그인 중 -----");
 		System.out.print("방번호 : ");
@@ -279,7 +301,10 @@ public class MenuView {
 		} // switch문 끝.
 	}
 
-	// 부분 검색
+	/**
+	 * 요소별로 검색한다. 검색 후엔 결과 내 검색을 불러온다.
+	 * @param user
+	 */
 	private static void printKeywordSelectmenu(User user) {
 		RoomsController.refresh();
 		System.out.println("\n----- " + user.getId() + " / 회원번호[" + user.getUserNo() + "] 로그인 중 -----");
@@ -342,7 +367,10 @@ public class MenuView {
 		} // switch문 끝.
 	}
 
-	// 1.예약날짜로 검색
+	/**
+	 *  1.예약날짜로 검색
+	 * @param schWthRes
+	 */
 	public static void printResDate(boolean schWthRes) {
 		System.out.println("yyyy-mm-dd 타입으로 넣어주세요.");
 		System.out.print("체크인 날짜 : ");
@@ -355,7 +383,10 @@ public class MenuView {
 
 	}
 
-	// 2. 방크기로 검색
+	/**
+	 *  2. 방크기로 검색
+	 * @param schWthRes
+	 */
 	public static void printRoomSize(boolean schWthRes) {
 		System.out.println("방크기 : " + RoomsController.getMin(ROOM_SIZE) + "~" + RoomsController.getMax(ROOM_SIZE));
 		System.out.print("최소방 크기 : ");
@@ -367,7 +398,10 @@ public class MenuView {
 		RoomsController.searchByRoomSize(min, max, schWthRes);
 	}
 
-	// 3. 방종류로 검색
+	/**
+	 *  3. 방종류로 검색
+	 * @param schWthRes
+	 */
 	public static void printRoomTye(boolean schWthRes) {
 		List<String> typeList = new ArrayList<>();
 		RoomsController.printRoomTypeList(schWthRes);
@@ -380,7 +414,10 @@ public class MenuView {
 		RoomsController.searchByRoomType(typeList, schWthRes);
 	}
 
-	// 4, 방가격으로 검색
+	/**
+	 *  4, 방가격으로 검색
+	 * @param schWthRes
+	 */
 	public static void printRoomPrice(boolean schWthRes) {
 		System.out.println("방 가격 : " + RoomsController.getMin(ROOM_PRICE) + "~" + RoomsController.getMax(ROOM_PRICE));
 
@@ -393,7 +430,10 @@ public class MenuView {
 		RoomsController.searchByRoomPrice(minPrice, maxPrice, schWthRes);
 	}
 
-	// 5. 방층으로 검색
+	/**
+	 *  5. 방층으로 검색
+	 * @param schWthRes
+	 */
 	public static void printFloor(boolean schWthRes) {
 		System.out.println("방 층수 : " + RoomsController.getMin(ROOM_FLOOR) + "~" + RoomsController.getMax(ROOM_FLOOR));
 
@@ -406,7 +446,10 @@ public class MenuView {
 		RoomsController.searchByFloor(minFloor, maxFloor, schWthRes);
 	}
 
-	// 6. 숙박인원으로 검색
+	/**
+	 *  6. 숙박인원으로 검색
+	 * @param schWthRes
+	 */
 	public static void printNumberPeople(boolean schWthRes) {
 		System.out.println("방 인원 : " + RoomsController.getMin(ROOM_APPNO) + "~" + RoomsController.getMax(ROOM_APPNO));
 
@@ -419,7 +462,10 @@ public class MenuView {
 		RoomsController.searchByNumberPeople(minNum, maxNum, schWthRes);
 	}
 
-	// 7. 침대수로 검색
+	/**
+	 *  7. 침대수로 검색
+	 * @param schWthRes
+	 */
 	public static void printNumberBeds(boolean schWthRes) {
 		System.out.println("침대 수 : " + RoomsController.getMin(ROOM_BED_NO) + "~" + RoomsController.getMax(ROOM_BED_NO));
 
@@ -432,16 +478,20 @@ public class MenuView {
 		RoomsController.searchByNumberBeds(nimNum, maxNum, schWthRes);
 	}
 
-	// 8. 조식여부로 검색
+	/**
+	 *  8. 조식여부로 검색
+	 * @param schWthRes
+	 */
 	public static void printBreakfastStat(boolean schWthRes) {
 		System.out.print("아침가능 여부(true 또는 false로 입력해주세요.) : ");
 		boolean bfStat = Boolean.parseBoolean(sc.nextLine());
 		RoomsController.searchByBreakfastStat(bfStat, schWthRes);
 	}
 
-	// 8.
-
-//////////////////////////////// => 마이 페이지
+	/**
+	 * 마이페이지
+	 * @param user
+	 */
 	private static void printMyPage(User user) {
 		while (true) {
 			System.out.println("\n----- " + user.getId() + " / 회원번호[" + user.getUserNo() + "] 로그인 중 -----");
@@ -485,7 +535,10 @@ public class MenuView {
 		}
 	}
 
-	// 관심리스트
+	/**
+	 *  관심리스트 메뉴
+	 * @param user
+	 */
 	public static void printWishList(User user) {
 		while (true) {
 			System.out.println("\n----- " + user.getId() + " / 회원번호[" + user.getUserNo() + "] 로그인 중 -----");
@@ -515,7 +568,10 @@ public class MenuView {
 		}
 	}
 
-	// 예약리스트
+	/**
+	 * 예약리스트 메뉴 출력
+	 * @param user
+	 */
 	public static void printRsrvtList(User user) {
 		while (true) {
 			System.out.println("\n----- " + user.getId() + " / 회원번호[" + user.getUserNo() + "] 로그인 중 -----");
@@ -544,7 +600,10 @@ public class MenuView {
 		}
 	}
 
-	// 리뷰관리
+	/**
+	 * 리뷰관리 메뉴 출력
+	 * @param user
+	 */
 	public static void printReview(User user) {
 		while (true) {
 			System.out.println("\n----- " + user.getId() + " / 회원번호[" + user.getUserNo() + "] 로그인 중 -----");
@@ -607,8 +666,8 @@ public class MenuView {
 	}
 
 	/*
-	 * 예약 reservation.insert=insert into RESERVATION_LIST
-	 * values(RESERVATION_LIST_NO_SEQ.NEXTVAL, SYSDATE, ?, ?, ?, ?, ?, ? )
+	 * 
+	 * 예약 하는 화면
 	 */
 	public static void printInputReser(User user) {
 		RsrvtService rs = new RsrvtServiceImpl();
