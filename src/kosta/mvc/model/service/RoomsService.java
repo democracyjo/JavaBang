@@ -8,8 +8,18 @@ import kosta.mvc.model.dto.Room;
 
 
 public interface RoomsService {
+	/**
+	 * 전체 방을 검색
+	 * @return
+	 * @throws Exception
+	 */
 	public List<Room> selectAll() throws Exception;
-	
+	/**
+	 * 방번호를 기준으로 방을 검색
+	 * @param roomNo
+	 * @return
+	 * @throws Exception
+	 */
 	public Room searchByRoomNo(int roomNo) throws Exception;
 	/**
 	 * 여러 룸타입에 해당하는 방 리스트를 뽑는다.
