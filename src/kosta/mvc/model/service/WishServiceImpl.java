@@ -16,7 +16,7 @@ public class WishServiceImpl implements WishService {
 	public void wishDelete(int wishNo) throws SQLException {
 		int res = wishDAO.wishDelete(wishNo);
 		if(res ==0) {
-			throw new SQLException("관심리스트 삭제 실패하였습니다.");
+			throw new SQLException("입력하신 관심번호["+wishNo+"]가 존재하지 않습니다.\n관심번호 확인 후 다시 시도해 주세요.");
 		}
 	}
 
