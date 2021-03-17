@@ -19,7 +19,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <interface id="3" language="java" name="kosta.mvc.controller.PayController" project="JavaBang" 
+  <class id="3" language="java" name="kosta.mvc.controller.PayController" project="JavaBang" 
     file="/JavaBang/src/kosta/mvc/controller/PayController.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="940" y="425"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -27,8 +27,8 @@
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
-  </interface>  
-  <interface id="4" language="java" name="kosta.mvc.controller.WishController" project="JavaBang" 
+  </class>  
+  <class id="4" language="java" name="kosta.mvc.controller.WishController" project="JavaBang" 
     file="/JavaBang/src/kosta/mvc/controller/WishController.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="953" y="114"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -36,16 +36,16 @@
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
-  </interface>  
-  <interface id="5" language="java" name="kosta.mvc.controller.RsrvtController" project="JavaBang" 
+  </class>  
+  <class id="5" language="java" name="kosta.mvc.controller.RsrvtController" project="JavaBang" 
     file="/JavaBang/src/kosta/mvc/controller/RsrvtController.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="952" y="272"/>    
+    <position height="-1" width="-1" x="854" y="661"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
-  </interface>  
+  </class>  
   <class id="6" language="java" name="kosta.mvc.model.dto.Pay" project="JavaBang" 
     file="/JavaBang/src/kosta/mvc/model/dto/Pay.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="698" y="294"/>    
