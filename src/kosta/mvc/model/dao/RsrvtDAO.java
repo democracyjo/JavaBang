@@ -1,6 +1,7 @@
 package kosta.mvc.model.dao;
 
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.List;
 
 import kosta.mvc.model.dto.Reservation;
@@ -14,9 +15,9 @@ public interface RsrvtDAO {
 	   * 2) 해당 방 예약가능일 업데이트.
 	   * @param Reservation rsrvt
 	   * @return  Room room 
-	   * @throws SQLException
+	   * @throws SQLException, ParseException
 	   * */
-		int reservationInsert(Reservation rsrvt,  Room room)throws SQLException;
+		int reservationInsert(Reservation rsrvt,  Room room)throws SQLException, ParseException;
 		
 		/**
 		   * 예약리스트 삭제하기

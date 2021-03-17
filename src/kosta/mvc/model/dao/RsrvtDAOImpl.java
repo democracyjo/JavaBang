@@ -22,7 +22,7 @@ public class RsrvtDAOImpl implements RsrvtDAO {
 	
 	
 	@Override
-	public int reservationInsert(Reservation rsrvt, Room room) throws SQLException {
+	public int reservationInsert(Reservation rsrvt, Room room) throws SQLException, ParseException {
 		Connection con=null;
 		PreparedStatement ps=null;
 		String sql=proFile.getProperty("reservation.insert"); 
@@ -125,7 +125,7 @@ public class RsrvtDAOImpl implements RsrvtDAO {
 	/**
 	 * 총금액계산
 	 * */
-	public int getTotalAmount(Reservation reser, Room room) throws SQLException {
+	public int getTotalAmount(Reservation reser, Room room) throws SQLException, ParseException {
 		
 		int roomNo = reser.getRoomNo();//예약방넘버
 		int roomPrice = room.getPrice();//방 일박당 가격
@@ -151,26 +151,20 @@ public class RsrvtDAOImpl implements RsrvtDAO {
 	/**
 	 * 날짜차이계산
 	 * */
-	public static int calDate(Reservation reser){
+	public static int calDate(Reservation reser) throws ParseException{
 		String date1 = reser.getCheckoutDate();//체크아웃날짜
 		String date2 = reser.getCheckinDate();//체크인날짜
 		int days=0;
-		try{ 
-			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-			Date FirstDate = format.parse(date1);
-			Date SecondDate = format.parse(date2);
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd"); //formatting시 pattern 주의해서 사용할 것!(M:월/m:분)
+		Date FirstDate = format.parse(date1);
+		Date SecondDate = format.parse(date2);
 
-			long calDate = FirstDate.getTime() - SecondDate.getTime(); 
+		long calDate = FirstDate.getTime() - SecondDate.getTime(); 
 
-			long calDateDays = calDate / ( 24*60*60*1000); 
+		long calDateDays = calDate / ( 24*60*60*1000); 
 
-			days = (int)(Math.abs(calDateDays));
+		days = (int)(Math.abs(calDateDays));
 
-		}
-		catch(ParseException e)
-		{
-			e.printStackTrace();
-		}
 		return days;
 	} 
 	
