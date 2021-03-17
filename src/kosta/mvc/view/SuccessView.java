@@ -19,7 +19,10 @@ public class SuccessView {
 	public static void messagePrint(String message) {
 		System.out.println(message);
 	}
-
+	/**
+	 * 관심리스트 출력
+	 * @param wishList
+	 */
 	public static void selectWishByUserIdPrint(List<Wish> wishList) {
 		
 		System.out.println("========= 관심리스트["+wishList.size()+"]=========");
@@ -28,7 +31,10 @@ public class SuccessView {
 		}
 		System.out.println();
 	}
-
+	/**
+	 * 
+	 * 예약리스트 출력
+	 */
 	public static void selectRsrvtByUserId(List<Reservation> reserList) {
 		System.out.println("========= 예약리스트["+reserList.size()+"]=========");
 		for(Reservation reserv : reserList) {
@@ -36,7 +42,10 @@ public class SuccessView {
 		}
 		System.out.println();
 	}
-
+	/**
+	 * 결제 리스트 출력
+	 * 
+	 */
 	public static void selectPayByUserIdPrint(List<Pay> payList) {
 		System.out.println("========= 결제리스트["+payList.size()+"]=========");
 		for(Pay pay : payList) {
@@ -44,7 +53,10 @@ public class SuccessView {
 		}
 		System.out.println();
 	}
-	
+	/**
+	 * 리뷰 리스트 출력
+	 * 
+	 */
 	public static void selectReviewPrint(List<Review> reviewList) {
 		System.out.println("========= 리뷰리스트["+reviewList.size()+"]=========");
 		for(Review review : reviewList) {
@@ -54,7 +66,10 @@ public class SuccessView {
 	}
 	
 
-	
+	/**
+	 * 방리스트 출력
+	 * 
+	 */
 	public static void printRoomList(List<Room> roomList) {
 		System.out.println("========= 방리스트["+roomList.size()+"]=========");
 		for(Room room : roomList) {
@@ -62,9 +77,13 @@ public class SuccessView {
 		}
 		System.out.println();
 	}
-
+	/**
+	 * 방 종류 리스트 출력
+	 * 
+	 */
 	public static void printRoomTypeList(List<String> list) {
 		System.out.println("========= 방종류 리스트["+list.size()+"]=========");
+		list.sort(null);
 		for(String rm:list) {
 			System.out.println(rm);
 		}

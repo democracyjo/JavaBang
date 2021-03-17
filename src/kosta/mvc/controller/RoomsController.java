@@ -20,8 +20,14 @@ public class RoomsController {
 	 */
 	private static RoomsService roomService = new RoomsServiceImpl();
 	
+	/**
+	 * 결과 내 검색을 하기 위한 변수
+	 */
 	private static List<Room> roomList;
-
+	
+	/**
+	 * 결과 내 검색을 위한 변수를 리프레쉬 하기 위한 함수
+	 */
 	public static void refresh() {
 		SuccessView.messagePrint("로딩 중입니다.");
 		try {
@@ -45,7 +51,10 @@ public class RoomsController {
 		}
 	}
 
-	// 방번호로 검색
+	/**
+	 * 방 번호로 검색하고 출력
+	 * @param roomNo
+	 */
 	public static void searchByRoomNo(int roomNo) {
 		try {
 			Room rm = roomService.searchByRoomNo(roomNo);
@@ -93,7 +102,12 @@ public class RoomsController {
 			System.out.println(e.getMessage());
 		}
 	}
-
+	/**
+	 * 방 가격을 기준으로 검색하고 출력, searchWthRsl이 트루이면 결과값 검색
+	 * @param minPrice
+	 * @param maxPrice
+	 * @param searchWthRsl
+	 */
 	public static void searchByRoomPrice(int minPrice, int maxPrice, boolean searchWthRsl) {
 		try {
 			List<Room> list = roomService.searchByRoomPrice(minPrice, maxPrice);
@@ -106,7 +120,12 @@ public class RoomsController {
 			System.out.println(e.getMessage());
 		}
 	}
-
+	/**
+	 *  층수를 기준으로 검색하고 출력, searchWthRsl이 트루이면 결과값 검색
+	 * @param minFloor
+	 * @param maxFloor
+	 * @param searchWthRsl
+	 */
 	public static void searchByFloor(int minFloor,int maxFloor, boolean searchWthRsl) {
 		try {
 			List<Room> list = roomService.searchByFloor(minFloor, maxFloor);
@@ -119,7 +138,12 @@ public class RoomsController {
 			System.out.println(e.getMessage());
 		}
 	}
-
+	/**
+	 * 적정인원수를 기준으로 검색하고 출력,  searchWthRsl이 트루이면 결과값 검색
+	 * @param minNum
+	 * @param maxNum
+	 * @param searchWthRsl
+	 */
 	public static void searchByNumberPeople(int minNum, int maxNum, boolean searchWthRsl) {
 		try {
 			List<Room> list = roomService.searchByNumberPeople(minNum, maxNum);
@@ -132,7 +156,12 @@ public class RoomsController {
 			System.out.println(e.getMessage());
 		}
 	}
-
+	/**
+	 *  침대수를 기준으로 검색하고 출력, searchWthRsl이 트루이면 결과값 검색
+	 * @param minNum
+	 * @param maxNum
+	 * @param searchWthRsl
+	 */
 	public static void searchByNumberBeds(int minNum, int maxNum, boolean searchWthRsl) {
 		try {
 			List<Room> list = roomService.searchByNumberBeds(minNum, maxNum);
@@ -146,7 +175,11 @@ public class RoomsController {
 			FailView.errorMessage(e.getMessage());
 		}
 	}
-
+	/**
+	 *  조식여부를 기준으로 검색하고 출력, searchWthRsl이 트루이면 결과값 검색
+	 * @param bfStat
+	 * @param searchWthRsl
+	 */
 	public static void searchByBreakfastStat(boolean bfStat, boolean searchWthRsl) {
 		try {
 			List<Room> list = roomService.searchByBreakfastStat(bfStat);
@@ -159,7 +192,12 @@ public class RoomsController {
 			FailView.errorMessage(e.getMessage());
 		}
 	}
-
+	/**
+	 * 예약기간을 기준으로 검색하고 출력, searchWthRsl이 트루이면 결과값 검색
+	 * @param checkinDate
+	 * @param checkoutDate
+	 * @param searchWthRsl
+	 */
 	public static void searchByResDate(String checkinDate, String checkoutDate, boolean searchWthRsl) {
 		try {
 			RsrvtService rs=new RsrvtServiceImpl();
@@ -176,7 +214,10 @@ public class RoomsController {
 
 		}
 	}
-
+	/**
+	 *  검색할수 있는 방타입 출력, 방타입을 기준으로 검색하고 출력, searchWthRsl이 트루이면 결과값 검색
+	 * @param searchWthRsl
+	 */
 	public static void printRoomTypeList(boolean searchWthRsl) {
 		try {
 			
@@ -192,7 +233,11 @@ public class RoomsController {
 			FailView.errorMessage(e.getMessage());
 		}
 	}
-
+	/**
+	 * 변수를 받아와서 각요소들의 min을 출력하는 함수
+	 * @param srcE
+	 * @return
+	 */
 	public static Object getMin(int srcE) {
 		switch (srcE) {
 		case 1:
@@ -252,7 +297,11 @@ public class RoomsController {
 		}
 		return null;
 	}
-	
+	/**
+	 * 변수를 받아와서 각 요소의 max를 리턴하는 함수
+	 * @param srcE
+	 * @return
+	 */
 	public static Object getMax(int srcE) {
 		switch (srcE) {
 		case 1:
