@@ -16,7 +16,7 @@ public interface WishDAO {
 		int wishInsert(Wish wish)throws SQLException;
 
 		/**
-		   * 관심리스트 삭제하기
+		   * 관심리스트 삭제하기(관심번호로)
 		   * : WISH_LIST 테이블에서 delete
 		   * @param int wishNo
 		   * @return int 
@@ -31,6 +31,10 @@ public interface WishDAO {
 		 * */
 		List<Wish> selectWishByUserId(String userId)throws SQLException;
 		
+		/**
+		 * 전체 관심리스트 --관리자용
+		 * @return List<Wish>
+		 * */
 		List<Wish> selectWishList()throws SQLException;
 
 }

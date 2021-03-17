@@ -8,10 +8,17 @@ import kosta.mvc.model.service.PayService;
 import kosta.mvc.model.service.PayServiceImpl;
 import kosta.mvc.view.FailView;
 import kosta.mvc.view.SuccessView;
-
+/**
+ * PayController
+ * 예외처리
+ * */
 public class PayController {
 	private  static PayService payService = new PayServiceImpl();
 
+	/**
+	 * 결제 등록
+	 * @param Pay pay
+	 * */
 	public static void insertPay(Pay pay)  {
 		try {
 			payService.insertPay(pay);
@@ -21,6 +28,10 @@ public class PayController {
 		}
 	}
 
+	/**
+	 * 결제 삭제 
+	 * @param int payNo
+	 * */
 	public static void payDelete(int payNo)  {
 		try {
 			payService.payDelete(payNo);
@@ -30,6 +41,11 @@ public class PayController {
 		}
 	}
 
+	/**
+	 * userId로 PayList 검색
+	 * @param String userId
+	 * 
+	 * */
 	public static void selectPayByUserId(String userId) {
 		try {
 			List<Pay> payList = payService.selectPayByUserId(userId);

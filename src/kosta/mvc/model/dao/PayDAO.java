@@ -13,11 +13,15 @@ public interface PayDAO {
 	   * 2) 해당 방 예약가능일 업데이트.
 	   * @param Pay pay
 	   * @return int 
+	   * @throws SQLException
 	   * */
 		int payInsert(Pay pay)throws SQLException;
 		
 		/**
 		 * 결제리스트 삭제하기 
+		 * @param int payNo
+		 * @return int
+		 * @throws SQLException
 		 * */
 		int payDelete(int payNo) throws SQLException;
 		
@@ -25,17 +29,21 @@ public interface PayDAO {
 		 * 결제리스트 전체 보기 (아이디로)
 		 * @param String userId
 		 * @return List<Pay> 
+		 * @throws SQLException
 		 * */
 		List<Pay> selectPayByUserId(String userId)throws SQLException;
 		
 		/**
-		 * 결제리스트 전체
+		 * 결제리스트 전체--관리자용
+		 * @return List<Pay>
+		 * @throws SQLException
 		 * */
 		List<Pay> selectPayList() throws SQLException;
+		
 		/**
 		 * 결제리스트 보기 (유저번호로)
-		 * @param userNo
-		 * @return
+		 * @param int userNo
+		 * @return List<Pay>
 		 * @throws SQLException
 		 */
 		List<Pay> selectPayByUserNo(int userNo)throws SQLException;
